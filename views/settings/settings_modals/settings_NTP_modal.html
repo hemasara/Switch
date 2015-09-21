@@ -1,0 +1,75 @@
+<div id="settings_NTP_modal">
+    <div id="ntp-errors"></div>
+    <form name="ntpForm">
+
+        <!--
+        <pre>
+            {{viewmodel.ntpvalues.ntp}}
+            {{ntpForm.$invalid}}
+            {{ntpForm.$invalid == null}}
+        </pre>
+        -->
+
+
+    <div class="form-horizontal">
+        {{'SETTINGS_NTP_Modal_Description'|translate}}
+        <br />
+        <br />
+        <div class="form-group">
+            <label class="col-xs-4 control-label">{{'GENERIC_TimeZone'|translate}}</label>
+            <span class="col-xs-4">
+                <select id="selectNTPTimezones" class="form-control" ng-model="viewmodel.ntpvalues.timezoneid" data-ng-options="tz.id as tz.name for tz in viewmodel.timezones">   
+                </select>
+            </span>
+        </div>
+        <div class="form-group">
+            <label class="col-xs-4 control-label">{{'SETTINGS_NTP_Modal_EnableNTP'|translate}}</label>
+            <div class="col-xs-8">
+                <input id="ntpenabled" type="checkbox" value="enabled" ng-model="viewmodel.ntpvalues.ntp" 
+                 ng-true-value="'enabled'" ng-false-value="'disabled'">
+            </div>
+        </div>
+        
+        <div class="form-group" ng-if="viewmodel.ntpvalues.ntp=='enabled'">
+            <label class="col-xs-4 control-label">
+                {{'SETTINGS_NTP_Modal_PreferredNTP'|translate}}
+            </label>
+            <div class="col-xs-8" >
+                <input id="ntpserver1" name="ntpserver1" type="text" placeholder="required" value="{{viewmodel.ntpvalues.server1}}" ng-model="viewmodel.ntpvalues.server1"  ip-validator required/>                
+                <div ng-show="ntpForm.ntpserver1.$dirty" ng-messages="ntpForm.ntpserver1.$error" ng-messages-include="views/messages.html"></div>
+            </div>
+        </div>
+        <div class="form-group" ng-if="viewmodel.ntpvalues.ntp!='enabled'">
+            <label class="col-xs-4 control-label">
+                {{'SETTINGS_NTP_Modal_PreferredNTP'|translate}}
+            </label> 
+            <div class="col-xs-8" ng-if="viewmodel.ntpvalues.ntp!='enabled'">
+                <input id="ntpserver1NotRequired"  name="ntpserver1disable" type="text" placeholder="192.168.2.1" value="{{viewmodel.ntpvalues.server1}}" ng-model="viewmodel.ntpvalues.server1" ip-validator/>
+                <div ng-show="ntpForm.ntpserver1disable.$dirty" ng-messages="ntpForm.ntpserver1disable.$error" ng-messages-include="views/messages.html"></div>
+            </div>
+        </div>
+
+        <div class="form-group">
+            <label class="col-xs-4 control-label">
+                {{'SETTINGS_NTP_Modal_SecondaryNTP'|translate}}   
+            </label>
+            <div class="col-xs-8">
+                <input id="ntpserver2" name="ntpserver2" type="text" placeholder="192.168.2.1" value="{{viewmodel.ntpvalues.server2}}" ng-model="viewmodel.ntpvalues.server2" ip-validator />
+                <div ng-show="ntpForm.ntpserver2.$dirty" ng-messages="ntpForm.ntpserver2.$error" ng-messages-include="views/messages.html"></div>
+            </div>
+        </div>
+    </div>
+
+    <br />
+    <footer>
+        <ul class="list-unstyled list-inline text-right">
+            <li>
+                <button id="btnSaveNTP" type="button" class="btn btn-primary" ng-click="actions.save()" ng-disabled="(ntpForm.$invalid == null || ntpForm.$invalid)">{{'GENERIC_Apply'|translate}}</button>
+            </li>
+            <li>
+                <button id="btnCancelSaveNTP" type="button" class="btn btn-default" ng-click="actions.cancel()">{{'GENERIC_Cancel'|translate}}</button>
+            </li>
+        </ul>
+    </footer>
+    </form>
+</div>

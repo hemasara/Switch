@@ -1,0 +1,92 @@
+<ng-form name="viewmodel.wizardNetworkSettings.form" class="form-horizontal" novalidate>
+<!--<form name="networkSettingsForm" class="form-horizontal" novalidate>-->
+
+    <h2>{{'GETTINGSTARTEDWIZARD_NetworkSettings'|translate}}</h2>
+    <p>{{'GETTINGSTARTEDWIZARD_NetworkSettings_Description'|translate}}</p>
+    
+
+    <div class="form-group">
+        <label class="col-sm-4 control-label">IP Address Source</label>
+        <div class="col-sm-8">
+            <label class="radio-inline">
+                <input type="radio" name="radioDHCP" id="radioStaticIP" value="disabled" ng-model="viewmodel.wizardNetworkSettings.dhcp" />
+                Static IP
+            </label>
+            <label class="radio-inline">
+                <input type="radio" name="radioDHCP" id="radioDynamicIP" value="enabled" ng-model="viewmodel.wizardNetworkSettings.dhcp" />
+                Dynamic IP (DHCP)
+            </label>
+        </div>
+    </div>
+    <div class="form-group">
+        <h3 class="col-sm-12">{{'DASHBOARD_IPProperties'|translate}}</h3>
+    </div>
+    <div class="form-group">
+        <label class="col-sm-4 control-label">{{'GETTINGSTARTEDWIZARD_IPVersion'|translate}}</label>
+        <p class="col-sm-8 form-control-static">IPv4</p>
+    </div>
+    <div class="form-group">
+        <label class="col-sm-4 control-label">{{'GETTINGSTARTEDWIZARD_IPAddress'|translate}}</label>
+        <div class="col-sm-8">
+            <input ng-if="viewmodel.wizardNetworkSettings.dhcp=='disabled'"
+                id="managementip" type="text" name="ipAddress"
+                ip-validator
+                class="form-control"
+                ng-model="viewmodel.wizardNetworkSettings.managementIP_ip"
+                placeholder="192.168.2.1"
+                required 
+                />
+            <input ng-if="viewmodel.wizardNetworkSettings.dhcp=='enabled'"
+                id="managementip2" type="text" name="ipAddress"
+                class="form-control"
+                ng-model="viewmodel.wizardNetworkSettings.managementIP_ip"
+                ng-disabled="true"
+                placeholder="192.168.2.1" />
+            <div ng-show="viewmodel.wizardNetworkSettings.form.ipAddress.$dirty && viewmodel.wizardNetworkSettings.dhcp=='disabled'" 
+                ng-messages="viewmodel.wizardNetworkSettings.form.ipAddress.$error" ng-messages-include="views/messages.html"></div>
+        </div>
+    </div>
+    <div class="form-group">
+        <label class="col-sm-4 control-label">{{'GETTINGSTARTEDWIZARD_SubnetMask'|translate}}</label>
+        <div class="col-sm-8">
+            <input ng-if="viewmodel.wizardNetworkSettings.dhcp=='disabled'"
+                id="netmask" type="text" name="netmaskIp"
+                class="form-control"
+                ip-validator
+                ng-model="viewmodel.wizardNetworkSettings.netMask_ip"
+                ng-disabled="viewmodel.wizardNetworkSettings.dhcp=='enabled'"
+                placeholder="255.255.0.0"
+                required />
+            <input ng-if="viewmodel.wizardNetworkSettings.dhcp=='enabled'"
+                id="netmask2" type="text" name="netmaskIp"
+                class="form-control"
+                ng-model="viewmodel.wizardNetworkSettings.netMask_ip"
+                ng-disabled="true"
+                placeholder="255.255.0.0" />
+            <div ng-show="viewmodel.wizardNetworkSettings.form.netmaskIp.$dirty && viewmodel.wizardNetworkSettings.dhcp=='disabled'" 
+                ng-messages="viewmodel.wizardNetworkSettings.form.netmaskIp.$error" ng-messages-include="views/messages.html"></div>
+        </div>
+    </div>
+    <div class="form-group">
+        <label class="col-sm-4 control-label">{{'GETTINGSTARTEDWIZARD_Gateway'|translate}}</label>
+        <div class="col-sm-8">
+            <input ng-if="viewmodel.wizardNetworkSettings.dhcp=='disabled'"
+                id="gateway" type="text" name="gatewayIp"
+                class="form-control"
+                ip-validator
+                ng-model="viewmodel.wizardNetworkSettings.gateway_ip"
+                ng-disabled="viewmodel.wizardNetworkSettings.dhcp=='enabled'"
+                placeholder="0.0.0.0"
+                required />
+            <input ng-if="viewmodel.wizardNetworkSettings.dhcp=='enabled'"
+                id="gateway2" type="text" name="gatewayIp"
+                class="form-control"
+                ng-model="viewmodel.wizardNetworkSettings.gateway_ip"
+                ng-disabled="true"
+                placeholder="0.0.0.0" />
+            <div ng-show="viewmodel.wizardNetworkSettings.form.gatewayIp.$dirty && viewmodel.wizardNetworkSettings.dhcp=='disabled'" 
+                ng-messages="viewmodel.wizardNetworkSettings.form.gatewayIp.$error" ng-messages-include="views/messages.html"></div>
+        </div>
+    </div>
+
+</ng-form>

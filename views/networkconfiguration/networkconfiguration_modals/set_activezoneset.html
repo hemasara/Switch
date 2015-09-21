@@ -1,0 +1,48 @@
+<div id="modal-set_active-zoneset">
+    <div id="modal-set_active-zoneset-errors"></div>
+
+    <p>Use this page to select the active zone and its mode.</p>
+
+    <form class="form-horizontal">
+        <div class="form-group">
+            <label class="col-xs-4 control-label">
+                Select Active Zone
+            </label>
+            <div class="col-xs-8">
+                <select id="selectZonesetsForActive" ng-model="viewmodel.activeZone" required class="form-control">
+                    <option value="NOACTIVEZONE">None</option>
+                    <option ng-repeat="zoneset in data.zonesets" value="{{zoneset['zoneset-name']}}">{{zoneset['zoneset-name']}}</option>
+                </select>
+            </div>
+        </div>
+        <div class="form-group">
+            <label class="col-xs-4 control-label">
+                Default Mode
+            </label>
+            <div class="col-xs-8">
+                <label class="radio-inline">
+                    <input type="radio" name="inlineRadioOptions" id="allaccess" ng-model="viewmodel.defaultMode" value="All Access">
+                    All Access
+                </label>
+                <label class="radio-inline" ng-disabled="true">
+                    <input type="radio" name="inlineRadioOptions" id="noaccess" ng-model="viewmodel.defaultMode" value="No Access" ng-disabled="true">
+                    No Access
+                </label>
+            </div>
+        </div>
+        <br />
+        <footer>
+            <ul class="list-unstyled list-inline text-right">
+                <li>
+                    <button id="btnSaveActiveZoneset" type="submit" class="btn btn-primary" ng-click="actions.save()">{{'GENERIC_Save'|translate}}</button>
+                </li>
+                <li>
+                    <button id="btnCancelActiveZoneset" type="button" class="btn btn-default" ng-click="actions.cancel()">{{'GENERIC_Cancel'|translate}}</button>
+                </li>
+            </ul>
+        </footer>
+    </form>
+
+</div>
+
+

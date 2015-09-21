@@ -1,0 +1,69 @@
+<div id="modal-add-manual-member">
+    <div id="modal-add-manual-member-errors"></div>
+
+
+    <p>Use this page to add a WWPN or FC-ID member.</p>
+
+    <div class="form-horizontal">
+        <div class="form-group">
+            <label class="col-xs-4 control-label">
+                Member
+            </label>
+            <div class="col-xs-8">
+                <input id="member" type="text" ng-model="viewmodel.member" required class="form-control" maxlength="32" />
+            </div>
+        </div>
+    </div>
+    <div class="form-group">
+        <label class="col-xs-4 control-label">Member Type</label>
+        <div class="col-xs-8">
+            <div class="col-xs-8">
+                <label class="radio-inline">
+                    <input type="radio" name="memberType" id="memberTypeWWPN" value="wwpn" ng-model="viewmodel.memberType">
+                    WWPN                       
+                </label>
+                <label class="radio-inline">
+                    <input type="radio" name="memberType" id="memberTypeFCID" value="fc-id" ng-model="viewmodel.memberType">
+                    FC-ID                   
+                </label>
+            </div>
+        </div>
+    </div>
+
+    <!--   <div class="panel panel-default">
+        <div class="panel-heading">Alias Members <a class="pull-right"><i class="ci ci-action-add-new-core"></i>Add Manually</a></div>
+        <div class="panel-body" style="height: 250px; overflow: auto;">
+            <h5><span class="text-primary collapsed" data-toggle="collapse" data-target="#alias-wwpn-members" aria-expanded="false" aria-controls="alias-wwpn-members">
+                <i class="glyphicon glyphicon-plus-sign"></i>
+                <i class="glyphicon glyphicon-minus-sign"></i>
+            </span>
+                WWPNs ({{data.alias['alias-wwpn-members'].length}} Devices)</h5>
+            <ul class="collapse list-unstyled" id="alias-wwpn-members" style="margin-left: 15px;">
+                <li class="hover" ng-repeat="wwpn in data.alias['alias-wwpn-members']" ng-click="wwpn.selected=!wwpn.selected" ng-class="{highlight: wwpn.selected}">{{wwpn["wwpn"]}}</li>
+            </ul>
+            <h5><span class="text-primary collapsed" data-toggle="collapse" data-target="#alias-fc-members" aria-expanded="false" aria-controls="alias-fc-members">
+                <i class="glyphicon glyphicon-plus-sign"></i>
+                <i class="glyphicon glyphicon-minus-sign"></i>
+            </span>
+                FC-IDs ({{data.alias['alias-fc-id-members'].length}} Devices)</h5>
+            <ul class="collapse list-unstyled" id="alias-fc-members" style="margin-left: 15px;">
+                <li class="hover" ng-repeat="fcid in data.alias['alias-fc-id-members']" ng-click="fcid.selected=!fcid.selected" ng-class="{highlight: fcid.selected}">{{fcid["fc-id"]}}</li>
+            </ul>
+        </div>
+    </div>-->
+
+    <br />
+    <footer>
+        <ul class="list-unstyled list-inline text-right">
+            <li>
+                <button id="btnCreateZoning" type="submit" class="btn btn-primary" ng-click="actions.save()">{{'GENERIC_Save'|translate}}</button>
+            </li>
+            <li>
+                <button id="btnCancelZoning" type="button" class="btn btn-default" ng-click="actions.cancel()">{{'GENERIC_Cancel'|translate}}</button>
+            </li>
+        </ul>
+    </footer>
+
+</div>
+
+

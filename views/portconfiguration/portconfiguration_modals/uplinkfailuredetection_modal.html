@@ -1,0 +1,77 @@
+<div id="uplinkfailuredetection_modal">
+    <div id="uplinkfailure-errors"></div>
+    <form name="formUFD" novalidate class="form-horizontal">
+        <p>{{'PORTCONFIGURATION_UplinkFailure_Modal_Description'|translate}}</p>
+        <br />
+        <br />
+        <div class="form-group">
+            <div class="col-xs-12">
+                <div class="radio">
+                    <label>
+                        <input type="radio" ng-model="viewmodel.uplinksettings.upFailureDetection" name="radioUpFailureDetection" id="radioUpFailureDetectionEnabled" value="enabled" />
+                        {{'GENERIC_Enabled'|translate}}
+                    </label>
+                </div>
+            </div>
+            <div>
+                <div class="form-horizontal">
+                    <div class="col-xs-1">
+                    </div>
+                    <div class="col-xs-11">
+                        <ul class="list-unstyled">
+                            <li>
+                                <div class="radio form-group">
+                                    <label class="radio-inline control-label" ng-disabled="viewmodel.uplinksettings.upFailureDetection == 'disabled'">
+                                        <input type="radio" ng-model="data.radioDeferTime" name="radioDeferTime" id="radioDeferTimeDefault" value="default" ng-disabled="viewmodel.uplinksettings.upFailureDetection == 'disabled'" />
+                                        {{'PORTCONFIGURATION_DeferTimer'|translate}}
+                                    </label>
+                                </div>
+                            </li>
+                            <li>
+                                <div class="radio form-group">
+                                    <ul class="list-unstyled list-inline">
+                                        <li>
+                                            <label class="radio-inline control-label" ng-disabled="viewmodel.uplinksettings.upFailureDetection == 'disabled'">
+                                                <input type="radio" ng-model="data.radioDeferTime" name="radioDeferTime" id="radioDeferTimeCustom" value="custom" ng-disabled="viewmodel.uplinksettings.upFailureDetection == 'disabled'" />
+                                                {{'PORTCONFIGURATION_CustomDeferTime'|translate}} 
+                                            </label>
+                                        </li>
+                                        <li>
+                                            <!--<input id="defertime" class="form-control" ng-disabled="data.radioDeferTime != 'custom'" type="number" 
+                                                ng-focus="data.radioDeferTime==10 && viewmodel.uplinksettings.upFailureDetection=='enabled'" name="deferTime" ng-model="viewmodel.uplinksettings.deferTime" min="1" max="120">-->
+                                            <input id="defertime" class="form-control" ng-disabled="data.radioDeferTime != 'custom'" type="number" 
+                                                name="deferTime" ng-model="viewmodel.uplinksettings.deferTime" min="1" max="120">
+                                        </li>
+                                        <li>
+                                            <span class="control-label help-inline">{{'PORTCONFIGURATION_Range'|translate}}</span>
+                                        </li>
+                                    </ul>
+                                </div>
+                            </li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+            <div class="col-xs-12">
+                <div class="radio">
+                    <label>
+                        <input type="radio" ng-model="viewmodel.uplinksettings.upFailureDetection" name="radioUpFailureDetection" id="radioUpFailureDetectionDisabled" value="disabled" />
+                        {{'GENERIC_Disabled'|translate}}                       
+                    </label>
+                </div>
+            </div>
+        </div>
+    
+
+    <br />
+    <footer>
+        <ul class="list-unstyled list-inline text-right">
+            <li>
+                <button ng-disabled="formUFD.$invalid" id="btnSaveUFD" type="button" class="btn btn-primary" ng-click="actions.save()">{{'GENERIC_Apply'|translate}}</button>
+            </li>
+            <li>
+                <button id="btnCancelUFD" type="button" class="btn btn-default" ng-click="actions.cancel()">{{'GENERIC_Cancel'|translate}}</button>
+            </li>
+        </ul>
+    </footer></form>
+</div>

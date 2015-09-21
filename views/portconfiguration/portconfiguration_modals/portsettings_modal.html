@@ -1,0 +1,229 @@
+<div id="portsettings_modal">
+    <div id="port_modal_errors"></div>
+    <form name="portSettingsForm" class="form-horizontal">
+        <div class="form-horizontal">
+            {{'PORTCONFIGURATION_Modal_Description'|translate}}
+
+            <ul class="list-unstyled list-inline">
+                <li>
+                    <button id="btnViewCurrentPortConfigs" ng-click="actions.view_currentportconfigs_modal()" type="button" class="btn btn-link">
+                        {{'PORTCONFIGURATION_Modal_View'|translate}}
+                    </button>
+                </li>
+            </ul>
+
+            <div class="form-group ">
+                <label class="col-xs-4 control-label">{{'PORTCONFIGURATION_Modal_Interface'|translate}}</label>
+                <span class="col-xs-4">
+                    <select id="selectSelectedPortOption" class="form-control" ng-model="data.selectedPortOption" ng-change="actions.changePortOption()">
+                        <option value="" selected="selected">{{'GENERIC_select'|translate}}</option>
+                        <option value="all">{{'PORTCONFIGURATION_AllPorts'|translate}}</option>
+                        <option value="internal">{{'SETTINGS_BroadcastStormControl_InternalPorts'|translate}}</option>
+                        <option value="external">{{'SETTINGS_BroadcastStormControl_ExternalPorts'|translate}}</option>
+                        <option value="customrange">{{'PORTCONFIGURATION_CustomRange'|translate}}</option>
+                        <option ng-repeat="portNum in data.portSettings.port" value="{{portNum.number}}">{{portNum|portDisplay}}</option>
+                    </select>
+                </span>
+            </div>
+
+            <div class="form-group">
+                <label class="col-xs-4 control-label">
+                    Port Range               
+                </label>
+                <div class="col-xs-8">
+                    <ul class="list-unstyled list-inline text-left">
+                        <li>
+                            <input id="rangedisabled" ng-if="data.selectedPortOption != 'customrange'" ng-disabled="true" type="text" name="textRange" class="form-control" ng-model="viewmodel.commonPortSettings.range" />
+                            <input id="range" ng-if="data.selectedPortOption == 'customrange'" type="text" name="textRange" class="form-control" ng-model="viewmodel.commonPortSettings.range"
+                                range-validator min-val="1" max-val="4094" multiple-required="true" />
+                            <div ng-show="data.selectedPortOption == 'customrange' && portSettingsForm.textRange.$dirty" ng-messages="portSettingsForm.textRange.$error" ng-messages-include="views/messages.html"></div>
+                        </li>
+                        <li>
+                            <span class="help-inline"><span class="help-block">Example: 1,2,6-8</span></span>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+
+            <div class="form-group">
+                <label class="col-xs-4 control-label">
+                    {{'PORTCONFIGURATION_Modal_IntSelected'|translate}}
+                </label>
+                <div class="col-xs-8">
+                    <p class="form-control-static">{{viewmodel.selectedPortsDisplay}}</p>
+                </div>
+            </div>
+
+            <div class="form-group">
+                <label class="col-xs-4 control-label">
+                    {{'PORTCONFIGURATION_Modal_IntDescription_Title'|translate}}
+                </label>
+                <div class="col-xs-8">
+                    <ul class="list-unstyled list-inline text-left">
+                        <li>
+                            <textarea name="description" ng-maxlength="240" class="form-control" ng-class="{em: viewmodel.commonPortSettings.keepexistingdescription()}" rows="5" cols="60" name="textPortDescription" ng-model="viewmodel.commonPortSettings.description" />
+                            <div ng-show="portSettingsForm.description.$dirty" ng-messages="portSettingsForm.description.$error" ng-messages-include="views/messages.html"></div>
+                        </li>
+                        <li>
+                            <span class="help-inline"><span class="help-block">{{'PORTCONFIGURATION_Range0240'|translate}}</span></span>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+
+            <div class="form-group">
+                <label class="col-xs-4 control-label">{{'PORTCONFIGURATION_Modal_AdminState'|translate}}</label>
+                <div class="col-xs-8">
+                    <div class="col-xs-8">
+                        <label class="radio-inline">
+                            <input type="radio" name="radioAdminState" id="radioAdminStateEnable" value="enabled" ng-model="viewmodel.commonPortSettings.administrativeState">
+                            {{'GENERIC_Enabled'|translate}}
+                        </label>
+                        <label class="radio-inline">
+                            <input type="radio" name="radioAdminState" id="radioAdminStateDisable" value="disabled" ng-model="viewmodel.commonPortSettings.administrativeState">
+                            {{'GENERIC_Disabled'|translate}}
+                        </label>
+                    </div>
+                </div>
+            </div>
+
+            <div class="form-group" ng-if="viewmodel.commonPortSettings.linkStatus != ''">
+                <label class="col-xs-4 control-label">
+                    <!--{{'PORTCONFIGURATION_Modal_PortType'|translate}}-->
+                    Port Status
+                </label>
+                <div class="col-xs-8">
+                    <p class="form-control-static">
+
+                        <span ng-if="viewmodel.commonPortSettings.linkStatus == 'up'"><i class="ci ci-state-ok-core text-success"></i>{{'GENERIC_Up'|translate}}</span>
+                        <span ng-if="viewmodel.commonPortSettings.linkStatus == 'down'"><i class="ci ci-state-critical-core text-danger"></i>{{'GENERIC_Down'|translate}}</span>
+
+
+                    </p>
+                </div>
+            </div>
+
+            <div class="form-group" ng-if="viewmodel.commonPortSettings.portType != ''">
+                <label class="col-xs-4 control-label">
+                    {{'PORTCONFIGURATION_Modal_PortType'|translate}}
+                </label>
+                <div class="col-xs-8">
+                    <p class="form-control-static">
+                        
+                    <span ng-if="viewmodel.commonPortSettings.portType == 'copper'">{{'PORTCONFIGURATION_Copper'|translate}}</span>
+                    <span ng-if="viewmodel.commonPortSettings.portType == 'fibre'">{{'PORTCONFIGURATION_Fibre'|translate}}</span>
+                    <span ng-if="viewmodel.commonPortSettings.portType == 'QSFP'">{{'PORTCONFIGURATION_QSFP'|translate}}</span>
+                    <span ng-if="viewmodel.commonPortSettings.portType == 'SFP+'">{{'PORTCONFIGURATION_SFP'|translate}}</span>
+                    <span ng-if="viewmodel.commonPortSettings.portType == 'Internal'">{{'GENERIC_Internal'|translate}}</span>
+
+                    </p>
+                </div>
+            </div>
+
+            <div class="form-group">
+                <label class="col-xs-4 control-label">
+                    {{'PORTCONFIGURATION_Modal_AutoNegotiation'|translate}}
+                </label>
+                <div class="col-xs-8">
+                    <div class="col-xs-12">
+                        <label class="radio-inline">
+                            <input type="radio" name="radioAutoNegotiation" id="radioAutoNegotiationEnable" value="enabled" ng-model="viewmodel.commonPortSettings.autoNegotiation" ng-disabled="!data.autoNegotiationConfigurable()">
+                            {{'GENERIC_Enabled'|translate}}
+                        </label>
+                        <label class="radio-inline">
+                            <input type="radio" name="radioAutoNegotiation" id="radioAutoNegotiationDisable" value="disabled" ng-model="viewmodel.commonPortSettings.autoNegotiation" ng-disabled="!data.autoNegotiationConfigurable()">
+                            {{'GENERIC_Disabled'|translate}}
+                        </label>
+                    </div>
+                </div>
+            </div>
+
+            <div class="form-group">
+                <label class="col-xs-4 control-label">{{'PORTCONFIGURATION_Modal_Speed'|translate}}</label>
+                <span class="col-xs-4">
+                    <select id="selectSpeed" class="form-control" ng-model="viewmodel.commonPortSettings.speed" ng-change="actions.function()" ng-disabled="!data.speedConfigurable()">
+                        <option value="auto" selected="selected">{{'GENERIC_auto'|translate}}</option>
+                        <option ng-repeat="speedValue in data.speedOptions()" value="{{speedValue}}">{{speedValue}}</option>
+                    </select>
+                </span>
+            </div>
+
+            <div class="form-group">
+                <label class="col-xs-4 control-label disabledText">
+                    {{'PORTCONFIGURATION_Modal_MTU'|translate}}
+                </label>
+                <div class="col-xs-8">
+                    <ul class="list-unstyled list-inline text-left">
+                        <li>
+                            <input id="mtu" ng-disabled="true" type="number" name="textMTU" class="form-control" ng-model="viewmodel.commonPortSettings.mtu" ng-disabled="!data.mtuConfigurable()" />
+                        </li>
+                        <li>
+                            <span class="help-inline"><span class="help-block">{{'PORTCONFIGURATION_SettingsModal'|translate}}</span></span>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+
+            <div class="form-group">
+                <label class="col-xs-4 control-label">{{'PORTCONFIGURATION_Modal_RemoteFault'|translate}}</label>
+                <div class="col-xs-8">
+                    <div class="col-xs-8">
+                        <label class="radio-inline">
+                            <input type="radio" name="radioRemoteFaultSignaling" id="radioRemoteFaultSignalingEnable" value="enabled" ng-model="viewmodel.commonPortSettings.remoteFaultSignaling">
+                            {{'GENERIC_Enabled'|translate}}
+                        </label>
+                        <label class="radio-inline">
+                            <input type="radio" name="radioRemoteFaultSignaling" id="radioRemoteFaultSignalingDisable" value="disabled" ng-model="viewmodel.commonPortSettings.remoteFaultSignaling">
+                            {{'GENERIC_Disabled'|translate}}
+                        </label>
+                    </div>
+                </div>
+            </div>
+
+            <div class="form-group">
+                <label class="col-xs-4 control-label">{{'PORTCONFIGURATION_Modal_AutoLAG'|translate}}</label>
+                <div class="col-xs-8">
+                    <div class="col-xs-8">
+                        <label class="radio-inline">
+                            <input type="radio" name="radioautoLAG" id="radioautoLAGEnable" value="enabled" ng-model="viewmodel.commonPortSettings.autoLAG" ng-disabled="!data.autoLAGConfigurable()">
+                            {{'GENERIC_Enabled'|translate}}
+                        </label>
+                        <label class="radio-inline">
+                            <input type="radio" name="radioautoLAG" id="radioautoLAGDisable" value="disabled" ng-model="viewmodel.commonPortSettings.autoLAG" ng-disabled="!data.autoLAGConfigurable()">
+                            {{'GENERIC_Disabled'|translate}}
+                        </label>
+                    </div>
+                </div>
+            </div>
+
+            <div class="form-group">
+                <label class="col-xs-4 control-label">{{'PORTCONFIGURATION_Modal_KeepAlive'|translate}}</label>
+                <div class="col-xs-8">
+                    <div class="col-xs-8">
+                        <label class="radio-inline">
+                            <input type="radio" name="radiokeepAlive" id="radiokeepAliveEnable" value="enabled" ng-model="viewmodel.commonPortSettings.keepAlive" ng-disabled="!data.keepAliveConfigurable()">
+                            {{'GENERIC_Enabled'|translate}}
+                        </label>
+                        <label class="radio-inline">
+                            <input type="radio" name="radiokeepAlive" id="radiokeepAliveDisable" value="disabled" ng-model="viewmodel.commonPortSettings.keepAlive" ng-disabled="!data.keepAliveConfigurable()">
+                            {{'GENERIC_Disabled'|translate}}
+                        </label>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </form>
+
+    <br />
+    <footer>
+        <ul class="list-unstyled list-inline text-right">
+            <li>
+                <button id="btnSavePortSettings" type="button" ng-disabled="portSettingsForm.$invalid" class="btn btn-primary" ng-click="actions.save()">{{'GENERIC_Apply'|translate}}</button>
+            </li>
+            <li>
+                <button id="btnCancelPortSettings" type="button" class="btn btn-default" ng-click="actions.cancel()">{{'GENERIC_Cancel'|translate}}</button>
+            </li>
+        </ul>
+    </footer>
+
+</div>

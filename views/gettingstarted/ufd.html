@@ -1,0 +1,64 @@
+<ng-form name="viewmodel.wizardUFD.form" class="form-horizontal" novalidate>
+    
+    <h2>{{'GETTINGSTARTEDWIZARD_UFD_Title'|translate}}</h2>
+    <p>{{'PORTCONFIGURATION_UplinkFailure_Modal_Description'|translate}}</p>
+
+    <div id="uplinkfailure-errors"></div>
+    <!--<form class="form-horizontal">-->
+
+    <div class="form-group">
+        <div class="col-xs-12">
+            <div class="radio">
+                <label>
+                    <input type="radio" ng-model="viewmodel.wizardUFD.upFailureDetection" name="radioUpFailureDetection" id="radioUpFailureDetectionEnabled" value="enabled" />
+                    {{'GENERIC_Enabled'|translate}}
+                </label>
+            </div>
+        </div>
+        <div>
+            <div class="form-horizontal">
+                <div class="col-xs-1">
+                </div>
+                <div class="col-xs-11">
+                    <ul class="list-unstyled">
+                        <li>
+                            <div class="radio form-group">
+                                <label class="radio-inline control-label" ng-disabled="viewmodel.wizardUFD.upFailureDetection == 'disabled'">
+                                    <input type="radio" ng-model="data.radioDeferTime" name="radioDeferTime" id="radioDeferTimeDefault" value="default" ng-disabled="viewmodel.wizardUFD.upFailureDetection == 'disabled'" />
+                                    {{'PORTCONFIGURATION_DeferTimer'|translate}}
+                                </label>
+                            </div>
+                        </li>
+                        <li>
+                            <div class="radio form-group">
+                                <ul class="list-unstyled list-inline">
+                                    <li>
+                                        <label class="radio-inline control-label" ng-disabled="viewmodel.wizardUFD.upFailureDetection == 'disabled'">
+                                            <input type="radio" ng-model="data.radioDeferTime" name="radioDeferTime" id="radioDeferTimeCustom" value="custom" ng-disabled="viewmodel.wizardUFD.upFailureDetection == 'disabled'" />
+                                            {{'PORTCONFIGURATION_CustomDeferTime'|translate}} 
+                                        </label>
+                                    </li>
+                                    <li>
+                                        <input id="defertime" class="form-control" ng-disabled="data.radioDeferTime != 'custom'" type="number" name="deferTime" ng-model="viewmodel.wizardUFD.deferTime" ng-disabled="viewmodel.wizardUFD.upFailureDetection == 'disabled'" min="1" max="120">
+                                    </li>
+                                    <li>
+                                        <span class="control-label help-inline" ng-disabled="viewmodel.wizardUFD.upFailureDetection == 'disabled'">{{'PORTCONFIGURATION_Range'|translate}}</span>
+                                    </li>
+                                </ul>
+                            </div>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+        <div class="col-xs-12">
+            <div class="radio">
+                <label>
+                    <input type="radio" ng-model="viewmodel.wizardUFD.upFailureDetection" name="radioUpFailureDetection" id="radioUpFailureDetectionDisabled" value="disabled" />
+                    {{'GENERIC_Disabled'|translate}}                       
+                </label>
+            </div>
+        </div>
+    </div>
+
+</ng-form>

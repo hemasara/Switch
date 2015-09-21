@@ -1,0 +1,132 @@
+<!DOCTYPE html>
+<html lang="en-us"><head><!-- saved from url=(0014)about:internet -->
+<meta charset="utf-8" /><meta name="viewport" content="width=device-width" /><title>Configuring
+Zoning</title><link rel="prev" href="GUID-889C8B09-5ABA-4E34-9D82-3D49CB496910.html" /><link rel="next" href="GUID-0F494B50-108B-4706-860D-AAC2D59ED898.html" /><link href="static/screen.css?AKIYKnLS" rel="stylesheet" /><link href="static/print.css?w+agwgAC" media="print" rel="stylesheet" /><script src="static/head.js?qUF72lF0"></script><link rel="shortcut icon" href="static/favicon.ico" /></head><body id="GUID-AFC06D69-D630-48FF-BCE5-999097FE5B24" data-approot=""><header><div class="inner"><a id="logo-link" href="index.html" /><img id="logo" src="static/logo.png" alt="Logo" /></a><div class="title-text">Dell Blade I/O Manager</div></div></header><div id="breadcrumbs"></div><section id="center"><div id="scroller"><nav id="topnav"><div id="topbuttons"><a id="button-highlighting" href="#" title="Toggle Highlighting"><span>Toggle Highlighting</span></a><a id="button-hide-navigation" href="#" title="Toggle navigation"><span>Toggle navigation</span></a><a id="button-print" href="#" title="Print Topic"><span>Print Topic</span></a><a id="button-print-all" title="Print All"><span>Print All</span></a></div></nav><article><div id="thumbnailDialog"></div><h1>Configuring
+Zoning</h1><p>From the Fibre Channel section of the <b>Switching
+Layer-2</b> page, you can configure zoning settings for Fibre Channel
+Fabric Services (FPORT) mode.</p>
+<div class="context" id="GUID-065C6D78-78F9-4C24-A803-43768BC66E24"><p>Zoning helps improve Storage Area Network (SAN) security by restricting
+information access to the member devices in a defined zone. Any two
+devices that are not members of one common zone are not permitted
+to communicate with one another. Zoning can be used to create functional
+areas within the SAN and prevent unauthorized access. For example,
+some organizations use zones to ensure that finance systems on the
+SAN cannot access the data that engineering or test systems own. Zoning
+also makes SANs easier to manage. A common use of zoning is to segregate
+servers and enterprise storage that use different operating systems
+to avoid undesirable results that the accidental transfer of information
+from one to another can cause.</p></div>
+<ol class="steps" id="GUID-3CCACE77-43CD-4BDD-A7FE-DAEF3C408956">
+<li><p>From the navigation menu, select <b>Switching
+Layer-2</b>.</p>
+The <b>Switching Layer-2</b> page appears.
+</li>
+<li><p>In the Fibre Channel section, make sure that <b>Fabric Services (FPORT)</b> is selected. If not, refer to <a data-scope="local" href="GUID-DB1E4580-8F94-4282-ADA3-C7BDD02B1CFE.html" title="">Editing
+the Fibre Channel Mode</a>.</p></li>
+<li><p>Under the Zoning settings, click <b>View Details</b>.</p>
+The <b>Fibre Channel </b>dialog box appears.
+</li>
+<li><p>Make sure that the <b>Zoning</b> tab is selected.</p>
+</li>
+<li><p>You can configure multiple zones but only one
+can be active at a time. To select the active zone, click <b>Settings</b>.</p>
+The <b>Settings</b> dialog box appears.
+</li>
+<li><p>From the <b>Select Active Zone</b> drop-down
+menu, make a selection.</p></li>
+<li><p>In the <b>Default Mode</b> section, select <b>All Access</b> or <b>No Access</b>.</p></li>
+<li><p>Click <b>Save</b>.</p></li>
+<li><p>A zone set consists of multiple zones. You
+can use zone sets to switch between zone configurations without having
+to recreate the entire zone configuration. To configure zone sets,
+click <b>Edit</b>.</p>
+The <b>Edit Zoning</b> dialog box appears.
+</li>
+<li><p>Configure aliases, An alias is a logical name
+that can denote one or more zone members. Perform the following steps:</p>
+<ol id="GUID-207B7F59-5658-42F3-A320-5D30F90B5BA4">
+<li><p>In the Alias section, click <b>Add Alias</b>.</p>
+The <b>Add Alias</b> dialog box appears.
+</li>
+<li><p>Make an entry in the <b>Name</b> field.</p>
+</li>
+<li><p>Click <b>Save</b>.</p>
+A confirmation dialog box appears.
+</li>
+<li><p>Click <b>Close</b>.</p></li>
+<li><p>Configure members of the alias: To view
+all potential members, click the <b>+</b> button. Add a member to
+the Alias Members section from the Available Members section by using
+the <b>&gt;</b> button. You can also click <b>Add Manually</b> to open
+the <b>Add Member</b> dialog box and specify a WWPN or FC-ID member
+to add to the zone. You can remove a member from the alias by selecting
+it and using the <b>&lt;</b> button. You can permanently delete a
+device from the list by selecting it from the drop-down list and clicking <b>Delete</b>.</p></li>
+<li><p>Click <b>Apply</b>.</p>
+A confirmation dialog box appears.
+</li>
+<li><p>Click <b>Close</b>.</p></li>
+<li><p>Repeat steps a-g to add additional aliases.</p>
+</li>
+</ol>
+</li>
+<li><p>Configure zones. Zones contain a minimum of
+two devices that are not members of one common zone that are permitted
+to communicate with each other. Use zones to create functional areas
+within the SAN and prevent unauthorized access. You can also use zones
+to segregate serves that use different operation systems. Click <b>Zone</b> to expand that section and perform the following steps:</p>
+<ol id="GUID-B45A9BE8-906B-4E2D-9183-9DE6788251B1">
+<li><p>Click <b>Add Zone</b>.</p>
+The <b>Add Zone</b> dialog box appears.
+</li>
+<li><p>Make an entry in the <b>Name</b> field.</p>
+</li>
+<li><p>Click <b>Save</b>.</p>
+A confirmation dialog box appears.
+</li>
+<li><p>Click <b>Close</b>.</p></li>
+<li><p>Configure members of the zone. Click the <b>+</b> button to expand to view all members. Add a member to the Zone
+Members section from the Available Members section by using the <b>&gt;</b> button. Conversely, you can remove a member from the zone by
+selecting it and using the <b>&lt;</b> button. You can permanently
+delete a zone from the list by selecting it and clicking <b>Delete</b>.</p></li>
+<li><p>Click <b>Apply</b>.</p>
+A confirmation dialog box appears.
+</li>
+<li><p>Click <b>Close</b>.</p></li>
+<li><p>Repeat steps a-g to add additional zones.</p>
+</li>
+</ol>
+</li>
+<li><p>Zone sets consist of multiple zones. You can
+configure them so you can switch between zone configurations without
+having to recreate an entire configuration. Click <b>Zoneset</b> to
+expand that section and perform the following steps:</p>
+<ol id="GUID-2C4D979E-AA96-4F1C-B0A5-DC31202C8D09">
+<li><p>Click <b>Add Zoneset</b>.</p>
+The <b>Add Zoneset</b> dialog box appears.
+</li>
+<li><p>Make an entry in the <b>Name</b> field.</p>
+</li>
+<li><p>Click <b>Save</b>.</p>
+A confirmation dialog box appears.
+</li>
+<li><p>Click <b>Close</b>.</p></li>
+<li><p>Configure members of the zone set. Click
+the <b>+</b> button to expand to view all members. Add a member to
+the Zoneset Members section from the Available Members section by
+using the <b>&gt;</b> button. Conversely, you can remove a member from
+the zone set by selecting it and using the <b>&lt;</b> button. You
+can permanently delete a zoneset from the list by selecting it from
+the drop-down menu and clicking <b>Delete</b>.</p></li>
+<li><p>Click <b>Apply</b>.</p>
+A confirmation dialog box appears.
+</li>
+<li><p>Click <b>Close</b>.</p></li>
+<li><p>Repeat steps a-g to add additional zone
+set.</p></li>
+</ol>
+</li>
+<li><p>To close the <b>Edit Zoning</b> dialog box,
+click <b>Close</b>.</p></li>
+</ol>
+</article></div></section><div id="leftbar"><ul class="tabs"><li class="currentli"><a class="current toc" href="#"><span>Contents</span></a></li><li><a class="search" href="#"><span>Search</span></a></li></ul><form id="searchform"><div class="holdsearch"><input class="search" type="text" placeholder="Search" /></div><input class="submit" type="submit" value="Go" /></form><nav class="toc current"><div class="loader"><img src="static/loader.gif" alt="Loading" /></div></nav><nav class="search"><div class="results"><span>No search has been performed.</span></div><a id="search-toc-link" href="#" /><span>Contents</span></a></nav></div><script src="static/body.js?A110oA/m"></script></body></html>

@@ -1,0 +1,34 @@
+<div>
+    <div class="ServiceStatusNode">
+        <div class="statusContentContainer">
+            <div class="statusBadgeContainer" ng-class="data.serviceObj.health|healthToColor">
+                <div class="statusBadge">
+                    <i ng-if="(data.serviceObj.state|serviceState) == 'In Progress'" class="ci ci-action-run-now-16-core"></i>
+                    <i ng-class="data.serviceObj.health|serviceDetailsHealthIcon"></i>
+
+                </div>
+            </div>
+            <div class="statusContent">
+                <h3>
+                    <strong><a id="lnkServices" href="{{'#/services/' + data.serviceObj.id}}">{{data.serviceObj.name}}</a></strong>
+                    <div class="statusProgress pull-right" ng-if="data.serviceObj.percentComplete<100">
+                        <span class="pull-left" style="margin-left: 5px;">
+                            {{data.serviceObj.percentComplete}}%
+                        </span>
+                        <div class="statusProgressBar" ng-class="data.serviceObj.health|healthToColor" ng-style="{'width': ' {{data.serviceObj.percentComplete + 'px'}}'}"></div>
+                </div>
+                 </h3>
+                <p>
+                    {{data.serviceObj.description}} 
+                    <a id="lnkServiceCollapser" class="pull-right collapsed" data-toggle="collapse" ng-attr-data-target="{{'#' + data.serviceObj.id}}">
+                         <i class="ci ci-expndr-chev-up-thick-core"></i>
+                         <i class="ci ci-expndr-chev-dwn-thick-core"></i>
+                    </a>
+                </p>
+                <div class="collapse" ng-attr-id="{{data.serviceObj.id}}" style="background-color: #ffffff; overflow: auto; height: 60px; margin: 6px;">
+                    <div ng-repeat="log in data.serviceObj.logs">{{log.Description}}</div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

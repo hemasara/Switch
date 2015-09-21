@@ -1,0 +1,162 @@
+<div id="portVLANMirroring_modal">
+    <div id="vlanmirroring-errors"></div>
+    <form class="form-horizontal" name="portMirroringSelectForm">
+
+        <p>{{'NETWORKCONFIGURATION_VLANMirroring_Modal_Description'|translate}}</p>
+        <div class="form-group">
+
+            <label class="col-xs-4 control-label">
+                {{'NETWORKCONFIGURATION_Source'|translate}}
+
+            </label>
+            <div class="col-xs-4">
+                <div ng-if="$root.model != 'FNIOA'">
+                    <div style="background-color: #F4F4F4; padding: 15px 15px;" id="Mirroringtable">
+                        <table style="width: 100%;">
+                            <tr class="rowless text-center" style="border: 0px;">
+                                <td>1</td>
+                                <td>2</td>
+                                <td>3</td>
+                                <td>4</td>
+                                <td>5</td>
+                                <td>6</td>
+                                <td>7</td>
+                                <td>8</td>
+                            </tr>
+                            <tr class="rowless text-center" style="border: 0px;">
+                                <td>9</td>
+                                <td>10</td>
+                                <td>11</td>
+                                <td>12</td>
+                                <td>13</td>
+                                <td>14</td>
+                                <td>15</td>
+                                <td>16</td>
+                            </tr>
+                            <tr style="border-left: 2px solid #000; border-top: 2px solid #000; font-weight: bold;">
+                                <td ng-repeat="port in viewmodel.selectedPorts  | limitTo: 8" style="text-align: center; padding: 6px;">
+                                    <input id="chkPortSelected{{$index}}" type="checkbox" ng-model="port.checked" ng-click="actions.portClicked(port)" ng-disabled="port.disabled==true">
+                                    <div>
+                                        {{port.number}}
+                                    </div>
+                                </td>
+                            </tr>
+                            <tr style="border-bottom: 6px solid #000; border-left: 2px solid #000; font-weight: bold;">
+                                <td ng-repeat="port in viewmodel.selectedPorts  | limitTo: 24 | limitTo: -8" style="text-align: center; padding: 6px;">
+                                    <input id="chkPortSelected2{{$index}}" type="checkbox" ng-model="port.checked" ng-click="actions.portClicked(port)" ng-disabled="port.disabled==true">
+                                    <div>
+                                        {{port.number}}
+                                    </div>
+                                </td>
+                            </tr>
+                            <tr style="border-left: 2px solid #000; font-weight: bold;">
+                                <td ng-repeat="port in viewmodel.selectedPorts  | limitTo: 16 | limitTo: -8" style="text-align: center; padding: 6px;">
+                                    <input id="chkPortSelected3{{$index}}" type="checkbox" ng-model="port.checked" ng-click="actions.portClicked(port)" ng-disabled="port.disabled==true">
+                                    <div>
+                                        {{port.number}}
+                                    </div>
+                                </td>
+                            </tr>
+
+                            <tr style="border-left: 2px solid #000; border-bottom: 2px solid #000; font-weight: bold;">
+                                <td ng-repeat="port in viewmodel.selectedPorts | limitTo: 32 | limitTo: -8" style="text-align: center; padding: 6px;">
+                                    <input id="chkPortSelected4{{$index}}" type="checkbox" ng-model="port.checked" ng-click="actions.portClicked(port.number)" ng-disabled="port.disabled==true">
+                                    <div>
+                                        {{port.number}}
+                                    </div>
+                                </td>
+                            </tr>
+                        </table>
+                    </div>
+                    <!--32-->
+                    <br />
+                    <p>{{viewmodel.portsPicked}} of 32 ports selected</p>
+                </div>
+
+                <div ng-if="$root.model == 'FNIOA'">
+                    <div id="MirroringFNtable" style="background-color: #F4F4F4; padding: 15px 15px;">
+                        <table style="width: 100%;">
+                            <tr style="border-bottom: 6px solid #000; border-left: 2px solid #000; border-top: 2px solid #000; font-weight: bold;">
+                                <td ng-repeat="port in viewmodel.selectedPorts | limitTo: 4" style="text-align: center; padding: 6px;">
+                                    <input id="chkPortSelected5{{$index}}" type="checkbox" ng-model="port.checked" ng-click="actions.portClicked(port)" ng-disabled="port.disabled==true" />
+                                    <div>
+                                        {{port.number}}
+                                    </div>
+                                </td>
+                            </tr>
+
+                            <tr style="border-left: 2px solid #000; border-bottom: 2px solid #000; font-weight: bold;">
+                                <td ng-repeat="port in viewmodel.selectedPorts | limitTo: 8 | limitTo: -4" style="text-align: center; padding: 6px;">
+                                    <input id="Checkbox1" type="checkbox" ng-model="port.checked" ng-click="actions.portClicked(port)" ng-disabled="port.disabled==true" />
+                                    <div>
+                                        {{port.number}}
+                                    </div>
+                                </td>
+                            </tr>
+                        </table>
+                    </div>
+                    <!--8-->
+                    <br />
+                    <p><strong>{{viewmodel.portsPicked}} of 8 ports selected</strong></p>
+                </div>
+            </div>
+        </div>
+         <div class="form-group">
+            <label class="col-xs-4 control-label">{{'NETWORKCONFIGURATION_Destination'|translate}}</label>
+            <div class="col-xs-4">
+                <select ng-if="data.mode == 'add'" id="selectMirrorSettingsDest" class="form-control" ng-model="viewmodel.session.dest" ng-options="n for n in data.destinationExtPortOptions" required>
+                    <option value="" selected="selected">Select</option>
+                </select>
+                <p ng-if="data.mode == 'edit'" class="form-control-static">
+                    {{viewmodel.session.dest}}                    
+                </p>
+            </div>
+        </div>
+        <div class="form-group">
+            <label class="col-xs-4 control-label">{{'NETWORKCONFIGURATION_Direction'|translate}}</label>
+            <div class="col-xs-4">
+                <div ng-if="data.mode == 'add'">
+
+                    <div class="radio-inline">
+                        <p>
+                            <input id="radioDirectionRX" type="radio" value="rx" name="rx" ng-model="viewmodel.session.direction">
+                            {{'Rx'|translate}}
+                        </p>
+                    </div>
+                    <div class="radio-inline">
+                        <p>
+                            <input id="radioDirectionTX" type="radio" value="tx" name="tx" ng-model="viewmodel.session.direction">
+                            {{'Tx'|translate}}
+                        </p>
+                    </div>
+                    <div class="radio-inline">
+                        <p>
+                            <input id="radioDirectionRXTX" type="radio" value="both" name="both" ng-model="viewmodel.session.direction">
+                            {{'Rx and Tx'|translate}}
+                        </p>
+                    </div>
+                </div>
+                <p ng-if="data.mode == 'edit'" class="form-control-static">
+                    <span ng-if="viewmodel.session.direction == 'rx'">{{'Rx'|translate}}</span>
+                    <span ng-if="viewmodel.session.direction == 'tx'">{{'Tx'|translate}}</span>
+                    <span ng-if="viewmodel.session.direction == 'both'">{{'Rx and Tx'|translate}}</span>
+                </p>
+            </div>
+        </div>
+
+        <br />
+
+        <footer>
+            <ul class="list-unstyled list-inline text-right">
+                <li>
+                    <button id="btnSaveVLANMirroring" type="button" ng-disabled="!viewmodel.session.dest  || (!viewmodel.portsPicked || viewmodel.portsPicked.length <= 0)" class="btn btn-primary" ng-click="actions.save()">{{'GENERIC_Apply'|translate}}</button>
+                </li>
+                <li>
+                    <button id="btnCancelVLANMirroring" type="button" class="btn btn-default" ng-click="actions.cancel()">{{'GENERIC_Cancel'|translate}}</button>
+                </li>
+            </ul>
+        </footer>
+
+    </form>
+
+</div>

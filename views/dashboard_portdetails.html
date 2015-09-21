@@ -1,0 +1,58 @@
+<section id="dashboard-portdetails">
+    <div>
+        <ul class="list-unstyled list-inline">
+            <li>
+                <p class="form-control-static">Filter By:</p>
+            </li>
+            <li>
+                <select id="PortDetailsSelectedFilter" class="form-control" ng-model="data.selectedFilter">
+                    <option value="external">{{'SETTINGS_BroadcastStormControl_ExternalPorts'|translate}}</option>
+                    <option value="internal">{{'SETTINGS_BroadcastStormControl_InternalPorts'|translate}}</option>
+                </select>
+            </li>
+        </ul>
+        <br />
+        <div>
+            <table class="table table-striped table-condensed table-hover">
+                <thead>
+                    <tr>
+                        <th>{{'DASHBOARD_th_IntPortSettings_Port'|translate}}</th>
+                        <th>{{'DASHBOARD_th_IntPortSettings_LinkStatus'|translate}}</th>
+                        <th>{{'DASHBOARD_th_IntPortSettings_LinkSpeed'|translate}}</th>
+                        <th>{{'DASHBOARD_th_IntPortSettings_AdminState'|translate}}</th>
+                        <th style="width: 20%">{{'DASHBOARD_th_IntPortSettings_VLANs'|translate}}</th>
+                        <th>{{'DASHBOARD_th_IntPortSettings_LAG'|translate}}</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr ng-repeat="row in viewmodel.portData.port | portFilter:data.selectedFilter">
+                        <td>{{row.number}}
+                        </td>
+                        <td ng-if="row.linkStatus == 'up'"><i class="ci ci-state-ok-core text-success"></i>{{'GENERIC_Up'|translate}}</td>
+                        <td ng-if="row.linkStatus == 'down'"><i class="ci ci-state-critical-core text-danger"></i>{{'GENERIC_Down'|translate}}</td>
+                        <td>{{row.speed}}
+                        </td>
+                        <td>
+                            <span ng-if="row.administrativeState == 'enabled'">{{'GENERIC_Enabled'|translate}}</span>
+                            <span ng-if="row.administrativeState == 'disabled'">{{'GENERIC_Disabled'|translate}}</span>
+                        </td>
+                        <td class="force-wrap" style="overflow-y: hidden;">
+                            <!--testing when text overflows cell have ellipsis to a popup to show entire contents-->
+                            <div ng-show="row.taggedVlan && row.untaggedVlan">
+                                {{row.untaggedVlan}}, {{row.taggedVlan |limitTo: 75}}
+                                <i ng-if="row.taggedVlan.length > 75" class="ci ci-state-info2-core text-primary" aria-hidden="true" data-toggle="popover" tabindex="0" data-placement="top" title="{{'DASHBOARD_th_IntPortSettings_VLANs'|translate}}" data-content="{{row.untaggedVlan}}, {{row.taggedVlan}}" data-html="false"></i>
+                            </div>
+                            <div ng-show="!(row.taggedVlan && row.untaggedVlan)">
+                                {{row.untaggedVlan}}{{row.taggedVlan |limitTo: 75}} 
+                                <i ng-if="row.taggedVlan.length > 75" class="ci ci-state-info2-core text-primary" aria-hidden="true" data-toggle="popover" tabindex="0" data-placement="top" title="{{'DASHBOARD_th_IntPortSettings_VLANs'|translate}}" data-content="{{row.untaggedVlan}}, {{row.taggedVlan}}" data-html="false"></i>
+                            </div>
+                        </td>
+                        <td ng-if="row.lag != 0">{{row.lag}}
+                        </td>
+                        <td ng-if="row.lag == 0 || !row.lag"></td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+    </div>
+</section>

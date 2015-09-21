@@ -1,0 +1,87 @@
+<div id="modal_NetworkSettings">
+    <div id="modal_NetworkSettings-errors"></div>
+    <form name="networkSettingsForm">
+        <div class="form-horizontal">
+            {{'DASHBOARD_NetworkSettings_Description'|translate}}
+        <br />
+            <br />
+            <br />
+            <div class="form-group">
+                <label class="col-md-4">IP Address Source</label>
+                <div class="col-md-8">
+                    <div class="col-md-3">
+                        <div class="radio">
+                            <label>
+                                <input type="radio" name="radioDHCP" id="radioStaticIP" value="disabled" ng-model="viewmodel.networkSettings.dhcp" />
+                                {{'GETTINGSTARTEDWIZARD_Static_IP'|translate}}
+                            </label>
+                        </div>
+                    </div>
+                    <div class="col-md-4">
+                        <div class="radio">
+                            <label>
+                                <input type="radio" name="radioDHCP" id="radioDynamicIP" value="enabled" ng-model="viewmodel.networkSettings.dhcp" />
+                                {{'DASHBOARD_NetworkSettings_DHCP'|translate}}
+                            </label>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <br />
+
+            <div class="form-group">
+                <h3 class="col-md-4">{{'DASHBOARD_IPProperties'|translate}}</h3>
+            </div>
+            <div class="form-group">
+                <label class="col-md-4">{{'GETTINGSTARTEDWIZARD_IPVersion'|translate}}</label>
+                <div class="col-md-8">
+                    <label class="">IPv4</label>
+                </div>
+            </div>
+           <!-- <div class="form-group">
+                <label class="col-md-4">{{'GETTINGSTARTEDWIZARD_Vlan_ID'|translate}}</label>
+                <div class="col-md-8">
+                    <label class="">{{viewmodel.networkSettings.vlanID}}</label>
+                </div>
+            </div>-->
+            <div class="form-group">
+                <label class="col-md-4">{{'GETTINGSTARTEDWIZARD_IPAddress'|translate}}</label>
+                <div class="col-md-8">
+                    <input id="managementip" type="text" name="ipAddress" ip-validator class="form-control" ng-model="viewmodel.networkSettings.managementIP_ip" ng-disabled="viewmodel.networkSettings.dhcp=='enabled'" placeholder="192.168.2.1" />
+                </div>
+                <div ng-show="networkSettingsForm.ipAddress.$dirty" ng-messages="networkSettingsForm.ipAddress.$error" ng-messages-include="views/messages.html"></div>
+            </div>
+            <div class="form-group">
+                <label class="col-md-4">{{'GETTINGSTARTEDWIZARD_SubnetMask'|translate}}</label>
+                <div class="col-md-8">
+                    <input id="netmask" type="text" name="netmaskIp" class="form-control" ip-validator ng-model="viewmodel.networkSettings.netMask_ip" ng-disabled="viewmodel.networkSettings.dhcp=='enabled'" placeholder="255.255.0.0" />
+                </div>
+                <div ng-show="networkSettingsForm.netmaskIp.$dirty" ng-messages="networkSettingsForm.netmaskIp.$error" ng-messages-include="views/messages.html"></div>
+            </div>
+            <div class="form-group">
+                <label class="col-md-4">{{'GETTINGSTARTEDWIZARD_Gateway'|translate}}</label>
+                <div class="col-md-8">
+                    <input id="gateway" type="text" name="gatewayIp" class="form-control" ip-validator ng-model="viewmodel.networkSettings.gateway_ip" ng-disabled="viewmodel.networkSettings.dhcp=='enabled'" placeholder="0.0.0.0" />
+                </div>
+                <div ng-show="networkSettingsForm.gatewayIp.$dirty" ng-messages="networkSettingsForm.gatewayIp.$error" ng-messages-include="views/messages.html"></div>
+            </div>
+            <!--            <div class="form-group">
+                            <label class="col-md-4">{{'GETTINGSTARTEDWIZARD_MACAddress'|translate}}</label>
+                            <div class="col-md-8">
+                                <label class="">{{viewmodel.networkSettings.macAddress}}</label>
+                            </div>
+                        </div>-->
+        </div>
+        <br />
+        <footer>
+            <ul class="list-unstyled list-inline text-right">
+                <li>
+                    <button id="btnSaveNetworkSettings" type="button" class="btn btn-primary" ng-click="actions.save()">{{'GENERIC_Apply'|translate}}</button>
+                </li>
+                <li>
+                    <button id="btnCancelNetworkSettings" type="button" class="btn btn-default" ng-click="actions.cancel()">{{'GENERIC_Cancel'|translate}}</button>
+                </li>
+            </ul>
+        </footer>
+    </form>
+</div>

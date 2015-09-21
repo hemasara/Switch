@@ -1,0 +1,26 @@
+<div id="status-modal">
+    <div>
+        <div ng-if="data.portStatus.inProgress == true">
+            <clarity-spinner size="40"></clarity-spinner>
+            <span style="margin-left: 10px;">Task in Progress</span>
+        </div>
+
+        <div ng-if="!data.portStatus.inProgress">
+            <ul ng-repeat="port in data.portStatus.ports">
+                <li ng-if="port.portstatus == 'Success'">Port {{port.number}} - <i class="ci ci-status-check-core text-success"></i><span> {{port.porterror}}</span></li>
+                <li ng-if="port.portstatus != 'Success'">Port {{port.number}} - <i class="ci ci-status-critical-core text-danger"></i><span> {{port.porterror}}</span></li>
+            </ul>
+        </div>
+        
+        <footer ng-if="!data.portStatus.inProgress">
+            <ul class="list-unstyled list-inline text-right">
+                <li>
+                    <button id="btnConfigureAnotherPort" type="button" class="btn btn-default" ng-disabled="data.portStatus.inProgress == true" ng-click="modal.cancel()">Configure Another Port</button>
+                </li>
+                <li>
+                    <button id="btnClosePortStatusModal" type="button" class="btn btn-primary" ng-disabled="data.portStatus.inProgress == true" ng-click="modal.close()">{{'GENERIC_Close'|translate}}</button>
+                </li>
+            </ul>
+        </footer>
+    </div>
+</div>

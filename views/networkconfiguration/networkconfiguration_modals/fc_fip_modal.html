@@ -1,0 +1,50 @@
+<div id="modal_fip">
+    <div id="modal-fip-errors"></div>
+    <p>Use this page to view FCoE Initialization Protocol (FIP) Snooping that inspects frames and applies policies based on the information of those frames.</p>
+
+    <table class="table table-striped table-condensed table-hover" st-skip-natural="true" st-table="viewmodel.displayedsessions" st-safe-src="viewmodel.sessions">
+        <thead>
+            <tr>
+                <th class="text-center" colspan="2"><span class="side-lines"> End Node </span></th>
+                <th class="text-center" colspan="2"><span class="side-lines"> FCF </span></th>
+                <th>&nbsp;</th>
+                <th class="text-center" colspan="4"><span class="side-lines"> Session Info </span></th>
+            </tr>
+            <tr>
+                <th st-sort-default="true" st-sort="'enode-mac'">MAC Address</th>
+                <th st-sort="'enode-intf'">Interface</th>
+                <th st-sort="'fcf-mac'">MAC Address</th>
+                <th st-sort="'fcf-intf'">Interface</th>
+                <th st-sort="'vlan'">VLAN</th>
+                <th st-sort="'fcoe-mac'">FCoE MAC Address</th>
+                <th st-sort="'fc-id'">FC ID</th>
+                <th st-sort="'port-wwpn'">Port WWPN</th>
+                <th st-sort="'port-wwnn'">Port WWNN</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr ng-repeat="session in viewmodel.displayedsessions">
+                <td>{{session['enode-mac']}}</td>
+                <td>{{session['enode-intf']}}</td>
+                <td>{{session['fcf-mac']}}</td>
+                <td>{{session['fcf-intf']}}</td>
+                <td>{{session['vlan']}}</td>
+                <td>{{session['fcoe-mac']}}</td>
+                <td>{{session['fc-id']}}</td>
+                <td>{{session['port-wwpn']}}</td>
+                <td>{{session['port-wwnn']}}</td>
+            </tr>
+        </tbody>
+    </table>
+
+    <br />
+    <footer>
+        <ul class="list-unstyled list-inline text-right">
+            <li>
+                <button id="btnCloseFCFIPModal" type="button" class="btn btn-default" ng-click="actions.cancel()">{{'GENERIC_Close'|translate}}</button>
+            </li>
+        </ul>
+    </footer>
+</div>
+
+

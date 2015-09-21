@@ -1,0 +1,58 @@
+<section id="aaa-authorization">
+    <br />
+    <a id="lnkEditAuthModal" ng-click="actions.openEditAuthorizationModal()" ng-if="!data.readOnly">
+        <i class="glyphicon glyphicon-edit" ></i>{{'GENERIC_Edit'|translate}}
+    </a>
+    <div class="row">
+        <div class="col-sm-12" style="overflow: hidden; -ms-text-overflow: ellipsis; -o-text-overflow: ellipsis; text-overflow: ellipsis; white-space: nowrap; text-wrap: none">
+            <br />
+            <!-- Configuration Commands -->
+            <h4 style="font-weight: bold;">{{'SECURITY_ConfigurationCommands'|translate}}</h4>
+            <div class="row">
+                <div class="col-xs-3">
+                    <p>{{'GENERIC_Configuration'|translate}}</p>
+                </div>
+                <div class="col-xs-3">
+                    <p ng-if="viewmodel.aaa.authorization.configCommandsStatus == 'enabled'"><strong>{{'GENERIC_Enabled'|translate}}</strong></p>
+                    <p ng-if="viewmodel.aaa.authorization.configCommandsStatus == 'disabled'"><strong>{{'GENERIC_Disabled'|translate}}</strong></p>
+                </div>
+            </div>
+            <br />
+            <br />
+            <!-- Commands -->
+            <h4 style="font-weight: bold;">{{'GENERIC_Commands'|translate}}</h4>
+            <p>{{'GENERIC_Name'|translate}}: <strong>{{viewmodel.aaa.authorization.commandsName}}</strong></p>
+            <div class="row">
+                <div class="col-xs-3">
+                    <p>{{'SECURITY_SelectedMethods'|translate}}</p>
+                </div>
+                <div class="col-xs-3">
+                    <p ng-if="viewmodel.aaa.authorization.commandsMethods && viewmodel.aaa.authorization.commandsMethods.length > 0">
+                        <strong>{{viewmodel.aaa.authorization.commandsMethods |joinBy: ', '}}</strong>
+                    </p>
+                    <p ng-if="!viewmodel.aaa.authorization.commandsMethods || viewmodel.aaa.authorization.commandsMethods.length == 0">
+                        <strong>{{'GENERIC_NotConfigured'|translate}}</strong>
+                    </p>
+                </div>
+            </div>
+            <br />
+            <br />
+            <!-- Exec Auth -->
+            <h4 style="font-weight: bold;">{{'SECURITY_ExecAuth'|translate}}</h4>
+            <p>{{'GENERIC_Name'|translate}}: <strong>{{viewmodel.aaa.authorization.execAuthName}}</strong></p>
+            <div class="row">
+                <div class="col-xs-3">
+                    <p>{{'SECURITY_SelectedMethods'|translate}}</p>
+                </div>
+                <div class="col-xs-3">
+                    <p ng-if="viewmodel.aaa.authorization.execAuthMethods && viewmodel.aaa.authorization.execAuthMethods.length > 0">
+                        <strong>{{viewmodel.aaa.authorization.execAuthMethods |joinBy: ', '}}</strong>
+                    </p>
+                    <p ng-if="!viewmodel.aaa.authorization.execAuthMethods || viewmodel.aaa.authorization.execAuthMethods.length == 0">
+                        <strong>{{'GENERIC_NotConfigured'|translate}}</strong>
+                    </p>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>

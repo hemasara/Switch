@@ -1,0 +1,136 @@
+<section id="modal_EditAccountingProfile">
+    <div class="form-horizontal">
+        {{'SECURITY_AAA_Description'|translate}}
+        <br />
+        <br />
+        <div class="row">
+            <div class="col-sm-12" style="overflow: hidden; -ms-text-overflow: ellipsis; -o-text-overflow: ellipsis; text-overflow: ellipsis; white-space: nowrap; text-wrap: none">
+                <!-- Exec -->
+                <h4 style="font-weight: bold;">{{'SECURITY_Exec'|translate}}</h4>
+                <p>{{'GENERIC_Name'|translate}}: <strong>Default</strong></p>
+                <div class="row col-xs-12">
+                    <label class="col-md-4 row">{{'SECURITY_AccountingOption'|translate}}</label>
+                    <div class="col-md-6" ng-init="viewmodel.accounting.execOption = viewmodel.accounting.execOption || 'none'">
+                        <input id="radioStartStp" type="radio" ng-model="viewmodel.accounting.execOption" value="start-stop" />
+                        {{'SECURITY_StartStop'|translate}}
+                    &nbsp;&nbsp;
+                    <input id="radioStopOnly" type="radio" ng-model="viewmodel.accounting.execOption" value="stop-only" />
+                        {{'SECURITY_StopOnly'|translate}}
+                    &nbsp;&nbsp;
+                    <input id="radioWaitStart" type="radio" ng-model="viewmodel.accounting.execOption" value="wait-start" />
+                        {{'SECURITY_WaitStart'|translate}}
+                    &nbsp;&nbsp;
+                    <input id="radioNone" type="radio" ng-model="viewmodel.accounting.execOption" value="none" />
+                        {{'SECURITY_NoneDefault'|translate}}
+                    </div>
+                </div>
+
+                <div class="row col-xs-12">
+                    <label class="col-md-4 row">{{'SECURITY_Method'|translate}}</label>
+                    <span class="col-md-6">{{viewmodel.accounting.execMethod}}</span>
+                </div>
+            </div>
+        </div>
+        <br />
+        <div class="row">
+            <div class="col-sm-12" style="overflow: hidden; -ms-text-overflow: ellipsis; -o-text-overflow: ellipsis; text-overflow: ellipsis; white-space: nowrap; text-wrap: none">
+                <!-- Command Accounting -->
+                <h4 style="font-weight: bold;">{{'SECURITY_CommandAccounting'|translate}}</h4>
+                <p>{{'GENERIC_Name'|translate}}: <strong>Default</strong></p>
+
+                <div class="row col-xs-12">
+                    <label class="col-md-4 row">{{'SECURITY_AccountingOption'|translate}}</label>
+                    <div class="col-md-6" ng-init="viewmodel.accounting.commandOption= viewmodel.accounting.commandOption || 'none'">
+                        <input id="radioCommandStartStop" type="radio" ng-model="viewmodel.accounting.commandOption" value="start-stop" />
+                        {{'SECURITY_StartStop'|translate}}
+                    &nbsp;&nbsp;
+                    <input id="radioCommandStopOnly" type="radio" ng-model="viewmodel.accounting.commandOption" value="stop-only" />
+                        {{'SECURITY_StopOnly'|translate}}
+                    &nbsp;&nbsp;
+                    <input id="radioCommandWaitStart" type="radio" ng-model="viewmodel.accounting.commandOption" value="wait-start" />
+                        {{'SECURITY_WaitStart'|translate}}
+                    &nbsp;&nbsp;
+                    <input id="radioCommandNone" type="radio" ng-model="viewmodel.accounting.commandOption" value="none" />
+                        {{'SECURITY_NoneDefault'|translate}}
+                    </div>
+                </div>
+
+                <div class="row col-xs-12">
+                    <label class="col-md-4 row">{{'SECURITY_Method'|translate}}</label>
+                    <span class="col-md-6">{{viewmodel.accounting.commandMethod}}</span>
+                </div>
+                <div class="row col-xs-12">
+                    <label class="col-md-4 row">{{'SECURITY_MethodLevel'|translate}}</label>
+                    <span class="col-md-6">{{viewmodel.accounting.commandMethodLevel}}</span>
+                </div>
+            </div>
+        </div>
+        <br />
+        <div class="row">
+            <div class="col-sm-12" style="overflow: hidden; -ms-text-overflow: ellipsis; -o-text-overflow: ellipsis; text-overflow: ellipsis; white-space: nowrap; text-wrap: none">
+                <!-- System Accounting -->
+                <h4 style="font-weight: bold;">{{'SECURITY_SystemAccounting'|translate}}</h4>
+                <p>{{'GENERIC_Name'|translate}}: <strong>Default</strong></p>
+
+
+                <div class="row col-xs-12">
+                    <label class="col-md-4 row">{{'SECURITY_AccountingOption'|translate}}</label>
+                    <div class="col-md-6" ng-init="viewmodel.accounting.systemOption = viewmodel.accounting.systemOption || 'none'">
+                        <input id="radioSystemStartStop" type="radio" ng-model="viewmodel.accounting.systemOption" value="start-stop" />
+                        {{'SECURITY_StartStop'|translate}}
+                    &nbsp;&nbsp;
+                    <input id="radioSystemStopOnly" type="radio" ng-model="viewmodel.accounting.systemOption" value="stop-only" />
+                        {{'SECURITY_StopOnly'|translate}}
+                    &nbsp;&nbsp;
+                    <input id="radioSystemWaitStart" type="radio" ng-model="viewmodel.accounting.systemOption" value="wait-start" />
+                        {{'SECURITY_WaitStart'|translate}}
+                    &nbsp;&nbsp;
+                    <input id="radioSystemNone" type="radio" ng-model="viewmodel.accounting.systemOption" value="none" />
+                        {{'SECURITY_NoneDefault'|translate}}
+                    </div>
+                </div>
+
+
+                <div class="row col-xs-12">
+                    <label class="col-md-4 row">{{'SECURITY_Method'|translate}}</label>
+                    <span class="col-md-6">{{viewmodel.accounting.systemMethod}}</span>
+                </div>
+            </div>
+        </div>
+        <br />
+        <div class="row">
+            <div class="col-sm-12" style="overflow: hidden; -ms-text-overflow: ellipsis; -o-text-overflow: ellipsis; text-overflow: ellipsis; white-space: nowrap; text-wrap: none">
+                <!-- Supressing Null User Name -->
+                <h4 style="font-weight: bold;">{{'SECURITY_SuppressingNullUserName'|translate}}</h4>
+<!-- Supressing Null User Name
+                <p>{{'GENERIC_Name'|translate}}: <strong>{{viewmodel.accounting.supNullUsrName}}</strong></p>
+-->
+
+                <div class="row col-xs-12">
+                    <label class="col-md-4 row">{{'SECURITY_AccountingOption'|translate}}</label>
+                    <div class="col-md-6">
+                        <input id="radioSupNullEnabled" type="radio" ng-model="viewmodel.accounting.supNullNameOption" value="enabled" />
+                        {{'GENERIC_Enabled'|translate}}
+                    &nbsp;
+                    <input id="radioSubNullDisabled" type="radio" ng-model="viewmodel.accounting.supNullNameOption" value="disabled" />
+                        {{'GENERIC_Disabled'|translate}}
+                    </div>
+                </div>
+            </div>
+        </div>
+
+
+        <br />
+        <br />
+        <footer>
+            <ul class="list-unstyled list-inline text-right">
+                <li>
+                    <button id="btnSaveAccounting" type="button" class="btn btn-primary" ng-click="actions.save()">{{'GENERIC_Apply'|translate}}</button>
+                </li>
+                <li>
+                    <button id="btnCancelAccounting" type="button" class="btn btn-default" ng-click="actions.cancel()">{{'GENERIC_Cancel'|translate}}</button>
+                </li>
+            </ul>
+        </footer>
+    </div>
+</section>

@@ -1,0 +1,38 @@
+<div class="globalSearch">
+    <div style="margin-left: 15px; margin-top: 10px;">
+        <input id="searchBar" class="searchField" ng-model="data.searchTerm" placeholder="{{'GENERIC_Search'|translate}}" />
+        <i id="searchicon" class="ci ci-search-core"></i>
+    </div>
+
+    <div class="searchResults" ng-show="data.showResults">
+        <button id="btnClearSearch" class="btn btn-link pull-right" style="padding: 0;" ng-click="actions.clearSearch(true)">
+            <i class='ci ci-modal-close-core'></i>
+        </button>
+
+        <h3 class="clearfix">{{'GENERIC_SearchResults'|translate}} &quot;{{data.searchTerm}}&quot;
+        </h3>
+
+        <div class="alert alert-warning" role="alert" ng-show="data.noResults">{{'MASTHEAD_NoResults'|translate}}</div>
+
+        <div class="panel panel-default" ng-repeat="category in data.searchResults.categories">
+            <div class="panel-heading">
+                <i class="{{category.icon}}" />
+                {{category.name}} ({{category.totalItems}})
+            </div>
+            <div class="panel-body">
+                <div>
+                    <ul class="list-unstyled search-result-items">
+                        <li ng-repeat="item in category.items">
+                            <a id="lnkSearchResultItem{{$index}}" href="{{item.target}}">{{item.name}}</a> [{{item.relevance * 100 | number:1}}%]
+                        </li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+        <div class="text-center" ng-show="!data.noResults">
+            <a id="lnkSearchTerm" href="#/Search?term={{data.searchTerm}}">{{'GENERIC_AllResults'|translate}}
+                <i class="ci ci-action-standard-link-core" />
+            </a>
+        </div>
+    </div>
+</div>

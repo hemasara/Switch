@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html ng-app='app' ng-strict-di>
+<head>
+    <title>{{'Dell_AppTitle'|translate}}</title>
+
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    <meta http-equiv="CACHE-CONTROL" content="NO-CACHE">
+
+    <meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no" />
+    <meta name="apple-mobile-web-app-capable" content="yes" />
+    <meta name="mobile-web-app-capable" content="yes" />
+
+    <meta name="build-date" content="08/12/2015" />   
+
+    <script src='js/scripts.js'></script>
+    <link rel="stylesheet" href="css/style.css">
+</head>
+<body ng-controller='AppController' style="padding-right: 0;">
+    <!--<masthead menu-items="navigation"></masthead>
+
+    <div class="container-fluid" style="padding-top: 80px;">
+        <div id="global-alerts" style=""></div>
+        <div ng-view></div>
+    </div>
+
+    <div id="modalArea"></div>
+    -->
+
+    <masthead menu-items="navigation" hide-top-nav="true" hide-alerts="false" hide-search="true"></masthead>
+    <div style="top: 20px; height: calc(100% - 50px); position: absolute; width: 250px; padding-top: 30px; background-color: #007db8;">
+        <nav-menu menu-items="navigation"></nav-menu>
+    </div>
+    <div class="container-fluid" style="position: absolute; left: 249px; bottom: 0; padding-left: 30px; padding-right: 30px; padding-top: 30px; border-left: 1px solid #000; width: calc(100% - 249px); height: calc(100% - 50px);">
+        <div id="global-alerts" style=""></div>
+        <div ng-view></div>
+    </div>
+    <div id="modalArea"></div>
+</body>
+</html>

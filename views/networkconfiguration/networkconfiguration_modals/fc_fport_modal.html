@@ -1,0 +1,170 @@
+<div id="modal_fport">
+    <div id="modal-fport-errors"></div>
+
+    <div role="tabpanel">
+        <!-- Nav tabs -->
+        <ul class="nav nav-tabs" role="tablist" id="tab-list">
+            <li role="presentation" ng-class="{active: data.activeTab == 'nameservers'}">
+                <a id="lnkTabNameservers" data-target="#nameservers" aria-controls="nameservers" role="tab" data-toggle="tab">Name Server</a>
+            </li>
+            <li role="presentation" ng-class="{active: data.activeTab == 'map'}">
+                <a id="lnkTabMap" data-target="#map" aria-controls="map" role="tab" data-toggle="tab">FCoE Map</a>
+            </li>
+            <li role="presentation" ng-class="{active: data.activeTab == 'zoning'}">
+                <a id="lnkTabZoning" data-target="#zoning" aria-controls="zoning" role="tab" data-toggle="tab">Zoning</a>
+            </li>
+        </ul>
+        <!-- Tab panes -->
+        <div class="tab-content">
+            <div role="tabpanel" class="tab-pane" id="nameservers" ng-class="{active: data.activeTab == 'nameservers'}">
+                <p>Use this page to view fibre channel hosts or connections.</p>
+
+                <table class="table table-condensed table-hover" st-skip-natural="true" st-table="viewmodel.displayednameservers" st-safe-src="viewmodel.nameservers">
+                    <thead>
+                        <tr>
+                            <th>&nbsp;</th>
+                            <th st-sort-default="true" st-sort="'fc-id'">FC-ID</th>
+                            <th st-sort="'interface'">Interface</th>
+                            <th st-sort="'enode-wwpn'">End Node WWPN</th>
+                            <th st-sort="'enode-wwnn'">End Node WWNN</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr ng-repeat-start="ns in viewmodel.displayednameservers" ng-class-odd="" ng-class-even="'alt'">
+                            <td>
+                                <button id="btnNameSpaceCollapser{{$index}}" class="btn btn-link text-primary collapsed" type="button" data-toggle="collapse" data-target="#ns{{$index}}" aria-expanded="false" aria-controls="ns{{$index}}">
+                                    <i class="glyphicon glyphicon-plus-sign"></i>
+                                    <i class="glyphicon glyphicon-minus-sign"></i>
+                                </button>
+                            </td>
+                            <td>{{ns['fc-id']}}</td>
+                            <td>{{ns['interface']}}</td>
+                            <td>{{ns['enode-wwpn']}}</td>
+                            <td>{{ns['enode-wwnn']}}</td>
+                        </tr>
+
+                        <tr ng-repeat-end class="collapse" id="ns{{$index}}" ng-class-odd="" ng-class-even="'alt'">
+                            <td></td>
+                            <td colspan="4">
+                                <dl class="dl-horizontal dataList">
+                                    <dt>Class of Service (CoS)</dt>
+                                    <dd>{{ns.cos}}</dd>
+                                    <dt>Symbolic Port Name</dt>
+                                    <dd>{{ns['sym-port-name']}}</dd>
+                                    <dt>Symbolic Node Name</dt>
+                                    <dd>{{ns['sym-node-name']}}</dd>
+                                    <dt>Port Type</dt>
+                                    <dd>{{ns['port-type']}}</dd>
+                                    <dt>Registered with Name Server</dt>
+                                    <dd>{{ns['reg-ns']}}</dd>
+                                    <dt>Registered for SCN</dt>
+                                    <dd>{{ns['reg-scn']}}</dd>
+                                </dl>
+                            </td>
+                        </tr>
+
+                    </tbody>
+                </table>
+
+            </div>
+            <div role="tabpanel" class="tab-pane" id="map" ng-class="{active: data.activeTab == 'map'}">
+                <p>Use this page to view the FCoE traffic mapped to the respective VLAN.</p>
+                <dl class="dl-horizontal dataList">
+                    <dt>FCoE Map</dt>
+                    <dd>{{viewmodel.map.name}}</dd>
+                    <dt>Fabric ID</dt>
+                    <dd>{{viewmodel.map['fabric-id']}}</dd>
+                    <dt>VLAN ID</dt>
+                    <dd>{{viewmodel.map.vlan}}</dd>
+                    <dt>FC-Map</dt>
+                    <dd>{{viewmodel.map['fc-map']}}</dd>
+                    <dt>FCF Priority</dt>
+                    <dd>{{viewmodel.map['fcf-priority']}}</dd>
+                    <dt>Members</dt>
+                    <dd>{{(viewmodel.map['member'] | map:'interface').join(', ')}}</dd>
+                </dl>
+            </div>
+            <div role="tabpanel" class="tab-pane" id="zoning" ng-class="{active: data.activeTab == 'zoning'}">
+
+                <p>Use this page to view and configure zoning.</p>
+                <br />
+                <ul class="list-unstyled list-inline">
+                    <li check-access>
+                        <a id="lnkEditZoning" class="" ng-click="actions.edit_zoning_modal()"><i class="glyphicon glyphicon-edit text-primary"></i>Edit Zoning</a></li>
+                    <li>
+                        <a id="lnkZoningSettings" class="" ng-click="actions.update_active_zoneset_modal()"><i class="ci ci-config-settings2-core"></i>Settings</a></li>
+                </ul>
+                <hr />
+                <ul class="list-unstyled list-inline">
+                    <li>
+                        <span>Filter By:
+                        </span>
+                    </li>
+                    <li>
+                        <select id="selectSelectedZonesetFilter" ng-model="data.selectedFilter">
+                            <option value="">All</option>
+                            <option ng-repeat="zone in data.zoneArray | unique: 'zonesetname' | orderBy : 'zonesetname'" value="{{zone.zonesetname}}">{{zone.zonesetname}}</option>
+                        </select>
+                    </li>
+                </ul>
+                <table class="table table-striped table-condensed table-hover" st-skip-natural="true" st-table="data.displayedzones" st-safe-src="data.zoneArray">
+                    <thead>
+                        <tr>
+                            <th>&nbsp</th>
+                            <th>&nbsp</th>
+                            <th colspan="3" class="text-center"><span class="side-lines">Members</span></th>
+                        </tr>
+                        <tr>
+                            <th st-sort-default="true" st-sort="'zoneset-name'">Zoneset</th>
+                            <th st-sort="'zone-name'">Zone</th>
+                            <th>FC ID</th>
+                            <th>WWPN</th>
+                            <th>Aliases</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr ng-repeat="zone in data.displayedzones | filter:filterZones track by $index | orderBy : 'zonesetname' ">
+                           <td>{{zone.zonesetname}}
+                            </td>
+                            <td>{{zone["zone-name"]}}</td>
+                            <td>
+                                <ul class="list-unstyled">
+                                    <li ng-repeat="fc in zone['zone-fc-id-members']">{{fc["fc-id"]}}</li>
+                                </ul>
+                            </td>
+                            <td>
+                                <ul class="list-unstyled">
+                                    <li ng-repeat="wwpn in zone['zone-wwpn-members']">{{wwpn["wwpn"]}}</li>
+                                </ul>
+
+                            </td>
+                            <td>
+                                <div ng-repeat-start="alias in zone.aliases">
+                                    <span class="collapsed" data-toggle="collapse" data-target="#alias-{{alias['alias-name'] | toclassname}}" aria-expanded="false" aria-controls="ns{{$index}}">
+                                        <i class="text-primary glyphicon glyphicon-plus-sign"></i>
+                                        <i class="text-primary glyphicon glyphicon-minus-sign"></i>
+                                    </span>
+                                    {{alias['alias-name']}}
+                                </div>
+                                <ul style="margin-left: 23px;" class="collapse list-unstyled" id="alias-{{alias['alias-name'] | toclassname}}" ng-repeat-end>
+                                    <li ng-repeat="fc in alias['alias-fc-id-members']">{{fc["fc-id"]}} (FC-ID)</li>
+                                    <li ng-repeat="wwpn in alias['alias-wwpn-members']">{{wwpn["wwpn"]}} (WWPN)</li>
+                                </ul>
+                            </td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+        </div>
+    </div>
+    <br />
+    <footer>
+        <ul class="list-unstyled list-inline text-right">
+            <li>
+                <button id="btnCloseFCFPORTModal" type="button" class="btn btn-default" ng-click="actions.cancel()">{{'GENERIC_Close'|translate}}</button>
+            </li>
+        </ul>
+    </footer>
+</div>
+
+

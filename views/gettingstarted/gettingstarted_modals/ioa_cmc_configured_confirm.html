@@ -1,0 +1,39 @@
+<div>
+    <div class="form-horizontal">
+        {{'GENERIC_Confirm'|translate}}
+            <br />
+        <br />
+        <div class="form-group">
+            <label class="col-md-4">
+                <h1>
+                    <i class="ci ci-nav-warn-core warning" aria-hidden="true"></i>
+                </h1>
+            </label>
+            <div class="col-md-8">
+                <p>
+                    {{'GETTINGSTARTEDWIZARD_IOA_PreviouslyConfigured'|translate}}
+                </p>
+                <ul class="list-unstyled">
+                    <li>{{'DASHBOARD_NetworkSettings_Title'|translate}}</li>
+                    <li>{{'GETTINGSTARTEDWIZARD_Credentials'|translate}}</li>
+                    <li>{{'GETTINGSTARTEDWIZARD_SNMP'|translate}}</li>
+                </ul>
+                <br />
+                <p>{{'GETTINGSTARTEDWIZARD_RetainInfo_Msg'|translate}}</p>
+                <br />
+                <p>{{'GETTINGSTARTEDWIZARD_ProceedSetup'|translate}}</p>
+            </div>
+        </div>
+    </div>
+    <br />
+    <footer>
+        <ul class="list-unstyled list-inline text-right">
+            <li>
+                <button id="btnSaveCMCConfigured" type="button" class="btn btn-primary" ng-click="actions.">{{'GENERIC_Yes'|translate}}</button>
+            </li>
+            <li>
+                <button id="btnCancelSaveCMC" type="button" class="btn btn-default" ng-click="actions.cancel()">{{'GENERIC_No'|translate}}</button>
+            </li>
+        </ul>
+    </footer>
+</div>

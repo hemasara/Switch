@@ -1,0 +1,29 @@
+<wizard on-cancel="modal.onCancel()">
+    <wizard-step title="Welcome" invalid="false">
+        <ng-include src="'views/gettingstarted/welcome.html'"  />
+    </wizard-step>
+    <wizard-step title="Mode Settings" invalid="false">
+        <ng-include src="'views/gettingstarted/modesettings_gsw.html'"  />
+    </wizard-step>
+    <wizard-step title="Combo Port Settings" ng-if="$root.modelName == 'Dell PowerEdge FN 2210S IOM'" invalid="viewmodel.wizardComboPort.invalid">
+        <ng-include src="'views/gettingstarted/comboportsettings.html'"  />
+    </wizard-step>
+    <wizard-step title="Network Settings" invalid="viewmodel.wizardNetworkSettings.invalid">
+        <ng-include src="'views/gettingstarted/networksettings.html'"/>
+    </wizard-step>
+    <wizard-step title="Credentials"  invalid="viewmodel.wizardCredentials.invalid">
+        <ng-include src="'views/gettingstarted/credentials.html'"/>
+    </wizard-step>
+    <wizard-step title="SNMP Settings"  invalid="viewmodel.wizardSNMP.invalid">
+        <ng-include src="'views/gettingstarted/snmpsettings.html'"  />
+    </wizard-step>
+    <wizard-step title="Uplink Failure Detection" invalid="viewmodel.wizardUFD.invalid">
+        <ng-include src="'views/gettingstarted/ufd.html'"/>
+    </wizard-step>
+    <wizard-step title="Network Time Protocol" invalid="viewmodel.wizardNTP.invalid">
+        <ng-include src="'views/gettingstarted/ntp.html'" />
+    </wizard-step>
+    <wizard-step title="Summary" invalid="false">
+        <ng-include src="'views/gettingstarted/summary.html'" />
+    </wizard-step>
+</wizard>

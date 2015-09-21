@@ -1,0 +1,38 @@
+<section ng-controller="DCBController">
+
+    <!--    content if in any other mode but pmux-->
+    <div id="dcbNotPMUX" ng-show="$root.ioaMode != 'programmable-mux' && $root.ioaMode != 'full switch'">
+        <h3>{{'NETWORKCONFIGURATION_DCB'|translate}}</h3>
+        <p>{{'NETWORKCONFIGURATION_DCB_Description'|translate}}</p>
+        <dl class="dl-horizontal dataList">
+            <dt>{{'NETWORKCONFIGURATION_DCB'|translate}}</dt>
+            <dd>
+                <a id="lnkEditDCPModal" check-access ng-click="actions.edit_dcp_modal()" class="btn btn-link btn-xs">{{'GENERIC_ViewDetails'|translate}}
+                </a>
+            </dd>
+            <dt>{{'GENERIC_Status'|translate}}
+            </dt>
+            <dd ng-if="viewmodel.dcbSettings.status == 'enabled'">{{'GENERIC_Enabled'|translate}}</dd>
+            <dd ng-if="viewmodel.dcbSettings.status == 'disabled'">{{'GENERIC_Disabled'|translate}}</dd>
+            <dt>{{'NETWORKCONFIGURATION_DCB_ConfigSource'|translate}}
+            </dt>
+            <dd>{{viewmodel.dcbSettings['config-source']}}
+            </dd>
+        </dl>
+        <br />
+        <br />
+    </div>
+
+    <!--content if in pmux-->
+    <div id="dcbPMUX" ng-show="$root.ioaMode == 'programmable-mux'">
+        <h3>{{'NETWORKCONFIGURATION_DCB'|translate}}</h3>
+        <p style="font-style: italic;">{{'NETWORKCONFIGURATION_PMUX_Mode_Msg'|translate}}</p>
+    </div>
+
+    <!--content if in full siwtch-->
+    <div id="dcbFullswitch" ng-show="$root.ioaMode == 'full switch'">
+        <h3>{{'NETWORKCONFIGURATION_DCB'|translate}}</h3>
+        <p style="font-style: italic;">{{'NETWORKCONFIGURATION_FULLSWITCH_Mode_Msg'|translate}}</p>
+    </div>
+
+</section>

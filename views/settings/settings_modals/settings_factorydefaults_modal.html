@@ -1,0 +1,48 @@
+<div id="restore_factory_defaults">
+    <div id="restore_factory_defaults_errors"></div>
+    <form name="factoryDefaults" novalidate class="form-horizontal" ng-if="!viewmodel.saving">
+        <p>
+            {{'SETTINGS_FactoryDefaults_Modal_Description'|translate}}              
+        </p>
+
+        <div class="form-group">
+            <label class="col-xs-4">Configuration Option</label>
+            <div class="col-xs-4">
+                <select id="selectRestoreConfigOption" class="form-control" ng-model="viewmodel.configurationoption" ng-init="viewmodel.configurationoption = 'default'" required>
+                    <option value="default">{{'GENERIC_select'|translate}}</option>
+                    <option value="restorefactorydefaults">Restore Factory Defaults</option>
+                    <option value="deletestartupconfiguration">Delete Startup Configuration</option>
+                </select>
+            </div>
+        </div>
+        
+        <p class="alert alert-warning" role="alert" ng-if="viewmodel.configurationoption == 'restorefactorydefaults'"><i class="ci ci-nav-warn-core text-white"></i>{{'SETTINGS_RestoreDeafultsWarning'|translate}}</p>
+        <p class="alert alert-warning" role="alert" ng-if="viewmodel.configurationoption == 'deletestartupconfiguration'"><i class="ci ci-nav-warn-core text-white"></i>{{'SETTINGS_DeleteConfiguration'|translate}}</p>
+
+        <br />
+        <footer>
+            <ul class="list-unstyled list-inline text-right">
+                <li>
+                    <button id="btnApplyFactoryDefaults" type="button" class="btn btn-primary" ng-disabled="!viewmodel.configurationoption || viewmodel.configurationoption == 'default'" ng-click="actions.save()">{{'GENERIC_Apply'|translate}}</button>
+                </li>
+                <li>
+                    <button  id="btnCancelApplyFactoryDefaults" type="button" class="btn btn-default" ng-click="actions.cancel()">{{'GENERIC_Cancel'|translate}}</button>
+                </li>
+            </ul>
+        </footer>
+    </form>
+
+
+    <div ng-if="viewmodel.saving">
+        <h2>Preparing to Reboot System</h2>
+        <span class="pull-left" style="font-size: 36px; margin-right: 5px;">
+            <healthicon value="'warning'"></healthicon>
+        </span>
+        <p>System will reboot and begin the factory restore. Do not stop the process or shut down the server.</p>
+        <div class="clearfix"></div>
+        <br/>
+        <div class="text-center">
+            <clarity-spinner size="75px"></clarity-spinner>
+        </div>
+    </div>
+</div>

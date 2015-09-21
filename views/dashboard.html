@@ -1,0 +1,57 @@
+<!--<section id="dashboard" ng-controller="DashboardController">
+    -->
+    <!--<p>{{'DASHBOARD_Dashboard'|translate}}</p>-->
+
+    <h1>{{'DASHBOARD_Dashboard'|translate}}</h1>
+
+    <div role="tabpanel">
+        <!-- Nav tabs -->
+        <ul class="nav nav-tabs" role="tablist" id="tab-list">
+            <li role="presentation" ng-class="{active: data.activeTab == 'summary'}">
+                <a ng-click="actions.setActiveTab('summary')" id="tab-summary" data-target="#summary" aria-controls="summary" role="tab" data-toggle="tab">{{'DASHBOARD_Summary'|translate}}
+                </a>
+            </li>
+            <li role="presentation" ng-class="{active: data.activeTab == 'portdetails'}">
+                <a ng-click="actions.setActiveTab('portdetails')" id="tab-portdetails" data-target="#portdetails" aria-controls="portdetails" role="tab" data-toggle="tab">{{'DASHBOARD_PortDetails'|translate}}
+                </a>
+            </li>
+            <li role="presentation" ng-if="$root.ioaMode == 'stack'" ng-class="{active: data.activeTab == 'stacksummary'}">
+                <a ng-click="actions.setActiveTab('stacksummary')" id="tab-stacksummary" data-target="#stacksummary" aria-controls="stacksummary" role="tab" data-toggle="tab">{{'DASHBOARD_StackSummary'|translate}}
+                </a>
+            </li>
+            <li role="presentation" ng-if="$root.ioaMode == 'stack'" ng-class="{active: data.activeTab == 'stackportsummary'}">
+                <a ng-click="actions.setActiveTab('stackportsummary')" id="tab-stackportsummary" data-target="#stackportsummary" aria-controls="stackportsummary" role="tab" data-toggle="tab">{{'DASHBOARD_StackPortSummary'|translate}}
+                </a>
+            </li>
+            <li role="presentation" ng-if="$root.ioaMode == 'vlt'"  ng-class="{active: data.activeTab == 'vlt'}">
+                <a ng-click="actions.setActiveTab('vlt')" id="tab-vlt" data-target="#vlt" aria-controls="vlt" role="tab" data-toggle="tab">{{'DASHBOARD_VLT'|translate}}
+                </a>
+            </li>
+        </ul>
+        <!-- Tab panes -->
+        <div class="tab-content">
+            <div role="tabpanel" class="tab-pane active" ng-show="data.activeTab == 'summary'" ng-class="{active: data.activeTab == 'summary'}">
+                <div ng-include="'views/dashboard_summary.html'"></div>
+            </div>
+            <div role="tabpanel" class="tab-pane" ng-show="data.activeTab == 'portdetails'" ng-class="{active: data.activeTab == 'portdetails'}">
+                <div ng-include="'views/dashboard_portdetails.html'"></div>
+            </div>
+            <div role="tabpanel" class="tab-pane" ng-if="$root.ioaMode == 'stack'" ng-show="data.activeTab == 'stacksummary'" ng-class="{active: data.activeTab == 'stacksummary'}">
+                <div>
+                    <div ng-include="'views/dashboard_stacksummary.html'"></div>
+                </div>
+            </div>
+            <div role="tabpanel" class="tab-pane" ng-if="$root.ioaMode == 'stack'" ng-show="data.activeTab == 'stackportsummary'" ng-class="{active: data.activeTab == 'stackportsummary'}">
+                <div>
+                    <div ng-include="'views/dashboard_stackportsummary.html'"></div>
+                </div>
+            </div>
+            <div role="tabpanel" class="tab-pane" ng-if="$root.ioaMode == 'vlt'" ng-show="data.activeTab == 'vlt'" ng-class="{active: data.activeTab == 'vlt'}">
+                <div>
+                    <div ng-include="'views/dashboard_vlt.html'"></div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+<!--</section>-->

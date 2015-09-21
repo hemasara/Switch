@@ -1,0 +1,23 @@
+<section>
+
+    <h3>{{'SETTINGS_NTP_Section'|translate}}</h3>
+    <p check-access>{{'SETTINGS_NTP_Description'|translate}} <a id="lnkEditNTP" ng-click="actions.edit_settings_NTP_modal()" ng-if="$root.ioaMode == 'vlt' || $root.ioaMode == 'standalone'"><i class="glyphicon glyphicon-edit text-primary"></i>{{'GENERIC_Edit'|translate}}</a></p>
+    <dl class="dl-horizontal dataList">
+        <dt>{{'GENERIC_TimeZone'|translate}}</dt>
+        <dd>{{data.selectedTimeZoneName.name}}</dd>
+        
+        <dt>{{'SETTINGS_NTP_Server_Title'|translate}}</dt>
+        <dd>{{viewmodel.ntpvalues.ntp}}</dd>
+        
+        <dt>{{'SETTINGS_NTP_Server_Preferred'|translate}}
+                <br />
+            {{'SETTINGS_NTP_IPAddress'|translate}}</dt>
+        <dd>{{viewmodel.ntpvalues.server1}}</dd>
+        
+        <dt>{{'SETTINGS_NTP_Server_Secondary'|translate}}
+                <br />
+            {{'SETTINGS_NTP_IPAddress'|translate}}</dt>
+        <dd>{{viewmodel.ntpvalues.server2}}</dd>
+    </dl>
+
+</section>

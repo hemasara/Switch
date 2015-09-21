@@ -1,0 +1,281 @@
+<div id="modal-create-zoning">
+    <div id="modal-create-zoning-errors"></div>
+
+
+
+    <p ng-if="viewmodel.type == 'alias'">Use this page to add an alias.</p>
+    <p ng-if="viewmodel.type == 'zone'">Use this page to add a zone.</p>
+    <p ng-if="viewmodel.type == 'zoneset'">Use this page to add a zoneset.</p>
+
+    <form name="formCreateZoning" class="form-horizontal">
+        <div class="form-group">
+            <label class="col-xs-2 control-label">
+                Name
+            </label>
+            <div class="col-xs-3">
+                <input id="zonename" type="text" ng-model="viewmodel.name" required class="form-control" maxlength="32" />
+            </div>
+            <div class="col-xs-7">
+                <span class="help-inline text-left"><span class="help-block">1 - 32 characters and numbers</span></span>
+            </div>
+        </div>
+        <br />
+        <div ng-if="viewmodel.type == 'alias'">
+            <div ng-if="data.selectedAlias">
+
+                <div class="row">
+                    <div class="col-xs-5">
+                        <div class="panel panel-default">
+                            <div class="panel-heading">Available Members</div>
+                            <div class="panel-body" style="height: 250px; overflow: auto;">
+                                <h5>
+
+                                    <span class="text-primary collapsed" data-toggle="collapse" data-target="#create-alias-wwpn-available" aria-expanded="false" aria-controls="create-alias-wwpn-available">
+                                        <i class="glyphicon glyphicon-plus-sign"></i>
+                                        <i class="glyphicon glyphicon-minus-sign"></i>
+                                    </span>
+
+                                    WWPNs ({{data.known_nodes['known-wwpns'].length}} Devices)
+                                </h5>
+                                <ul class="collapse list-unstyled" id="create-alias-wwpn-available" style="margin-left: 15px;">
+                                    <li ng-repeat="wwpn in data.known_nodes['known-wwpns']" ng-click="wwpn.selected=!wwpn.selected" ng-class="{highlight: wwpn.selected}">{{wwpn["wwpn"]}}</li>
+                                </ul>
+                                <h5>
+                                    <span class="text-primary collapsed" data-toggle="collapse" data-target="#create-alias-fc-available" aria-expanded="false" aria-controls="create-alias-fc-available">
+                                        <i class="glyphicon glyphicon-plus-sign"></i>
+                                        <i class="glyphicon glyphicon-minus-sign"></i>
+                                    </span>
+
+                                    FC-IDs ({{data.known_nodes['known-fc-ids'].length}} Devices)</h5>
+                                <ul class="collapse list-unstyled" id="create-alias-fc-available" style="margin-left: 15px;">
+                                    <li ng-repeat="fcid in data.known_nodes['known-fc-ids']" ng-click="fcid.selected=!fcid.selected" ng-class="{highlight: fcid.selected}">{{fcid["fc-id"]}}</li>
+                                </ul>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-xs-2 text-center">
+                        <ul style="margin-top: 60px; font-size: 24px;" class="list-unstyled">
+                            <li>
+                                <button id="btnMoveToAlias" type="button" ng-disabled="" class="btn btn-link" ng-click="actions.moveToAlias()">
+                                    <i class="hover ci ci-expndr-chev-side1-thick-core"></i>
+                                </button>
+                            </li>
+                            <li>
+                                <button id="btnRemoveFromAlias" type="button" ng-disabled="" class="btn btn-link" ng-click="actions.removeFromAlias()">
+                                    <i class="hover ci ci-expndr-chev-side2-thick-core"></i>
+                                </button>
+                            </li>
+                        </ul>
+                    </div>
+                    <div class="col-xs-5">
+                        <div class="panel panel-default">
+                            <div class="panel-heading">Alias Members <a class="pull-right" ng-click="actions.addManualMember('alias')"><i class="ci ci-action-add-new-core"></i>Add Manually</a></div>
+                            <div class="panel-body" style="height: 250px; overflow: auto;">
+                                <p class="text-danger" ng-if="data.alias['alias-fc-id-members'].length + data.alias['alias-wwpn-members'].length == 0">
+                                    {{'ERROR_AliasEmpty'|translate}}
+                                </p>
+                                <h5 ng-if="data.alias['alias-wwpn-members'].length > 0"><span class="text-primary collapsed" data-toggle="collapse" data-target="#create-alias-wwpn-members" aria-expanded="false" aria-controls="create-alias-wwpn-members">
+                                    <i class="glyphicon glyphicon-plus-sign"></i>
+                                    <i class="glyphicon glyphicon-minus-sign"></i>
+                                </span>
+                                    WWPNs ({{data.alias['alias-wwpn-members'].length}} Devices)</h5>
+                                <ul class="collapse list-unstyled" id="create-alias-wwpn-members" style="margin-left: 15px;">
+                                    <li class="hover" ng-repeat="wwpn in data.alias['alias-wwpn-members']" ng-click="wwpn.selected=!wwpn.selected" ng-class="{highlight: wwpn.selected}">{{wwpn["wwpn"]}}</li>
+                                </ul>
+                                <h5 ng-if="data.alias['alias-fc-id-members'].length > 0"><span class="text-primary collapsed" data-toggle="collapse" data-target="#create-alias-fc-members" aria-expanded="false" aria-controls="create-alias-fc-members">
+                                    <i class="glyphicon glyphicon-plus-sign"></i>
+                                    <i class="glyphicon glyphicon-minus-sign"></i>
+                                </span>
+                                    FC-IDs ({{data.alias['alias-fc-id-members'].length}} Devices)</h5>
+                                <ul class="collapse list-unstyled" id="create-alias-fc-members" style="margin-left: 15px;">
+                                    <li class="hover" ng-repeat="fcid in data.alias['alias-fc-id-members']" ng-click="fcid.selected=!fcid.selected" ng-class="{highlight: fcid.selected}">{{fcid["fc-id"]}}</li>
+                                </ul>
+                            </div>
+                        </div>
+
+                    </div>
+                </div>
+                <br />
+                <br />
+                <ul class="list-unstyled list-inline text-right">
+                    <li>
+                        <button ng-disabled="formCreateZoning.$invalid || data.alias['alias-fc-id-members'].length + data.alias['alias-wwpn-members'].length == 0" id="btnApplyAlias" type="button" class="btn btn-primary" ng-click="actions.applyAlias()">{{'GENERIC_Apply'|translate}}</button>
+                    </li>
+                    <li>
+                        <button id="btnCancelEditAlias" type="button" class="btn btn-default" ng-click="actions.cancelEdit()">{{'GENERIC_Cancel'|translate}}</button>
+                    </li>
+                </ul>
+            </div>
+
+        </div>
+
+        <div ng-if="viewmodel.type == 'zone'">
+            <div ng-if="data.selectedZone">
+
+                <div class="row">
+                    <div class="col-xs-5">
+                        <div class="panel panel-default">
+                            <div class="panel-heading">Available Members</div>
+                            <div class="panel-body" style="height: 250px; overflow: auto;">
+                                <h5><span class="text-primary collapsed" data-toggle="collapse" data-target="#create-zone-wwpn-available" aria-expanded="false" aria-controls="create-zone-wwpn-available">
+                                    <i class="glyphicon glyphicon-plus-sign"></i>
+                                    <i class="glyphicon glyphicon-minus-sign"></i>
+                                </span>
+                                    WWPNs ({{data.known_nodes['known-wwpns'].length}} Devices)</h5>
+                                <ul id="create-zone-wwpn-available" style="margin-left: 15px;" class="collapse list-unstyled">
+                                    <li ng-repeat="wwpn in data.known_nodes['known-wwpns']" ng-click="wwpn.selected=!wwpn.selected" ng-class="{highlight: wwpn.selected}">{{wwpn["wwpn"]}}</li>
+                                </ul>
+
+                                <h5><span class="text-primary collapsed" data-toggle="collapse" data-target="#create-zone-alias-available" aria-expanded="false" aria-controls="create-zone-alias-available">
+                                    <i class="glyphicon glyphicon-plus-sign"></i>
+                                    <i class="glyphicon glyphicon-minus-sign"></i>
+                                </span>
+                                    Aliases ({{data.known_nodes['known-aliases'].length}} Members)</h5>
+                                <ul id="create-zone-alias-available" style="margin-left: 15px;" class="collapse list-unstyled">
+                                    <li ng-repeat="alias in data.known_nodes['known-aliases']" ng-click="alias.selected=!alias.selected" ng-class="{highlight: alias.selected}">{{alias["alias"]}}</li>
+                                </ul>
+
+                                <h5><span class="text-primary collapsed" data-toggle="collapse" data-target="#create-zone-fc-available" aria-expanded="false" aria-controls="create-zone-fc-available">
+                                    <i class="glyphicon glyphicon-plus-sign"></i>
+                                    <i class="glyphicon glyphicon-minus-sign"></i>
+                                </span>
+                                    FC-IDs ({{data.known_nodes['known-fc-ids'].length}} Devices)</h5>
+                                <ul id="create-zone-fc-available" style="margin-left: 15px;" class="collapse list-unstyled">
+                                    <li ng-repeat="fcid in data.known_nodes['known-fc-ids']" ng-click="fcid.selected=!fcid.selected" ng-class="{highlight: fcid.selected}">{{fcid["fc-id"]}}</li>
+                                </ul>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-xs-2 text-center">
+                        <ul style="margin-top: 60px; font-size: 24px;" class="list-unstyled">
+                            <li>
+                                <button id="btnMoveToZone" type="button" ng-disabled="" class="btn btn-link" ng-click="actions.moveToZone()">
+                                    <i class="hover ci ci-expndr-chev-side1-thick-core"></i>
+                                </button>
+                            </li>
+                            <li>
+                                <button id="btnRemoveFromZone" type="button" ng-disabled="" class="btn btn-link" ng-click="actions.removeFromZone()">
+                                    <i class="hover ci ci-expndr-chev-side2-thick-core"></i>
+                                </button>
+                            </li>
+                        </ul>
+                    </div>
+                    <div class="col-xs-5">
+                        <div class="panel panel-default">
+                            <div class="panel-heading">Zone Members <a class="pull-right" ng-click="actions.addManualMember('zone')"><i class="ci ci-action-add-new-core"></i>Add Manually</a></div>
+                            <div class="panel-body" style="height: 250px; overflow: auto;">
+                                <p class="text-danger" ng-if="data.zone['zone-wwpn-members'].length + data.zone['zone-alias-members'].length + data.zone['zone-fc-id-members'].length == 0">
+                                    {{'ERROR_ZoneEmpty'|translate}}
+                                </p>
+                                <h5 ng-if="data.zone['zone-wwpn-members'].length > 0"><span class="text-primary collapsed" data-toggle="collapse" data-target="#create-zone-wwpn-member" aria-expanded="false" aria-controls="create-zone-wwpn-member">
+                                    <i class="glyphicon glyphicon-plus-sign"></i>
+                                    <i class="glyphicon glyphicon-minus-sign"></i>
+                                </span>
+                                    WWPNs ({{data.zone['zone-wwpn-members'].length}} Members)</h5>
+                                <ul id="create-zone-wwpn-member" style="margin-left: 15px;" class="collapse list-unstyled">
+                                    <li class="hover" ng-repeat="wwpn in data.zone['zone-wwpn-members']" ng-click="wwpn.selected=!wwpn.selected" ng-class="{highlight: wwpn.selected}">{{wwpn["wwpn"]}}</li>
+                                </ul>
+
+                                <h5 ng-if="data.zone['zone-alias-members'].length > 0"><span class="text-primary collapsed" data-toggle="collapse" data-target="#create-zone-alias-member" aria-expanded="false" aria-controls="create-zone-alias-member">
+                                    <i class="glyphicon glyphicon-plus-sign"></i>
+                                    <i class="glyphicon glyphicon-minus-sign"></i>
+                                </span>
+                                    Aliases ({{data.zone['zone-alias-members'].length}} Members)</h5>
+                                <ul id="create-zone-alias-member" style="margin-left: 15px;" class="collapse list-unstyled">
+                                    <li class="hover" ng-repeat="alias in data.zone['zone-alias-members']" ng-click="alias.selected=!alias.selected" ng-class="{highlight: alias.selected}">{{alias["alias"]}}</li>
+                                </ul>
+
+                                <h5 ng-if="data.zone['zone-fc-id-members'].length > 0"><span class="text-primary collapsed" data-toggle="collapse" data-target="#create-zone-fc-member" aria-expanded="false" aria-controls="create-zone-fc-member">
+                                    <i class="glyphicon glyphicon-plus-sign"></i>
+                                    <i class="glyphicon glyphicon-minus-sign"></i>
+                                </span>
+                                    FC-IDs ({{data.zone['zone-fc-id-members'].length}} Members)</h5>
+                                <ul id="create-zone-fc-member" style="margin-left: 15px;" class="collapse list-unstyled">
+                                    <li class="hover" ng-repeat="fcid in data.zone['zone-fc-id-members']" ng-click="fcid.selected=!fcid.selected" ng-class="{highlight: fcid.selected}">{{fcid["fc-id"]}}</li>
+                                </ul>
+                            </div>
+                        </div>
+
+                    </div>
+                </div>
+                <br />
+                <br />
+                <ul class="list-unstyled list-inline text-right">
+                    <li>
+                        <button ng-disabled="formCreateZoning.$invalid || data.zone['zone-wwpn-members'].length + data.zone['zone-alias-members'].length + data.zone['zone-fc-id-members'].length == 0" id="btnApplyZone" type="button" class="btn btn-primary" ng-click="actions.applyZone()">{{'GENERIC_Apply'|translate}}</button>
+                    </li>
+                    <li>
+                        <button id="btnCancelApplyZone" type="button" class="btn btn-default" ng-click="actions.cancelEdit()">{{'GENERIC_Cancel'|translate}}</button>
+                    </li>
+                </ul>
+
+            </div>
+
+        </div>
+
+        <div ng-if="viewmodel.type == 'zoneset'">
+            <div ng-if="data.selectedZoneset">
+
+                <div class="row">
+                    <div class="col-xs-5">
+                        <div class="panel panel-default">
+                            <div class="panel-heading">Available Members</div>
+                            <div class="panel-body" style="height: 250px; overflow: auto;">
+                                <h5 class="hover" ng-repeat-start="zone in data.known_nodes['known-zones']" ng-click="zone.selected=!zone.selected" ng-class="{highlight: zone.selected}">{{zone.zone}}</h5>
+                                <ul style="margin-left: 15px;" class="list-unstyled" ng-repeat-end>
+                                    <li></li>
+                                </ul>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-xs-2 text-center">
+                        <ul style="margin-top: 60px; font-size: 24px;" class="list-unstyled">
+                            <li>
+                                <button id="btnMoveToZoneset" type="button" ng-disabled="" class="btn btn-link" ng-click="actions.moveToZoneset()">
+                                    <i class="hover ci ci-expndr-chev-side1-thick-core"></i>
+                                </button>
+                            </li>
+                            <li>
+                                <button id="btnRemoveFromZoneset" type="button" ng-disabled="" class="btn btn-link" ng-click="actions.removeFromZoneset()">
+                                    <i class="hover ci ci-expndr-chev-side2-thick-core"></i>
+                                </button>
+                            </li>
+                        </ul>
+                    </div>
+                    <div class="col-xs-5">
+                        <div class="panel panel-default">
+                            <div class="panel-heading">Zoneset Members</div>
+                            <div class="panel-body" style="height: 250px; overflow: auto;">
+                                <p class="text-danger" ng-if="data.zoneset['zone-members'].length == 0">
+                                    {{'ERROR_ZonesetEmpty'|translate}}
+                                </p>
+                                <h5 class="hover" ng-repeat-start="zone in data.zoneset['zone-members']" ng-click="zone.selected=!zone.selected" ng-class="{highlight: zone.selected}">{{zone.zone}}
+                                </h5>
+                                <ul style="margin-left: 15px;" class="list-unstyled" ng-repeat-end>
+                                    <li></li>
+                                </ul>
+                            </div>
+                        </div>
+
+                    </div>
+                </div>
+                <br />
+                <br />
+                <ul class="list-unstyled list-inline text-right">
+                    <li>
+                        <button ng-disabled="formCreateZoning.$invalid || data.zoneset['zone-members'].length == 0" id="btnApplyZoneset" type="button" class="btn btn-primary" ng-click="actions.applyZoneset()">{{'GENERIC_Apply'|translate}}</button>
+                    </li>
+                    <li>
+                        <button id="btnCancelApplyZoneset" type="button" class="btn btn-default" ng-click="actions.cancelEdit()">{{'GENERIC_Cancel'|translate}}</button>
+                    </li>
+                </ul>
+
+            </div>
+
+        </div>
+
+    </form>
+
+</div>
+
+

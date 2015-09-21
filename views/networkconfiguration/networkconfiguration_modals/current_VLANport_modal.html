@@ -1,0 +1,60 @@
+<div id="currentVLANports">
+    <div class="form-horizontal">
+        <div id="current-vlan-errors"></div>
+        <br />
+
+        <ul class="list-unstyled list-inline">
+            <li>
+                <p class="form-control-static">Filter By:</p>
+            </li>
+            <li>
+                <select id="selectLAGPortsFilter" ng-model="data.selectedFilter" class="form-control pull-left">
+                    <option value="all">{{'GENERIC_ViewAll'|translate}}</option>
+                    <option value="internal" selected="selected">{{'NETWORKCONFIGURATION_LAG_InternalPorts'|translate}}</option>
+                    <option value="uplink">{{'NETWORKCONFIGURATION_Uplink_Po128'|translate}}</option>
+                </select>
+            </li>
+        </ul>
+
+        <br />
+        <table class="table table-striped table-condensed table-hover">
+            <thead>
+                <tr>
+                    <th>{{'GENERIC_Interface'|translate}}</th>
+                    <th>{{'GENERIC_Mode'|translate}}</th>
+                    <th>{{'GENERIC_Tagged'|translate}}</th>
+                    <th>{{'GENERIC_Untagged'|translate}}</th>
+                    <th>{{'NETWORKCONFIGURATION_VLAN_PortChannel'|translate}}</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr ng-repeat="row in viewmodel.vlanPortAssignmentSettings.port | portFilter:data.selectedFilter">
+                    <td>
+                        <!--{{row.type}}&nbsp;{{row.unit}}&nbsp;/&nbsp;{{row.number}}-->
+                        {{row | portDisplay}}
+                    </td>
+                    <td ng-if="row.mode == 'auto'">{{'GENERIC_Auto'|translate}}</td>
+                    <td ng-if="row.mode == 'admin'">{{'GENERIC_Admin'|translate}}</td>
+                    <td ng-if="row.mode == 'NA'">&nbsp;</td>
+                    <td class="force-wrap">{{row.taggedVlan | joinBy:', '}}
+                    </td>
+                    <td>{{row.untaggedVlan}}
+                    </td>
+                    <td ng-if="row.portChannel && row.portChannel > 0">{{row.portChannel}}
+                    </td>
+                    <td ng-if="!row.portChannel || row.portChannel <= 0">&nbsp;
+                    </td>
+                </tr>
+            </tbody>
+        </table>
+
+        <br />
+        <footer>
+            <ul class="list-unstyled list-inline text-right">
+                <li>
+                    <button id="btnCancelVLANPortModal" type="button" class="btn btn-primary" ng-click="actions.cancel()">{{'GENERIC_Close'|translate}}</button>
+                </li>
+            </ul>
+        </footer>
+    </div>
+</div>

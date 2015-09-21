@@ -1,0 +1,27 @@
+<section class="device-face">
+    <div>{{panel.Name}}</div>
+    <br />
+    <ul class="list-inline" ng-repeat="row in rows">
+        <li class="port-content" ng-repeat="item in row" ng-style="{padding: row.length < 26 ? '0 5px' : '0 4px'}" >
+            <div>{{item.ID}}</div>
+            <div class="port-box" data-toggle="popover" data-html="true" data-title="{{'MASTHEAD_PortInfo'|translate}}" data-content="{{item.toolTip}}">
+                <ng-include src="item.template.id"></ng-include>
+            </div>
+        </li>
+    </ul>
+</section>
+<section>
+    <div class="margin10">
+        <ul class="list-inline">
+            <li class="port-content" ng-repeat="item in legends">
+                <div class="port-box inline-block">
+                    <ng-include src="item.template.id"></ng-include>
+                </div>
+                {{item.description}}
+            </li>
+        </ul>
+    </div>
+</section>
+<script type="text/ng-template" id="/portboxsquare.html">
+    <div ng-class="item.template.boxClass">{{item.template.displayChar}}</div>
+</script>

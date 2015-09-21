@@ -1,0 +1,126 @@
+<div class="ompMenu">
+
+    <div style="line-height: 50px;" class="pull-left top-nav-arrow">
+
+        <button id="btnShowOmpMenu" class="btn btn-link" ng-click="actions.toggleNav()" ng-show="data.showOmpMenuButton" style="padding: 0; width: 100%; border: 0;">
+            <i class="ci ci-expndr-chev-dwn-med-core"></i>
+        </button>
+    </div>
+
+    <span class="backdrop" ng-show="data.showNavigation||false" ng-click="data.showNavigation=false"></span>
+
+    <div class="omp-menu" ng-show="data.showNavigation||false">
+        <nav role="navigation">
+            <div class="form">
+                <span class="navbar-brand">
+                    <i class=" ci ci-deployment-core"></i>
+                    {{'ApplicationTitle'|translate}}
+                </span>
+                <div style="line-height: 50px">
+                    <button id="btnToggleNav" class="btn btn-link" ng-click="actions.toggleNav()" style="padding: 0; border: 0;">
+                        <i class="ci ci-expndr-chev-up-med-core"></i>
+                    </button>
+
+                    <button id="btnToggleNavClosed" class="btn btn-link" ng-click="actions.toggleNav()" style="padding: 0; border: 0; float: right; margin-top: 15px; margin-right: 10px;">
+                        <i class="ci ci-modal-close-core"></i>
+                    </button>
+
+                    <button id="btnPinNav" class="btn btn-link" ng-click="pinnav()" style="padding: 0; border: 0; float: right; margin-top: 15px; margin-right: 10px;">
+                        <i class="glyphicon glyphicon-pushpin"></i>
+                    </button>
+
+                </div>
+                <hr style="width: 95%; float: left; margin-top: 0px; border-color: #BBB;" />
+                <ul class="list-unstyled list-inline pull-left">
+                    <li class="menu-item" ng-repeat="menuItem in menuItems">
+                        <i class="{{menuItem.icon}}"></i>
+                        <a id="lnkMenuItem" href="{{menuItem.href}}">{{menuItem.label}}</a>
+                        <ul class="list-unstyled">
+                            <li class="sub-menu-item" ng-repeat="subMenuItem in menuItem.children">
+                                <a id="lnkSubMenuItem" href="{{subMenuItem.href}}">{{subMenuItem.label}}</a>
+                            </li>
+                        </ul>
+                    </li>
+                    <!--<li class="menu-item">
+                            <ul class="list-unstyled text-center menu-actions-list">
+                                <li>
+                                    <ul class="list-unstyled">
+                                        <button id="btnHome" type="button" ng-click="actions.goHome()" class="btn btn-default">
+                                            <i class='{{action.icon}}' />
+                                            {{'NAVIGATION_Home'|translate}}
+                                        </button>
+                                    </ul>
+                                </li>
+                            </ul>
+
+                        </li>-->
+
+                </ul>
+                <div id="omp-buttons" class="pull-right">
+                    <div style="min-width: 162px;" class="btn-group-vertical" role="group" aria-label="...">
+                        <button id="btnNewService" type="button" class="btn btn-success"><i class="ci ci-deployment-core"></i>{{'GENERIC_NewService'|translate}}</button><br />
+
+                        <div class="btn-group">
+                            <button id="reports-button" type="button" class="btn btn-primary dropdown-toggle" data-toggle="dropdown" aria-expanded="false">
+                                Reports
+<!--                            <i class="ci ci-expndr-chev-dwn-med-core"></i>-->
+                            </button>
+                            <ul class="dropdown-menu" role="menu">
+                                <li><a id="lnkMastheadInventory" href="#">{{'MASTHEAD_InventoryAssets'|translate}}</a></li>
+                                <li><a id="lnkMastheadServer" href="#">{{'MASTHEAD_ServerUtilization'|translate}}</a></li>
+                                <li><a id="lnkMastheadStorage" href="#">{{'MASTHEAD_StorageGrowth'|translate}}</a></li>
+                                <li><a id="lnkMastheadNetwork" href="#">{{'MASTHEAD_NetworkConsumption'|translate}}</a></li>
+                                <li><a id="lnkMastheadReports" href="#">{{'MASTHEAD_MoreReports'|translate}}</a></li>
+                            </ul>
+                        </div>
+
+                    </div>
+                    <div class="form-group menu-user" ng-show="data.CurrentUser != null">
+                    </div>
+                    <div>
+                        <i class='ci ci-nav-user-core' size='16px' style="color: #007db8;"></i>
+                        {{data.CurrentUser.username}} | <a id="lnkMenuLogout" ng-click="logout()">{{'GENERIC_Logout'|translate}}</a>
+                    </div>
+                    <div>
+                        <i style="color: #007db8;" class="ci ci-nav-settings-core"></i><a id="lnkMenuSettings" href="#/settings">{{'GENERIC_Settings'|translate}}</a>
+                    </div>
+                </div>
+            </div>
+        </nav>
+
+    </div>
+
+    <script type="text/ng-template" id="navMenuPinTemplate.html">
+        <a id="lnkSubmenuItem" href="{{subMenuItem.href}}">{{subMenuItem.label}}</a>
+        <span tabindex="0" class="collapsed" data-toggle="collapse" data-target="#pin-{{subMenuItem.guid | toclassname}}" ng-show="subMenuItem.children.length > 0">
+            <i class="ci ci-expndr-chev-side1-thick-core"></i>
+            <i class="ci ci-expndr-chev-dwn-thick-core"></i>
+        </span>
+
+        <ul id="pin-{{subMenuItem.guid | toclassname}}" class="list-unstyled collapse" ng-show="subMenuItem.children.length > 0">
+            <li ng-repeat="subMenuItem in subMenuItem.children" class="sub-menu-item" ng-include="'navMenuTemplate.html'"></li>
+        </ul>
+    </script>
+
+    <!--  <div id="pinned-nav" ng-show="data.showpinnav">-->
+    <div id="pinned-nav" ng-show="data.showPinNavigation">
+        <ul class="list-unstyled list-inline">
+            <li class="menu-item" ng-repeat="menuItem in menuItems">
+                <div class="hoverItem">
+                    <i class="{{menuItem.icon}}"></i>
+                    <a id="lnkMenuItem" href="{{menuItem.href}}">{{menuItem.label}}</a>
+                    <button id="btnCollapseMenu" class="btn btn-link collapsed" data-toggle="collapse" data-target="#pin-{{menuItem.guid | toclassname}}" style="padding: 0; border: 0;">
+                        <i class="ci ci-expndr-chev-dwn-med-core" ng-show="menuItem.children.length > 0"></i>
+                    </button>
+                </div>
+                <ul id="pin-{{menuItem.guid | toclassname}}" class="list-unstyled collapse subnav" ng-show="menuItem.children.length > 0">
+                    <li ng-repeat="subMenuItem in menuItem.children" class="sub-menu-item" ng-include="'navMenuPinTemplate.html'"></li>
+                </ul>
+
+        </ul>
+        <span style="border-left: 1px solid #007db8; float: right; position: absolute; top: 6px; right: 40px;">&nbsp</span>
+        <button id="unpin" class="btn btn-link" ng-click="unpinnav()">
+            <i style="top: 3px;" class="glyphicon glyphicon-pushpin"></i>
+        </button>
+    </div>
+</div>

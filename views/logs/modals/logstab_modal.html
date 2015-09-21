@@ -1,0 +1,33 @@
+<div id="logstab_modal">
+    <div id="logstab_modal-errors"></div>
+
+    <form class="form-horizontal" name="formMaxLogs" novalidate>
+
+        <p>{{'LOGS_LogsTab_Modal_Description'|translate}}</p>
+
+        <br />
+
+        <div class="form-group">
+            <label class="col-xs-2">{{'LOGS_LogsTab_Modal_MaxLogs'|translate}}</label>
+            <div class="col-xs-4">
+                <input id="maxlogs" type="number" class="form-control" ng-model="viewmodel.logsSettings.maxlogs" min="20" max="1000" required />
+            </div>
+            <div class="col-xs-3">
+                <span class="help-inline"><span class="help-block">{{'LOGS_Range201000'|translate}}</span></span>
+            </div>
+        </div>
+
+        <footer>
+            <ul class="list-unstyled list-inline text-right">
+                <li>
+                    <button id="btnSaveLogs" type="button" ng-disabled="formMaxLogs.$invalid" class="btn btn-primary" ng-click="actions.save()">{{'GENERIC_Apply'|translate}}</button>
+                </li>
+                <li>
+                    <button id="btnCancelSaveLogs" type="button" class="btn btn-default" ng-click="actions.cancel()">{{'GENERIC_Cancel'|translate}}</button>
+                </li>
+            </ul>
+        </footer>
+    </form>
+
+</div>
+

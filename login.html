@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+<html ng-app='app-login' ng-strict-di>
+<head>
+    <title>{{'Dell_AppTitle'|translate}}</title>
+
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    <meta http-equiv="CACHE-CONTROL" content="NO-CACHE">
+
+    <meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no" />
+    <meta name="apple-mobile-web-app-capable" content="yes" />
+    <meta name="mobile-web-app-capable" content="yes" />
+
+    <script src='js/scripts.js'></script>
+
+    <link rel="stylesheet" href="css/style.css">
+</head>
+
+<body ng-controller='AppLoginController'>
+    <login config="data.settings" on-sign-in="actions.clickLogin(userData)"></login>
+</body>
+
+</html>

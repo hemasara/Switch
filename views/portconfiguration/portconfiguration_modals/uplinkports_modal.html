@@ -1,0 +1,219 @@
+<div id="uplinkports_modal">
+    <div id="uplinkports-errors"></div>
+    <form class="form-horizontal">
+        {{'PORTCONFIGURATION_Uplink_Modal_Description'|translate}}
+        <br />
+        <br />
+
+        <div class="form-group text-center">
+            <label class="col-xs-3 control-label">{{'PORTCONFIGURATION_QuadportMode'|translate}}</label>
+            <div class="col-xs-1">
+                <input id="chkToggleQuadPort" type="checkbox" ng-model="viewmodel.uplinkSettings.enableQuad" ng-true-value="true" ng-false-value="false" />
+            </div>
+        </div>
+
+        <!--------       Ports 49 and 53        --------->
+        <div class="row">
+            <div class="col-xs-3 text-right external-ports" style="margin-top: 3px;"></div>
+            <div class="col-xs-2 text-center" style="background-color: lightgray; border: 2px solid gray; padding: 8px 15px;">
+                <table>
+                    <!-- If both are QSFP+ -->
+                    <tbody ng-if="viewmodel.uplinkSettings.module2 == 'QSFP+' && actions.getTypeForPort(53) == 'QSFP+' && actions.getTypeForPort(49) == 'QSFP+'">
+                        <tr>
+                            <td style="font-weight: bold;">53&nbsp;&nbsp;</td>
+                            <td rowspan="2">
+                                <img src="css/images/ports/QSFP_Enabled.png" /></td>
+                            <td style="font-size: 12px;">&nbsp;&nbsp;QSFP+</td>
+                        </tr>
+                        <tr>
+                            <td style="font-weight: bold;">49&nbsp;&nbsp;</td>
+                            <td style="font-size: 12px;">&nbsp;&nbsp;QSFP+</td>
+                        </tr>
+                    </tbody>
+                    <!-- Port 53 -->
+                    <tbody ng-if="actions.getTypeForPort(53) == '10GE' && viewmodel.uplinkSettings.module2 == 'QSFP+'">
+                        <tr ng-repeat="row in []|range:53:57 |orderBy:'-'">
+                            <td style="font-weight: bold;">{{row}}&nbsp;&nbsp;</td>
+                            <td>
+                                <img src="css/images/ports/10GE_Enabled.png" /></td>
+                            <td style="font-size: 12px;">&nbsp;&nbsp;10GE</td>
+                        </tr>
+                    </tbody>
+                    <tbody>
+                        <tr>
+                            <td>&nbsp;</td>
+                            <td>&nbsp;</td>
+                            <td>&nbsp;</td>
+                        </tr>
+                    </tbody>
+                    <!-- Port 49 -->
+                    <tbody ng-if="actions.getTypeForPort(49) != 'QSFP+' && viewmodel.uplinkSettings.module2 == 'SFP+'">
+                        <tr ng-repeat="row in []|range:49:53 |orderBy:'-'">
+                            <td style="font-weight: bold;">{{row}}&nbsp;&nbsp;</td>
+                            <td>
+                                <img src="css/images/ports/SFP_Disabled.png" /></td>
+                            <td style="font-size: 12px;">&nbsp;&nbsp;10G SFP+</td>
+                        </tr>
+                    </tbody>
+                    <tbody ng-if="actions.getTypeForPort(49) != 'QSFP+' && viewmodel.uplinkSettings.module2 == 'FC'">
+                        <tr ng-repeat="row in []|range:49:53 |orderBy:'-'">
+                            <td style="font-weight: bold;">{{row}}&nbsp;&nbsp;</td>
+                            <td>
+                                <img src="css/images/ports/SFP_Disabled.png" /></td>
+                            <td style="font-size: 12px;">&nbsp;&nbsp;FC</td>
+                        </tr>
+                    </tbody>
+                    <tbody ng-if="actions.getTypeForPort(49) != 'QSFP+' && viewmodel.uplinkSettings.module2 == '10GBASE-T'">
+                        <tr ng-repeat="row in []|range:49:53 |orderBy:'-'">
+                            <td style="font-weight: bold;">{{row}}&nbsp;&nbsp;</td>
+                            <td>
+                                <img src="css/images/ports/10GBase-T_Disabled.png" /></td>
+                            <td style="font-size: 12px;">&nbsp;&nbsp;10GBase-T</td>
+                        </tr>
+                    </tbody>
+                    <tbody ng-if="actions.getTypeForPort(49) != 'QSFP+' && viewmodel.uplinkSettings.module2 == 'QSFP+'">
+                        <tr ng-repeat="row in []|range:49:53 |orderBy:'-'">
+                            <td style="font-weight: bold;">{{row}}&nbsp;&nbsp;</td>
+                            <td>
+                                <img src="css/images/ports/10GE_Enabled.png" /></td>
+                            <td style="font-size: 12px;">&nbsp;&nbsp;10GE</td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+        </div>
+
+        <!--------       Ports 41 and 45        --------->
+        <div class="row">
+            <div class="col-xs-3 text-right external-ports" style="margin-top: 3px;"></div>
+            <div class="col-xs-2 text-center" style="background-color: lightgray; border: 2px solid gray; padding: 8px 15px;">
+                <table>
+                    <!-- If both are QSFP+ -->
+                    <tbody ng-if="viewmodel.uplinkSettings.module1 == 'QSFP+' && actions.getTypeForPort(41) == 'QSFP+' && actions.getTypeForPort(45) == 'QSFP+'">
+                        <tr>
+                            <td style="font-weight: bold;">45&nbsp;&nbsp;</td>
+                            <td rowspan="2">
+                                <img src="css/images/ports/QSFP_Enabled.png" /></td>
+                            <td style="font-size: 12px;">&nbsp;&nbsp;QSFP+</td>
+                        </tr>
+                        <tr>
+                            <td style="font-weight: bold;">41&nbsp;&nbsp;</td>
+                            <td style="font-size: 12px;">&nbsp;&nbsp;QSFP+</td>
+                        </tr>
+                    </tbody>
+                    <!-- Port 45 -->
+                    <tbody ng-if="actions.getTypeForPort(45) == '10GE' && viewmodel.uplinkSettings.module1 == 'QSFP+'">
+                        <tr ng-repeat="row in []|range:45:49 |orderBy:'-'">
+                            <td style="font-weight: bold;">{{row}}&nbsp;&nbsp;</td>
+                            <td>
+                                <img src="css/images/ports/10GE_Enabled.png" /></td>
+                            <td style="font-size: 12px;">&nbsp;&nbsp;10GE</td>
+                        </tr>
+                    </tbody>
+
+                    <tbody>
+                        <tr>
+                            <td>&nbsp;</td>
+                            <td>&nbsp;</td>
+                            <td>&nbsp;</td>
+                        </tr>
+                    </tbody>
+
+                    <!--Port 41-->
+                    <tbody ng-if="actions.getTypeForPort(41) != 'QSFP+' && viewmodel.uplinkSettings.module1 == 'SFP+'">
+                        <tr ng-repeat="row in []|range:41:45 |orderBy:'-'">
+                            <td style="font-weight: bold;">{{row}}&nbsp;&nbsp;</td>
+                            <td>
+                                <img src="css/images/ports/SFP_Disabled.png" /></td>
+                            <td style="font-size: 12px;">&nbsp;&nbsp;10G SFP+</td>
+                        </tr>
+                    </tbody>
+                    <tbody ng-if="actions.getTypeForPort(41) != 'QSFP+' && viewmodel.uplinkSettings.module1 == 'FC'">
+                        <tr ng-repeat="row in []|range:41:45 |orderBy:'-'">
+                            <td style="font-weight: bold;">{{row}}&nbsp;&nbsp;</td>
+                            <td>
+                                <img src="css/images/ports/SFP_Disabled.png" /></td>
+                            <td style="font-size: 12px;">&nbsp;&nbsp;FC</td>
+                        </tr>
+                    </tbody>
+                    <tbody ng-if="actions.getTypeForPort(41) != 'QSFP+' && viewmodel.uplinkSettings.module1 == '10GBASE-T'">
+                        <tr ng-repeat="row in []|range:41:45 |orderBy:'-'">
+                            <td style="font-weight: bold;">{{row}}&nbsp;&nbsp;</td>
+                            <td>
+                                <img src="css/images/ports/10GBase-T_Disabled.png" /></td>
+                            <td style="font-size: 12px;">&nbsp;&nbsp;10GBase-T</td>
+                        </tr>
+                    </tbody>
+                    <tbody ng-if="actions.getTypeForPort(41) != 'QSFP+' && viewmodel.uplinkSettings.module1 == 'QSFP+'">
+                        <tr ng-repeat="row in []|range:41:45 |orderBy:'-'">
+                            <td style="font-weight: bold;">{{row}}&nbsp;&nbsp;</td>
+                            <td>
+                                <img src="css/images/ports/10GE_Enabled.png" /></td>
+                            <td style="font-size: 12px;">&nbsp;&nbsp;10GE</td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+        </div>
+
+        <!--------       Ports 33 and 37        --------->
+        <div class="row" name="isPort33Quad">
+            <div class="col-xs-3 text-right external-ports" style="margin-top: 3px;"></div>
+            <div class="col-xs-2 text-center" style="background-color: lightgray; border: 2px solid gray; padding: 8px 15px;">
+                <table>
+                    <!-- If both are QSFP+ -->
+                    <tbody ng-if="actions.getTypeForPort(33) == 'QSFP+' && actions.getTypeForPort(37) == 'QSFP+'">
+                        <tr>
+                            <td style="font-weight: bold;">37&nbsp;&nbsp;</td>
+                            <td rowspan="2">
+                                <img src="css/images/ports/QSFP_Enabled.png" /></td>
+                            <td style="font-size: 12px;">&nbsp;&nbsp;QSFP+</td>
+                        </tr>
+                        <tr>
+                            <td style="font-weight: bold;">33&nbsp;&nbsp;</td>
+                            <td style="font-size: 12px;">&nbsp;&nbsp;QSFP+</td>
+                        </tr>
+                    </tbody>
+                    <!--Port 37 is Quad Enabled-->
+                    <tbody ng-if="actions.getTypeForPort(37) == '10GE'">
+                        <tr ng-repeat="row in []|range:37:41 |orderBy:'-'">
+                            <td style="font-weight: bold;">{{row}}&nbsp;&nbsp;</td>
+                            <td>
+                                <img src="css/images/ports/10GE_Enabled.png" /></td>
+                            <td style="font-size: 12px;">&nbsp;&nbsp;10GE</td>
+                        </tr>
+                    </tbody>
+
+                    <tbody>
+                        <tr>
+                            <td>&nbsp;</td>
+                            <td>&nbsp;</td>
+                            <td>&nbsp;</td>
+                        </tr>
+                    </tbody>
+
+                    <!--Port 33 -->
+                    <tbody ng-if="actions.getTypeForPort(33) == '10GE'">
+                        <tr ng-repeat="row in []|range:33:37 |orderBy:'-'">
+                            <td style="font-weight: bold;">{{row}}&nbsp;&nbsp;</td>
+                            <td>
+                                <img src="css/images/ports/10GE_Enabled.png" /></td>
+                            <td style="font-size: 12px;">&nbsp;&nbsp;10GE</td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+        </div>
+        <br />
+        <footer>
+            <ul class="list-unstyled list-inline text-right">
+                <li>
+                    <button id="btnSaveUplinkPortsModal" type="button" class="btn btn-primary" ng-click="actions.save()">{{'GENERIC_Apply'|translate}}</button>
+                </li>
+                <li>
+                    <button id="btnCancelUplinkPortsModal" type="button" class="btn btn-default" ng-click="actions.cancel()">{{'GENERIC_Cancel'|translate}}</button>
+                </li>
+            </ul>
+        </footer>
+    </form>
+</div>

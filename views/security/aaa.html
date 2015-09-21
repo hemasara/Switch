@@ -1,0 +1,39 @@
+<section ng-controller="AaaController">
+    <h3>{{'SECURITY_AAA_Title'|translate}}
+        <a style="font-weight: normal; font-size: 14px; float: right;" id="linkViewAaaDetails" ng-click="actions.edit_aaasettings_modal(true)">{{'GENERIC_ViewDetails'|translate}}
+                </a>
+    </h3>
+    <p check-access>{{'SECURITY_Aaa_Description'|translate}} <a id="lnkEditAAASettings" ng-click="actions.edit_aaasettings_modal()"><i class="glyphicon glyphicon-edit text-primary"></i>{{'GENERIC_Edit'|translate}}</a></p>
+
+
+    <div class="row">
+        <div class="col-xs-4">
+            <p style="font-weight: bold">{{'SECURITY_Authentication'|translate}}</p>
+        </div>
+        <div class="col-xs-4">
+            <span ng-if="data.aaa.authentication.isConfigured" style="font-weight: normal;">{{'GENERIC_Configured'|translate}}</span>
+            <span ng-if="!data.aaa.authentication.isConfigured" style="font-weight: normal;">{{'GENERIC_NotConfigured'|translate}}</span>
+        </div>
+    </div>
+
+    <div class="row">
+        <div class="col-xs-4">
+            <p style="font-weight: bold">{{'SECURITY_Authorization'|translate}}</p>
+        </div>
+        <div class="col-xs-4">
+            <span ng-if="data.aaa.authorization.isConfigured" style="font-weight: normal;">{{'GENERIC_Configured'|translate}}</span>
+            <span ng-if="!data.aaa.authorization.isConfigured" style="font-weight: normal;">{{'GENERIC_NotConfigured'|translate}}</span>
+        </div>
+    </div>
+
+    <div class="row">
+        <div class="col-xs-4">
+            <p style="font-weight: bold">{{'SECURITY_Accounting'|translate}}</p>
+        </div>
+        <div class="col-xs-4">
+            <span ng-if="data.aaa.accounting.isConfigured" style="font-weight: normal;">{{'GENERIC_Configured'|translate}}</span>
+            <span ng-if="!data.aaa.accounting.isConfigured" style="font-weight: normal;">{{'GENERIC_NotConfigured'|translate}}</span>
+        </div>
+    </div>
+
+</section>

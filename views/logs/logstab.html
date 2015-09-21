@@ -1,0 +1,63 @@
+<section id="switchlogs">
+
+    <p>{{'LOGS_LogsTab_Description'|translate}}</p>
+    <br />
+    <ul class="list-unstyled list-inline">
+        <li check-access>
+            <a id="lnkLogsEditSettings" ng-click="actions.edit_logstab_modal()"><i class="ci ci-config-settings3-core"></i>{{'NAVIGATION_Settings'|translate}}</a></li>
+        <li>
+            <a id="lnkLogsRefresh" ng-click="actions.refreshLogs()"><i class="ci ci-action-refresh-core"></i>{{'GENERIC_Refresh'|translate}}</a></li>
+        <li>
+            <span>Filter By:
+            </span>
+        </li>
+        <li>
+            <select id="selectLogsFilter" ng-model="data.selectedFilter">
+                <option value="" selected="selected">All</option>
+                <option value="Critical">Critical</option>
+                <option value="Warning">Warning</option>
+                <option value="Informational">Informational</option>
+            </select>
+        </li>
+    </ul>
+    <div class="row">
+
+        <div class="col-xs-10">
+            <table class="table table-striped table-condensed table-hover" st-search-options="{model: data.selectedFilter, strict: true, field: 'severity'}" st-skip-natural="true" st-table="data.displayedlogdata" st-safe-src="data.logdata">
+                <thead>
+                    <tr>
+                        <!--Should be able to sort by Severity-->
+                        <th st-sort-default="true" st-sort="'severity'">{{'GENERIC_Severity'|translate}}</th>
+                        <th st-sort="'category'">{{'GENERIC_Category'|translate}}</th>
+                        <th st-sort="'date-time'">{{'GENERIC_DateTime'|translate}}</th>
+                        <th st-sort="'description'" style="width: 50%;">{{'GENERIC_Description'|translate}}</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr ng-repeat="log in data.displayedlogdata">
+                        <td>
+                            <i ng-if="log.severity == 'Critical'" class="ci ci-status-critical-core text-danger"></i>
+                            <i ng-if="log.severity == 'Warning'" class="ci ci-nav-warn-core warning"></i>
+                            <i ng-if="log.severity == 'Informational'" class="ci ci-state-info1-core text-primary"></i>
+                            &nbsp;{{log.severity}}
+                        </td>
+                        <!-- category is not provided by get_alerts API -->
+                        <td>{{'LOGS_IOAHealth'|translate}}</td>
+                        <td>
+                            <show-time time="log['date-time']" time-format="'LLL'" />
+                            <td>{{log.description}}</td>
+                    </tr>
+                </tbody>
+                <tfoot>
+                    <tr>
+                        <td colspan="4" class="text-center">
+                            <div st-pagination="" st-items-by-page="25" st-displayed-pages="7"></div>
+                        </td>
+                    </tr>
+                </tfoot>
+            </table>
+        </div>
+    </div>
+
+</section>
+

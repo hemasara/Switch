@@ -1,0 +1,51 @@
+<div class="globalAlerts">
+    <div style="line-height: 50px; margin-left: 15px;">
+        <button id="btnDashboardFlag" style="padding: 5px 6px" class="btn btn-link customButton" ng-click='data.showAlerts = !data.showAlerts'>
+            <i class="glyphicon glyphicon-flag"></i><span style="color: #fff;">{{data.totalAlerts}}</span>
+        </button>
+    </div>
+
+    <span class="backdrop" ng-show="data.showAlerts||false" ng-click="data.showAlerts=false"></span>
+
+    <div class="alertResults arrowright dropdown-menu" ng-show="data.showAlerts">
+        <div class="alert alert-warning" role="alert" ng-show="data.noResults">{{'MASTHEAD_NoResults'|translate}}</div>
+
+        <ul class="list-unstyled list-inline alert-result-header text-center" ng-show="!data.noResults">
+            <li style="margin-right: 5px;">{{'GENERIC_Events'|translate}}</li>
+            <li>
+                <a id="lnkCriticalLogs" href="#logs/Critical">
+                    <i class="ci ci-nav-error-core text-danger" />
+                    <span>{{data.errors}}</span>
+                </a>
+            </li>
+            <li>
+                <a id="lnkWarningLogs" href="#logs/Warning">
+                    <i class="ci ci-nav-warn-core text-warning" />
+                    <span>{{data.warnings}}</span>
+                </a>
+            </li>
+            <li>
+                <a id="lnkInformationalLogs" href="#logs/Informational">
+                    <i class="ci ci-state-info2-core text-primary" />
+                    <span>{{data.info}}</span>
+                </a>
+            </li>
+        </ul>
+
+        <ul class="list-unstyled alert-result-items" ng-show="!data.noResults">
+            <li class="clearfix" ng-repeat="alert in data.alerts | limitTo: 3">
+                <p>{{alert.description}}</p>
+                <div class="pull-left">{{alert.user}}</div>
+                <div class="pull-right">
+                    <show-time time="alert['date-time']" time-format="'LLL'" />
+                </div>
+            </li>
+        </ul>
+
+        <div class="text-center" ng-show="!data.noResults">
+            <a id="lnkAllLogs" href="#logs">{{'GENERIC_AllEvents'|translate}}
+                <i class="ci ci-action-standard-link-core" />
+            </a>
+        </div>
+    </div>
+</div>

@@ -1,0 +1,69 @@
+<div id="modal_fibreChannel">
+    <form class="form-horizontal" name="FCform">
+        <div id="fibreModalErrors"></div>
+
+        <p>{{'NETWORKCONFIGURATION_FibreChannel_Modal_Description'|translate}}</p>
+        <br />
+
+        <div class="col-xs-4">
+            <p>{{'NETWORKCONFIGURATION_FibreChannelMode'|translate}}<span data-toggle="tooltip" data-placement="auto right" title="{{'NETWORKCONFIGURATION_FibreModal_Icon_Msg'|translate}}">
+                <i class="ci ci-state-info2-core text-primary" aria-hidden="true"></i>
+            </span></p>
+        </div>
+
+        <div class="col-xs-8">
+            <div class="radio form-group">
+                <label ng-disabled="!viewmodel.fsbEnabled">
+                    <input ng-disabled="!viewmodel.fsbEnabled" id="radioFSB" type="radio" name="radioModeSettings" value="fsb" ng-model="viewmodel.fibreChannelSettings.mode" />
+                    {{'NETWORKCONFIGURATION_Fibre_FSB'|translate}}
+                </label>
+            </div>
+            <div class="radio form-group">
+                <label ng-disabled="!viewmodel.npgEnabled">
+                    <input  ng-disabled="!viewmodel.npgEnabled" id="radioNPG" type="radio" name="radioModeSettings" value="npg" ng-model="viewmodel.fibreChannelSettings.mode" />
+                    {{'NETWORKCONFIGURATION_Fibre_NPG'|translate}}
+                </label>
+            </div>
+            <div class="radio form-group">
+                <label ng-disabled="!viewmodel.fportEnabled">
+                    <input ng-disabled="!viewmodel.fportEnabled" id="radioFPORT" type="radio" name="radioModeSettings" value="fport" ng-model="viewmodel.fibreChannelSettings.mode" />
+                    {{'NETWORKCONFIGURATION_Fibre_FPORT'|translate}}
+                </label>
+            </div>
+
+            <ul class="list-unstyled list-inline col-sm-6" style="margin: 0 0 0 15px;" ng-class="{disabledText : viewmodel.ioaProperties.Module1 != 'FC' && viewmodel.ioaProperties.Module2 != 'FC'}">
+                <li>
+                    <label ng-disabled="viewmodel.fibreChannelSettings.mode != 'fport'">
+                        {{'NETWORKCONFIGURATION_DomainID'|translate}}
+                    </label>
+                </li>
+                <li>
+                    <input id="domainid" ng-disabled="viewmodel.fibreChannelSettings.mode != 'fport' || (!viewmodel.fportEnabled)" class="form-control col-sm-6" type="number" ng-model="viewmodel.fibreChannelSettings['domain-id']" min="1" max="239"/>
+                    <span class="help-inline text-left"><span class="help-block">{{'NETWORKCONFIGURATION_FPORT_DomainID_Range'|translate}}</span></span>
+                </li>
+            </ul>
+            <div class="clearfix"></div>
+            <div class="radio form-group">
+                <div>
+                    <label ng-disabled="!viewmodel.disabledEnabled">
+                        <input ng-disabled="!viewmodel.disabledEnabled" id="radioModeDisabled" type="radio" name="radioModeSettings" value="disabled" ng-model="viewmodel.fibreChannelSettings.mode" />
+                        {{'GENERIC_Disabled'|translate}}
+                    </label>
+                </div>
+            </div>
+        </div>
+        <br />
+        <footer>
+            <ul class="list-unstyled list-inline text-right">
+                <li>
+                    <button ng-disabled="!FCform.$valid" id="btnSaveFCMode" type="button" class="btn btn-primary" ng-click="actions.save()">{{'GENERIC_Apply'|translate}}</button>
+                </li>
+                <li>
+                    <button id="btnCancelSaveFCMode" type="button" class="btn btn-default" ng-click="actions.cancel()">{{'GENERIC_Cancel'|translate}}</button>
+                </li>
+            </ul>
+        </footer>
+    </form>
+</div>
+
+

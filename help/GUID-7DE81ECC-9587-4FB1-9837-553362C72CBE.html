@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html lang="en-us"><head><!-- saved from url=(0014)about:internet -->
+<meta charset="utf-8" /><meta name="viewport" content="width=device-width" /><title>Fibre Channel</title><link rel="prev" href="GUID-B2B416C8-6A98-4D9C-A689-D39845B2AD60.html" /><link rel="next" href="GUID-DB1E4580-8F94-4282-ADA3-C7BDD02B1CFE.html" /><link href="static/screen.css?AKIYKnLS" rel="stylesheet" /><link href="static/print.css?w+agwgAC" media="print" rel="stylesheet" /><script src="static/head.js?qUF72lF0"></script><link rel="shortcut icon" href="static/favicon.ico" /></head><body id="GUID-7DE81ECC-9587-4FB1-9837-553362C72CBE" data-approot=""><header><div class="inner"><a id="logo-link" href="index.html" /><img id="logo" src="static/logo.png" alt="Logo" /></a><div class="title-text">Dell Blade I/O Manager</div></div></header><div id="breadcrumbs"></div><section id="center"><div id="scroller"><nav id="topnav"><div id="topbuttons"><a id="button-highlighting" href="#" title="Toggle Highlighting"><span>Toggle Highlighting</span></a><a id="button-hide-navigation" href="#" title="Toggle navigation"><span>Toggle navigation</span></a><a id="button-print" href="#" title="Print Topic"><span>Print Topic</span></a><a id="button-print-all" title="Print All"><span>Print All</span></a></div></nav><article><div id="thumbnailDialog"></div><h1>Fibre Channel</h1><p>The Fibre Channel section of the <b>Switching
+Layer-2</b> page displays options for Fibre Channel mode for I/O Aggregator
+devices</p>
+<p>This page displays settings depending on the selected
+Fibre Channel mode.</p>
+<table class="table frame-all" id="GUID-C3058564-26D2-4F98-B2DA-5B8FE8179B03"><caption>Table 1. Fibre Channel
+Modes</caption>
+
+
+<thead><tr><td>Mode</td><td>Description</td></tr></thead><tbody><tr><td>FIP Snooping Bridge (FCoE)</td><td>FIP Snooping Bridge when enabled monitors FCoE
+Initiation Protocol (FIP) logins, solicitations, and advertisements.
+In this monitoring or snooping process, the switch gathers information
+about ENode and FCF addresses. With this information, the switch places
+filters that only allow access to ENode devices that successfully
+log in. The FCoE VLAN can then deny all other traffic except this
+loss-less FCoE storage traffic</td></tr><tr><td>NPIV Proxy Gateway</td><td>In Fibre Channel networks, FC switches are trusted
+devices that act as a Fibre Channel Forwarder (FCF). Other devices
+must log in to these switches before they can communicate with the
+rest of the fabric. FC connections usually are point-to-point allowing
+the FC switches complete control over the traffic that connected devices
+insert into the fabric. An NPIV Proxy Gateway (NPG) allows numerous
+point-to-point connects over a single device (in this case, the I/O
+Aggregator device). This feature allows each converged network adapter
+(CNA) in each server to present itself as a trusted connection to
+the storage fabric.</td></tr><tr><td>Fabric-Services (FPORT)</td><td>The F_Port connects from the FC switch to the
+N_Port of an end device. The F_Port on an FC switch provides access
+to Fabric Services such as Fabric Name Server and Fabric Login Server.</td></tr><tr><td colspan="2"><div class="note" id="GUID-16A0CF02-F8C1-40C2-9C99-B7851C0B7A4D"><span class="notelabel">NOTE: </span>Your I/O Aggregator
+device must have a Fibre Channel module (Flex FC IOM or FN2210S) installed
+to view and configure Fabric-Services (FPORT) and NPIV Proxy Gateway.</div></td></tr></tbody>
+</table>
+<p>For FIP Snooping Bridge (FCoE):</p>
+<ul id="GUID-3289C27D-57DB-4ABE-ABA5-E6E019A5DC34">
+<li><b>Fibre Channel Mode</b>  Displays FIP Snooping
+Bridge (FCoE).</li>
+<li><b>FCoE VLAN List</b>  Displays IDs of FCoE VLANs
+that pass storage traffic.</li>
+<li><b>FCoE Forwarders</b>  Displays number of FCoE Forwarders
+that act as an Ethernet and FC switch combined.</li>
+<li><b>End Nodes</b>  Displays the list of ENodes (FCoE initiators)
+that request a session.</li>
+<li><b>FIP Snooping Sessions</b>  Displays number of
+FIP snooping sessions.</li>
+</ul>
+<p>For NPIV Proxy Gateway (NPG):</p>
+<ul id="GUID-2B610A53-6045-4540-801E-062E4D18DF52">
+<li><b>Fibre Channel Mode</b>  Displays NPIV Proxy Gateway
+(NPG).</li>
+<li><b>FC Switch WWN</b>  Displays the 64bit World
+Wide Name that uniquely identifies each component in the Fibre Channel
+switch network.</li>
+</ul>
+<p>For Fabric-Services (FPORT):</p>
+<ul id="GUID-6DB2B13A-EF93-463D-AC11-1DAA7E4318FD">
+<li><b>Fibre Channel Mode</b>  Displays Fabric Services
+(FPORT).</li>
+<li><b>FC Switch WWN</b>  Displays the 64bit World
+Wide Name that uniquely identifies each component in the Fibre Channel
+switch network.</li>
+<li><b>Domain ID</b></li>
+<li><b>Zoning</b>  Displays whether zoning is enabled
+and configured.</li>
+<li><b>Active Zoneset</b>  Displays the active zone
+set. A zone set consists of multiple zones.</li>
+<li><b>Number of Zones</b>  Displays number of zones
+present in the active zoneset. Zones create functional areas within
+a SAN and prevent unauthorized access</li>
+<li><b>Default Zone</b>  Displays the default zone.</li>
+</ul>
+<p>From this section you can:<ul id="GUID-2A477B63-2B6E-4D41-8492-85CD12F9D13F">
+<li><a data-scope="local" href="GUID-DB1E4580-8F94-4282-ADA3-C7BDD02B1CFE.html" title="">Edit the Fibre Channel
+mode</a></li>
+<li><a data-scope="local" href="GUID-889C8B09-5ABA-4E34-9D82-3D49CB496910.html" title="">View Fibre Channel
+details</a></li>
+<li><a data-scope="local" href="GUID-AFC06D69-D630-48FF-BCE5-999097FE5B24.html" title="">Configure zoning</a></li>
+</ul></p>
+</article></div></section><div id="leftbar"><ul class="tabs"><li class="currentli"><a class="current toc" href="#"><span>Contents</span></a></li><li><a class="search" href="#"><span>Search</span></a></li></ul><form id="searchform"><div class="holdsearch"><input class="search" type="text" placeholder="Search" /></div><input class="submit" type="submit" value="Go" /></form><nav class="toc current"><div class="loader"><img src="static/loader.gif" alt="Loading" /></div></nav><nav class="search"><div class="results"><span>No search has been performed.</span></div><a id="search-toc-link" href="#" /><span>Contents</span></a></nav></div><script src="static/body.js?A110oA/m"></script></body></html>

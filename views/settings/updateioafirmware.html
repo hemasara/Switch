@@ -1,0 +1,14 @@
+<section>
+    <h3>{{'SETTINGS_Firmware_Section'|translate}}</h3>
+    <p check-access>{{'SETTINGS_Firmware_Description'|translate}} <a id="lnkEditFirmwareSettings" class="hidden" ng-click="actions.edit_settings_firmware_modal()"><i class="ci ci-action-updates-core text-primary"></i>{{'GENERIC_Update'|translate}}</a></p>
+    <dl class="dl-horizontal dataList">
+        <dt>{{'SETTINGS_FactoryDefaults_Version'|translate}}</dt>
+        <dd>{{viewmodel.firmware.systemfwversion}}</dd>
+        <dt>{{'SETTINGS_Firmware_BootFlash'|translate}}</dt>
+        <dd>{{viewmodel.firmware.bootflashversion}}</dd>
+        <dt>{{'SETTINGS_Firmware_BootSelector'|translate}}</dt>
+        <dd>{{viewmodel.firmware.bootselectorversion}}</dd>
+        <dt>{{'SETTINGS_Firmware_CPLD'|translate}}</dt>
+        <dd>{{viewmodel.firmware.cpldversion}}</dd>
+    </dl>
+</section>

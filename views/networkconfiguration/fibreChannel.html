@@ -1,0 +1,92 @@
+<section ng-controller="FibreChannelSectionController">
+
+
+    <!--    content if in any other mode but pmux-->
+    <div id="fibreChannelNotPMUX" ng-show="$root.ioaMode != 'programmable-mux' && $root.ioaMode != 'stack' && $root.ioaMode != 'full switch'">
+        <h3>{{'PORTCONFIGURATION_FibreChannel'|translate}}</h3>
+        <p>{{'NETWORKCONFIGURATION_Fibre_Description'|translate}}</p>
+        <dl class="dl-horizontal dataList">
+            <dt>{{'NETWORKCONFIGURATION_FibreChannelMode'|translate}}</dt>
+            <dd>
+                <span ng-if="viewmodel.fibreChannelSettings.mode == 'fsb'">FIP Snooping Bridge (FcoE)</span>
+                <span ng-if="viewmodel.fibreChannelSettings.mode == 'npg'">NPIV Proxy Gateway (NPG)</span>
+                <span ng-if="viewmodel.fibreChannelSettings.mode == 'fport'">Fabric Services (FPORT)</span>
+                <span ng-if="viewmodel.fibreChannelSettings.mode == 'disabled'">Disabled</span>
+                <a id="lnkEditFC" check-access ng-click="actions.edit_fibreChannel_modal()"><i class="glyphicon glyphicon-edit"></i>{{'GENERIC_Edit'|translate}}</a>
+            </dd>
+        </dl>
+
+        <h4 ng-if="viewmodel.fibreChannelSettings.mode == 'fsb'">FIP</h4>
+        <dl ng-if="viewmodel.fibreChannelSettings.mode == 'fsb'" class="dl-horizontal dataList">
+            <dt>FCoE VLAN List</dt>
+            <dd>{{(viewmodel.fibreChannelSettings['fcoe-vlans'] | map:'vlan').join(', ')}}
+            </dd>
+            <dt>FCoE Forwarders</dt>
+            <dd>{{viewmodel.fibreChannelSettings['fcoe-forwarders-cnt']}}</dd>
+            <dt>End Nodes</dt>
+            <dd>{{viewmodel.fibreChannelSettings['enode-cnt']}}</dd>
+            <dt>FIP Snooping Sessions</dt>
+            <dd>{{viewmodel.fibreChannelSettings['session-cnt']}}</dd>
+            <dt><a id="lnkShowFIPModal" check-access class="btn btn-link" ng-click="actions.show_fip_modal()"> {{'GENERIC_ViewDetails'|translate}}</a>
+            </dt>
+            <dd></dd>
+        </dl>
+
+        <h4 ng-if="viewmodel.fibreChannelSettings.mode == 'npg'">Fibre Channel</h4>
+        <dl ng-if="viewmodel.fibreChannelSettings.mode == 'npg'" class="dl-horizontal dataList">
+            <dt>FC Switch WWN</dt>
+            <dd>{{viewmodel.fibreChannelSettings['fc-switch-wwn']}}</dd>
+            <dt><a id="lnkShowNPGModal" check-access class="btn btn-link" ng-click="actions.show_npg_modal()"> {{'GENERIC_ViewDetails'|translate}}</a>
+            </dt>
+            <dd></dd>
+        </dl>
+
+        <h4 ng-if="viewmodel.fibreChannelSettings.mode == 'fport'">Fibre Channel</h4>
+        <dl ng-if="viewmodel.fibreChannelSettings.mode == 'fport'" class="dl-horizontal dataList">
+            <dt>FC Switch WWN</dt>
+            <dd>{{viewmodel.fibreChannelSettings['fc-switch-wwn']}}</dd>
+            <dt>Domain ID</dt>
+            <dd>{{viewmodel.fibreChannelSettings['domain-id']}}</dd>
+            <dt><a  id="lnkShowFPORTModalNameservers" check-access class="btn btn-link" ng-click="actions.show_fport_modal('nameservers')"> {{'GENERIC_ViewDetails'|translate}}</a>
+            </dt>
+            <dd></dd>
+            <dt>Zoning</dt>
+            <dd ng-if="viewmodel.fibreChannelSettings['zoning'] == 'Configured'">{{'GENERIC_Configured'|translate}}</dd>
+            <dd ng-if="viewmodel.fibreChannelSettings['zoning'] == 'Not Configured'">{{'GENERIC_NotConfigured'|translate}}</dd>
+            <dt>Active Zoneset</dt>
+            <dd>{{viewmodel.fibreChannelSettings['active-zone-set']}}</dd>
+            <dt>Number of Zones</dt>
+            <dd>{{viewmodel.fibreChannelSettings['no-of-zones']}}</dd>
+            <dt>Default Zone</dt>
+            <dd>{{viewmodel.fibreChannelSettings['default-zone']}}</dd>
+            <dt><a  id="lnkShowFPORTModalZoning" check-access class="btn btn-link" ng-click="actions.show_fport_modal('zoning')"> {{'GENERIC_ViewDetails'|translate}}</a>
+            </dt>
+            <dd></dd>
+        </dl>
+
+    </div>
+
+
+
+    <!--content if in pmux-->
+    <div id="fibreChannelPMUX" ng-show="$root.ioaMode == 'programmable-mux'">
+        <h3>{{'PORTCONFIGURATION_FibreChannel'|translate}}</h3>
+        <p style="font-style: italic;">{{'NETWORKCONFIGURATION_PMUX_Mode_Msg'|translate}}</p>
+    </div>
+
+    <!--content if in stack-->
+    <div id="fibreChannelStack" ng-show="$root.ioaMode == 'stack'">
+        <h3>{{'PORTCONFIGURATION_FibreChannel'|translate}}</h3>
+        <p style="font-style: italic;">{{'NETWORKCONFIGURATION_Stack_Mode_Msg'|translate}}</p>
+    </div>
+
+    <!--content if in full switch-->
+    <div id="fibreChannelFullswitch" ng-show="$root.ioaMode == 'full switch'">
+        <h3>{{'PORTCONFIGURATION_FibreChannel'|translate}}</h3>
+        <p style="font-style: italic;">{{'NETWORKCONFIGURATION_FULLSWITCH_Mode_Msg'|translate}}</p>
+    </div>
+
+</section>
+
+
+

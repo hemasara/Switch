@@ -1,0 +1,36 @@
+<div id="modal_HostName">
+    <div id="edithostname-errors"></div>
+    <form name="hostnameForm" novalidate>
+        <div class="form-horizontal">
+            {{'DASHBOARD_HostName_Description'|translate}}
+            <br />
+            <br />
+            <br />
+            <div class="form-group">
+                <label class="col-md-4">{{'DASHBOARD_HostName_HostName'|translate}}</label>
+                <div class="col-md-8">
+                    <ul class="list-unstyled list-inline">
+                        <li>
+                            <input id="hostname" type="text" name="hostname" class="" ng-model="viewmodel.ioaProperties.hostName" placeholder="hostName" required ng-minlength="1" ng-maxlength="32" maxlength="32"/>
+                            <div ng-messages="hostnameForm.hostname.$error" ng-messages-include="views/messages.html"></div>
+                        </li>
+                        <li>
+                            <label class="">{{'DASHBOARD_HostName_HostNameRange'|translate}}</label>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+        <br />
+        <footer>
+            <ul class="list-unstyled list-inline text-right">
+                <li>
+                    <button id="btnSaveHostname" ng-disabled="hostnameForm.$invalid" type="button" class="btn btn-primary" ng-click="actions.save()">{{'GENERIC_Apply'|translate}}</button>
+                </li>
+                <li>
+                    <button id="btnCancelHostname" type="button" class="btn btn-default" ng-click="actions.cancel()">{{'GENERIC_Cancel'|translate}}</button>
+                </li>
+            </ul>
+        </footer>
+    </form>
+</div>

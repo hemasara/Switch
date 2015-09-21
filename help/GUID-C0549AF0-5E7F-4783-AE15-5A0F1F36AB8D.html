@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="en-us"><head><!-- saved from url=(0014)about:internet -->
+<meta charset="utf-8" /><meta name="viewport" content="width=device-width" /><title>Configuring
+Authentication</title><link rel="prev" href="GUID-F96B74C4-EC99-4D0B-8611-74FB36B7EB09.html" /><link rel="next" href="GUID-ED5BF96D-6532-4944-90C2-BDF0E8694D82.html" /><link href="static/screen.css?AKIYKnLS" rel="stylesheet" /><link href="static/print.css?w+agwgAC" media="print" rel="stylesheet" /><script src="static/head.js?qUF72lF0"></script><link rel="shortcut icon" href="static/favicon.ico" /></head><body id="GUID-C0549AF0-5E7F-4783-AE15-5A0F1F36AB8D" data-approot=""><header><div class="inner"><a id="logo-link" href="index.html" /><img id="logo" src="static/logo.png" alt="Logo" /></a><div class="title-text">Dell Blade I/O Manager</div></div></header><div id="breadcrumbs"></div><section id="center"><div id="scroller"><nav id="topnav"><div id="topbuttons"><a id="button-highlighting" href="#" title="Toggle Highlighting"><span>Toggle Highlighting</span></a><a id="button-hide-navigation" href="#" title="Toggle navigation"><span>Toggle navigation</span></a><a id="button-print" href="#" title="Print Topic"><span>Print Topic</span></a><a id="button-print-all" title="Print All"><span>Print All</span></a></div></nav><article><div id="thumbnailDialog"></div><h1>Configuring
+Authentication</h1><p>You can configure authentication settings in
+the <b>Security</b> page.</p>
+<div class="context" id="GUID-B4A418DA-0D93-4EB5-B4E3-49E15BB905F5">These settings
+control management access to the I/O Aggregator device.<div class="note" id="GUID-633E3E26-9399-43D0-908E-2824A888130F_unique_2"><span class="notelabel">NOTE: </span>You can only view and
+configure these settings for M1000e and FN IOA devices in standalone
+or VLT mode.</div></div>
+<ol class="steps" id="GUID-469A6B70-7031-4507-9F37-04EFEDAC86B5">
+<li><p>From the navigation menu, click <b>Security</b>.</p></li>
+<li><p>In the AAA section, click <b>Edit</b>.</p>
+The <b>AAA settings</b> dialog box appears.
+</li>
+<li><p>Make sure that the <b>Authentication</b> tab
+is selected and click <b>Edit</b>.</p>
+The <b>Edit Authentication Profile</b> dialog
+box appears.
+</li>
+<li><p>In the Authentication Login Profile section,
+configure the AAA Authentication methods for user access to EXEC mode.
+Select from the following authentication methods you want to enable
+in the <b>Optional Methods</b> box and use the <b>&gt;</b> button to
+move them into the <b>Selected Methods</b> box:</p>
+<ul id="GUID-AACE6A70-ACA8-4FDE-9877-B3E08DB5D385">
+<li><b>Line</b>  Use the password the <code>password</code> command defines in LINE mode.</li>
+<li><b>Enable</b>  Use the password the <code>enable</code> password command defines in CONFIGURATION mode.</li>
+<li><b>TACACS+</b>  Use configured TACACS+ servers.</li>
+<li><b>None</b>  No authentication.</li>
+<li><b>Local</b>  Use the local device authorization
+server.</li>
+<li><b>RADIUS</b>  Use configured RADIUS servers.</li>
+</ul>
+<div class="note" id="GUID-2EF46D2A-FA93-45F2-B1F7-02D559E21A9D"><span class="notelabel">NOTE: </span>You can click <b>Clear Methods</b> to clear all selections from the <b>Selected Methods</b> box.</div>
+</li>
+<li><p>In the Authentication Enable Profile section,
+configure the AAA Authentication methods for user access to EXEC privilege
+mode (the Enable access). Select from the following authentication
+methods you want to enable in the <b>Optional Methods</b> box and
+use the <b>&gt;</b> button to move them into the <b>Selected Methods</b> box:</p>
+<ul id="GUID-4EADE607-9FE4-45AB-94BE-C05818008197">
+<li><b>Line</b>  Use the password the <code>password</code> command defines in LINE mode.</li>
+<li><b>Enable</b>  Use the password the <code>enable</code> password command defines in CONFIGURATION mode.</li>
+<li><b>TACACS+</b>  Use configured TACACS+ servers.</li>
+<li><b>None</b>  No authentication.</li>
+<li><b>Local</b>  Use the local device authorization
+server.</li>
+<li><b>RADIUS</b>  Use configured RADIUS servers.</li>
+</ul>
+<div class="note" id="GUID-487FADFF-13C6-40F8-9D4D-92FA97EDEBB4"><span class="notelabel">NOTE: </span>You can click <b>Clear Methods</b> to clear all selections from the <b>Selected Methods</b> box.</div>
+</li>
+<li><p>Click <b>Apply</b>.</p>
+Your selections appear on the <b>Authentication</b> tab.
+</li>
+<li><p> To close the <b>AAA settings</b> dialog box,
+click <b>Close</b>.</p></li>
+</ol>
+</article></div></section><div id="leftbar"><ul class="tabs"><li class="currentli"><a class="current toc" href="#"><span>Contents</span></a></li><li><a class="search" href="#"><span>Search</span></a></li></ul><form id="searchform"><div class="holdsearch"><input class="search" type="text" placeholder="Search" /></div><input class="submit" type="submit" value="Go" /></form><nav class="toc current"><div class="loader"><img src="static/loader.gif" alt="Loading" /></div></nav><nav class="search"><div class="results"><span>No search has been performed.</span></div><a id="search-toc-link" href="#" /><span>Contents</span></a></nav></div><script src="static/body.js?A110oA/m"></script></body></html>

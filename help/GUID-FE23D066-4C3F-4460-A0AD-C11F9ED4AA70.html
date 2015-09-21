@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="en-us"><head><!-- saved from url=(0014)about:internet -->
+<meta charset="utf-8" /><meta name="viewport" content="width=device-width" /><title>Configuring
+Mode Settings</title><link rel="prev" href="GUID-E59F4065-D10E-4A1A-B2D3-64E77D1B471C.html" /><link rel="next" href="GUID-A8F0A7AA-3F7E-445B-BE22-48A9166E7B4F.html" /><link href="static/screen.css?AKIYKnLS" rel="stylesheet" /><link href="static/print.css?w+agwgAC" media="print" rel="stylesheet" /><script src="static/head.js?qUF72lF0"></script><link rel="shortcut icon" href="static/favicon.ico" /></head><body id="GUID-FE23D066-4C3F-4460-A0AD-C11F9ED4AA70" data-approot=""><header><div class="inner"><a id="logo-link" href="index.html" /><img id="logo" src="static/logo.png" alt="Logo" /></a><div class="title-text">Dell Blade I/O Manager</div></div></header><div id="breadcrumbs"></div><section id="center"><div id="scroller"><nav id="topnav"><div id="topbuttons"><a id="button-highlighting" href="#" title="Toggle Highlighting"><span>Toggle Highlighting</span></a><a id="button-hide-navigation" href="#" title="Toggle navigation"><span>Toggle navigation</span></a><a id="button-print" href="#" title="Print Topic"><span>Print Topic</span></a><a id="button-print-all" title="Print All"><span>Print All</span></a></div></nav><article><div id="thumbnailDialog"></div><h1>Configuring
+Mode Settings</h1><p>On the Mode Settings of the Initial Setup
+Wizard, you select an I/O Aggregator device operational mode.</p>
+<ol class="steps" id="GUID-E6F9109A-F6F2-4FE6-AD8A-60CD733B036C">
+<li><p>If not already done, from the Welcome screen,
+click <b>Next</b>.</p>
+The Mode Settings screen appears.
+</li>
+<li><p>Select one of the following modes:</p>
+<ul id="GUID-ADC43D4C-46F5-4F76-B872-A98E0443401E">
+<li><b>Standalone Mode (default)</b>  Default mode
+of the I/O Aggregator device. In this mode, all ports are configured
+as members of all VLANs. All VLANs are up and can send or receive
+Layer 2 traffic.</li>
+<li><b>Stack Mode</b>  Multiple switches operate
+as single unit. A single switch in the stack (Master switch) manages
+all units in the stack and uses a single IP address that you can use
+to manage every port in the stack.</li>
+<li><b>VLT Mode</b>  Virtual Link Trunking. VLT enables
+physical links between two chassis to appear as a single virtual link
+to the network core or other switches such as Edge, Access or ToR.
+VLT reduces the role of Spanning Tree protocols by allowing LAG terminations
+on two separate distribution or core switches, and by supporting a
+loop free topology. VLT institutes Layer 2 multipathing, creating
+redundancy through increased bandwidth, enabling multiple parallel
+paths between nodes and load-balancing traffic where alternative paths
+exist.</li>
+<li><b>Programmable MUX Mode</b>  Programmable multiplex
+mode. This mode provides flexibility of operation with added configurability.
+This mode creates multiple LAGs, configuring VLANs on uplinks and
+the server side, and configuring data center bridging (DCB) parameters.
+Programmable MUX mode supports both stacking and VLT operations.</li>
+<li><b>Full-switch Mode</b>  All commands and configurations
+supported on MXL available in this mode. This mode offers Layer 2/Layer
+3 switching functionalities on the Dell FX2 chassis.<div class="note" id="GUID-CF0D19E8-CA58-4BEC-A5B6-490047CDE6E8"><span class="notelabel">NOTE: </span>This mode is only available
+for FN IOA for FX2 chassis devices.</div></li>
+</ul>
+(Standalone, Stack, and VLT Modes for MIOA for
+M1000e chassis devices only). You can also select <b>Enable Quadport</b> to configure solitary QSFP+ 40 G ports into four 10 G ports.
+</li>
+<li><p>(Stack Mode only) In the Stacking Unit area,
+from the <b>Unit</b> drop-down menu, select a unit from 05.</p>
+<div class="note" id="GUID-70F3202A-E8C5-4523-8FEF-F3D325F8C047"><span class="notelabel">NOTE: </span>This number is the factory-assigned unit number, not a priority number.</div>
+</li>
+<li><p>Click <b>Next</b>. The next wizard screen depends
+on the device and device mode:</p>
+<ul id="GUID-AB6D5F41-5024-4F0B-804B-BCB51EC98A4F">
+<li>For FN2210S SKU FN IOA for FX2 chassis devices
+in all modes except programmable multiplex, proceed to the Combo Port
+screen.</li>
+<li>For MIOA for M1000e chassis devices, FN410S SKU
+and FN410T SKU FN IOA for FX2 chassis devices in programmable multiplex
+mode, or FN MXL devices screen proceed to the Network Settings screen.</li>
+</ul>
+</li>
+</ol>
+</article></div></section><div id="leftbar"><ul class="tabs"><li class="currentli"><a class="current toc" href="#"><span>Contents</span></a></li><li><a class="search" href="#"><span>Search</span></a></li></ul><form id="searchform"><div class="holdsearch"><input class="search" type="text" placeholder="Search" /></div><input class="submit" type="submit" value="Go" /></form><nav class="toc current"><div class="loader"><img src="static/loader.gif" alt="Loading" /></div></nav><nav class="search"><div class="results"><span>No search has been performed.</span></div><a id="search-toc-link" href="#" /><span>Contents</span></a></nav></div><script src="static/body.js?A110oA/m"></script></body></html>

@@ -1,0 +1,68 @@
+<div class="navbar navbar-inverse clarity">
+    <!--Set height in clarity navbar styling will prevent collapsable navbar from expanding.-->
+    <div class="container-fluid">
+        <div id="navHover" class="navbar-header">
+            <span class="navbar-brand">
+                <i class="ci ci-deployment-core"></i>
+                {{'ApplicationTitle'|translate}}
+            </span>
+            <div class="nav navbar-nav" ng-if="!hideTopNav">
+                <omp-menu menu-items="menuItems"></omp-menu>
+            </div>
+            <button id="btnToggleNav" ng-if="!hideTopNav" type="button" class="navbar-toggle navbar-nav collapsed" data-toggle="collapse" data-target="#navbar" aria-expanded="false" aria-controls="navbar">
+                <span class="sr-only">Toggle navigation</span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+            </button>
+        </div>
+
+        <ul id="navbar" class="nav navbar-nav navbar-right navbar-collapse collapse" style="list-style-type: none; margin-right: 10px;">
+            <li ng-if="!hideSearch">
+                <global-search></global-search>
+            </li>
+            <li ng-if="!hideAlerts">
+                <global-alerts></global-alerts>
+            </li>
+
+            <!--            <li style="line-height: 50px;">
+                <ul class="list-unstyled list-inline" style="color: #fff;">
+                    <li ng-if="data.errors > 0">
+                        <button id="btnOpenLogs" style="padding: 5px 7px; color: #fff;" class="btn dropdown-toggle userButton customButton" ng-click="openLogs()">
+                            <i style="margin-right: 6px" class="glyphicon glyphicon-flag" />
+                            <span>{{data.errors}}</span>
+                        </button>
+                    </li>
+                </ul>
+            </li>-->
+
+            <li style="line-height: 50px;">
+                <button id="btnCurrentUser" style="padding: 5px 7px; color: #fff;" type="button" class="btn dropdown-toggle userButton customButton" data-toggle="dropdown" aria-expanded="false">
+                    <i class='ci ci-nav-user-core' size='14px'></i>{{data.CurrentUser}}
+                </button>
+                <ul class="arrowright dropdown-menu" role="menu">
+                    <!--<span class="arrow-up"></span>-->
+                    <li><a id="lnkMastheadLogout" ng-click="logout()">{{'GENERIC_Logout'|translate}}</a></li>
+                    <li check-access><a id="lnkMastheadReboot" ng-click="rebootIOA()">{{'MASTHEAD_RebootIOA'|translate}}</a></li>
+                </ul>
+            </li>
+            <!--            <li style="line-height: 50px;">
+                <button id="btnOpenSettings" check-access ng-click="openSettings()" style="padding: 5px 7px; color: #fff;" type="button" class="btn dropdown-toggle userButton customButton" data-toggle="dropdown" aria-expanded="false">
+                    <i class="ci ci-nav-settings-core"></i>
+                </button>
+            </li>-->
+            <li style="line-height: 50px;">
+                <button id="btnHelp" style="padding: 5px 7px 4px 7px; text-decoration: none;" class="btn btn-link customButton" data-toggle="dropdown">
+                    <i style="margin-right: 0px; position: relative; top: 2px; font-size: 16px; color: #fff;" class="ci ci-nav-help-core"></i>
+                </button>
+                <ul class="arrowright dropdown-menu" role="menu">
+                    <!--<span class="arrow-up"></span>-->
+                    <li><a id="lnkMastheadOpenAbout" ng-click="actions.openAbout()">{{'GENERIC_About'|translate}}</a></li>
+                    <li><a id="lnkMastheadOpenHelp" ng-click="actions.openHelp()">{{'GENERIC_Help'|translate}}</a></li>
+                </ul>
+            </li>
+        </ul>
+    </div>
+</div>
+
+

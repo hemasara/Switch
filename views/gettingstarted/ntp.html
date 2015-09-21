@@ -1,0 +1,70 @@
+<!--<form class="form-horizontal">-->
+<ng-form name="viewmodel.wizardNTP.form" class="form-horizontal" novalidate>
+
+    <h2>{{'GETTINGSTARTEDWIZARD_NTP'|translate}}</h2>
+    <p>{{'SETTINGS_NTP_Modal_Description'|translate}}</p>
+
+<div id="ntp-errors"></div>
+    <div class="form-group">
+        <label class="col-xs-4 control-label">{{'GENERIC_TimeZone'|translate}}</label>
+<!--
+        <span ng-if="viewmodel.wizardNTP.ntp=='enabled'">
+            <div class="col-xs-8">
+                <select id="selectTimezone" class="form-control" ng-model="viewmodel.wizardNTP.timezoneid" data-ng-options="tz.id as tz.name for tz in viewmodel.wizardNTP.timezones" required>
+                </select>
+            </div>
+        </span>
+        <span ng-if="viewmodel.wizardNTP.ntp!='enabled'">
+            <div class="col-xs-8">
+                <select id="select1" class="form-control" ng-model="viewmodel.wizardNTP.timezoneid" data-ng-options="tz.id as tz.name for tz in viewmodel.wizardNTP.timezones">
+                </select>
+            </div>
+        </span>
+-->
+        <span>
+            <div class="col-xs-8">
+                <select id="selectTimezone" class="form-control" ng-model="viewmodel.wizardNTP.ntpvalues.timezoneid" data-ng-options="tz.id as tz.name for tz in viewmodel.wizardNTP.timezones">
+                </select>
+            </div>
+        </span>
+    </div>
+    
+    <div class="form-group">
+        <label class="col-xs-4 control-label">{{'SETTINGS_NTP_Modal_EnableNTP'|translate}}</label>
+        <div class="col-xs-8">
+            <input id="chkNTP" type="checkbox" value="enabled" ng-model="viewmodel.wizardNTP.ntpvalues.ntp"
+                ng-true-value="'enabled'" ng-false-value="'disabled'">
+        </div>
+    </div>
+    
+    <div class="form-group" ng-if="viewmodel.wizardNTP.ntpvalues.ntp=='enabled'">
+        <label class="col-xs-4 control-label">
+            {{'SETTINGS_NTP_Modal_PreferredNTP'|translate}}
+        </label>
+        <div class="col-xs-8" ng-if="viewmodel.wizardNTP.ntpvalues.ntp=='enabled'">
+            <input id="ntpserver1" name="ntpserver1" type="text" placeholder="required" value="{{viewmodel.wizardNTP.ntpvalues.server1}}" ng-model="viewmodel.wizardNTP.ntpvalues.server1" ip-validator required/>
+            <div ng-show="viewmodel.wizardNTP.form.ntpServer1.$dirty" ng-messages="viewmodel.wizardNTP.form.ntpServer1.$error" ng-messages-include="views/messages.html"></div>
+        </div>
+    </div>
+
+    <div class="form-group" ng-if="viewmodel.wizardNTP.ntpvalues.ntp!='enabled'">
+        <label class="col-xs-4 control-label">
+            {{'SETTINGS_NTP_Modal_PreferredNTP'|translate}}
+        </label>
+        <div class="col-xs-8" ng-if="viewmodel.wizardNTP.ntpvalues.ntp!='enabled'">
+            <input id="ntpserver1NotRequired" name="ntpserver1NotRequired" name="ntpserver1disable" type="text" placeholder="192.168.2.1" value="{{viewmodel.wizardNTP.ntpvalues.server1}}" ng-model="viewmodel.wizardNTP.ntpvalues.server1" ip-validator />
+            <div ng-show="viewmodel.wizardNTP.form.ntpServer1disable.$dirty" ng-messages="viewmodel.wizardNTP.form.ntpServer1disable.$error" ng-messages-include="views/messages.html"></div>
+        </div>
+    </div>
+
+    <div class="form-group">
+        <label class="col-xs-4 control-label">
+            {{'SETTINGS_NTP_Modal_SecondaryNTP'|translate}}   
+        </label>
+        <div class="col-xs-8">
+            <input id="ntpserver2" type="text" placeholder="192.168.2.1" value="{{viewmodel.wizardNTP.server2}}" ng-model="viewmodel.wizardNTP.server2" ip-validator/>
+            <div ng-show="viewmodel.wizardNTP.form.ntpserver2.$dirty" ng-messages="viewmodel.wizardNTP.form.ntpserver2.$error" ng-messages-include="views/messages.html"></div>
+        </div>
+    </div>
+
+</ng-form>

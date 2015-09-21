@@ -1,0 +1,74 @@
+<div id="modal_TacacsSettings">
+    <div class="form-horizontal">
+        {{'SECURITY_TacacsSettings_Description'|translate}}
+        <br />
+        <br />
+        <form name="tacacsForm">
+            <div class="form-group">
+                <label class="col-md-4">{{'GENERIC_Source'|translate}}</label>
+                <div class="col-md-8" ng-init="viewmodel.newTacacs.isSourceIp = true">
+                    <div class="col-md-3">
+                        <div class="radio">
+                            <label>
+                                <input id="radioSourceIPTrue" type="radio" ng-model="viewmodel.newTacacs.isSourceIp" ng-value="true" />
+                                {{'GENERIC_IpAddress'|translate}}
+                            </label>
+                        </div>
+                    </div>
+                    <div class="col-md-3">
+                        <div class="radio">
+                            <label>
+                                <input id="radioSourceIPFalse" type="radio" ng-model="viewmodel.newTacacs.isSourceIp" ng-value="false" />
+                                {{'DASHBOARD_HostName_HostName'|translate}}
+                            </label>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="form-group">
+                <label class="col-md-4">{{'SECURITY_SourceIPOrHost'|translate}}</label>
+                <div class="col-md-6">
+                    <input id="sourcehostname" ng-if="viewmodel.newTacacs.isSourceIp == false" name="hostname" type="text" class="form-control" ng-model="viewmodel.newTacacs.source" placeholder="hostname"  ng-maxlength="64"/>
+                    <div ng-show="tacacsForm.hostname.$dirty" ng-messages="tacacsForm.hostname.$error" ng-messages-include="views/messages.html"></div>
+                    <input id="source" ng-if="viewmodel.newTacacs.isSourceIp == true" name="sourceIp" type="text" class="form-control" ng-model="viewmodel.newTacacs.source" placeholder="192.168.2.1" ip-validator />
+                    <div ng-show="tacacsForm.sourceIp.$dirty" ng-messages="tacacsForm.sourceIp.$error" ng-messages-include="views/messages.html"></div>
+                </div>
+                <span class="help-inline text-left" ng-if="viewmodel.newTacacs.isSourceIp == true"><span class="help-block">{{'SECURITY_Radius_SourceIPEx'|translate}}</span></span>
+                <span class="help-inline text-left" ng-if="viewmodel.newTacacs.isSourceIp == false"><span class="help-block">{{'SECURITY_Radius_HostNameEx'|translate}}</span></span>
+            </div>
+            <div class="form-group">
+                <label class="col-md-4">{{'SECURITY_Radius_KeyString'|translate}}</label>
+                <div class="col-md-6">
+                    <input stopccp id="keystring"  name="keystring" type="password" class="form-control" ng-model="viewmodel.newTacacs.keystring" placeholder="" ng-maxlength="42" />
+		    <div ng-show="tacacsForm.keystring.$dirty" ng-messages="tacacsForm.keystring.$error" ng-messages-include="views/messages.html"></div>
+                </div>
+                <span class="help-inline text-left"><span class="help-block">{{'SECURITY_Range042Characters'|translate}}</span></span>
+            </div>
+            <div class="form-group">
+                <label class="col-md-4">{{'SECURITY_TCPPort'|translate}}</label>
+                <div class="col-md-6">
+                    <input id="tcpport" type="number" class="form-control" ng-init="viewmodel.newTacacs.tcpPort = 49" ng-model="viewmodel.newTacacs.tcpPort" placeholder="49" min="1" max="65535" />
+                </div>
+                <span class="help-inline text-left"><span class="help-block">{{'SECURITY_Range165535'|translate}}</span></span>
+            </div>
+            <div class="form-group">
+                <label class="col-md-4">{{'SECURITY_Radius_Timeout'|translate}}</label>
+                <div class="col-md-6">
+                    <input id="timeout" type="number" class="form-control" ng-init="viewmodel.newTacacs.timeOut = 10" ng-model="viewmodel.newTacacs.timeOut" placeholder="10" min="1" max="1000"/>
+                </div>
+                <span class="help-inline text-left"><span class="help-block">{{'SECURITY_Range11000'|translate}}</span></span>
+            </div>
+            <br />
+            <footer>
+                <ul class="list-unstyled list-inline text-right">
+                    <li>
+                        <button ng-disabled="!tacacsForm.$valid" id="btnSaveAddTACACS" type="button" class="btn btn-primary" ng-click="actions.save()">{{'GENERIC_Apply'|translate}}</button>
+                    </li>
+                    <li>
+                        <button id="btnCancelAddTACAS" type="button" class="btn btn-default" ng-click="actions.cancel()">{{'GENERIC_Cancel'|translate}}</button>
+                    </li>
+                </ul>
+            </footer>
+        </form>
+    </div>
+</div>

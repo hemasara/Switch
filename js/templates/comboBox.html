@@ -1,0 +1,72 @@
+<div>
+    <div class="row">
+        <div class="col-xs-3">
+            <h5><strong>{{optionsTitle}}</strong>
+                <span ng-if="optionsTooltip == true" data-toggle="tooltip" data-placement="auto top" title="{{optionsTooltipText}}">
+                    <i class="ci ci-state-info2-core text-primary" aria-hidden="true"></i>
+                </span>
+            </h5>
+            <div class="panel panel-default" style="border: 1px solid #aaa; padding: 5px; height: 180px;">
+                <ul class="list-unstyled" ng-repeat="row in allOptions" ng-model="allOptions">
+                    <li ng-click="toggleSelected(row)" ng-class="{ highlight: row.selected, disabledText: row.disabled }" style="cursor: pointer;">
+                        <strong ng-if="row.selected">{{row.name}}</strong>
+                        <span ng-if="!row.selected">{{row.name}}</span>
+                    </li>
+                </ul>
+            </div>
+
+            <!--<select id="selectOptions" class="col-xs-12" multiple="true" size="6" ng-model="selectedOptions" ng-options="item for item in availOptions"></select>-->
+        </div>
+        <div class="col-xs-1" style="padding-left: 0;">
+            <label>&nbsp;</label>
+            <table>
+                <tr>
+                    <td>&nbsp;
+                    </td>
+                </tr>
+                <tr>
+                    <td>&nbsp;
+                    </td>
+                </tr>
+                <tr>
+                    <td class="btn btn-link" style="text-decoration: none;">
+                        <i class="hover ci ci-expndr-chev-side1-thick-core" ng-click="swapToSelection()"
+                            ng-disabled="!optionsSelected()" ng-class="{disabledText: !optionsSelected()}"></i>
+                    </td>
+                </tr>
+                <tr>
+                    <td>&nbsp;</td>
+                </tr>
+                <tr>
+                    <td>&nbsp;</td>
+                </tr>
+                <tr>
+                    <td class="btn btn-link" style="text-decoration: none;">
+                        <i class="hover ci ci-expndr-chev-side2-thick-core" style="float: left" ng-click="swapToOptions()"
+                            ng-disabled="!selectionsSelected()" ng-class="{ disabledText: !selectionsSelected() }"></i>
+                    </td>
+                </tr>
+                <tr>
+                    <td>&nbsp;
+                    </td>
+                </tr>
+            </table>
+        </div>
+        <div class="col-xs-3">
+            <h5><strong>{{selectionTitle}}</strong>
+                <span ng-if="selectionTooltip == true" data-toggle="tooltip" data-placement="auto top" title="{{scope.selectionTooltipText}}">
+                    <i class="ci ci-state-info2-core text-primary" aria-hidden="true"></i>
+                </span>
+            </h5>
+            <div class="panel panel-default" style="border: 1px solid #aaa; padding: 5px; height: 180px;">
+                <ul class="list-unstyled" ng-repeat="row in allSelections" ng-model="allSelections">
+                    <li ng-click="toggleSelected(row)" ng-class="{ highlight: row.selected, disabledText: row.disabled }" style="cursor: pointer;">
+                        <strong ng-if="row.selected">{{row.name}}</strong>
+                        <span ng-if="!row.selected">{{row.name}}</span>
+                    </li>
+                </ul>
+            </div>
+            <!--<select id="selectedOptions" class="col-xs-12" multiple="true" size="6" ng-model="selectedSelections" ng-options="item for item in selection"></select>-->
+        </div>
+    </div>
+</div>

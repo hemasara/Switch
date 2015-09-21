@@ -1,0 +1,45 @@
+<section id="aaa-authentication">
+    <br />
+    <a id="linkOpenEditAuth" ng-click="actions.openEditAuthenticationModal()" ng-if="!data.readOnly">
+        <i class="glyphicon glyphicon-edit"></i>{{'GENERIC_Edit'|translate}} 
+    </a>
+    <div class="row">
+        <div class="col-sm-12" style="overflow: hidden; -ms-text-overflow: ellipsis; -o-text-overflow: ellipsis; text-overflow: ellipsis; white-space: nowrap; text-wrap: none">
+            <br />
+            <!-- Authentication Login Profile -->
+            <h4 style="font-weight: bold;">{{'SECURITY_AuthenticationLoginProfile'|translate}}</h4>
+            <p>{{'GENERIC_Name'|translate}}: <strong>{{viewmodel.aaa.authentication.loginName}}</strong></p>
+            <div class="row">
+                <div class="col-xs-3">
+                    <p>{{'SECURITY_SelectedMethods'|translate}}</p>
+                </div>
+                <div class="col-xs-3">
+                    <p ng-if="viewmodel.aaa.authentication.loginMethods && viewmodel.aaa.authentication.loginMethods.length > 0">
+                        <strong>{{viewmodel.aaa.authentication.loginMethods | joinBy:', '}}</strong>
+                    </p>
+                    <p ng-if="!viewmodel.aaa.authentication.loginMethods || viewmodel.aaa.authentication.loginMethods.length == 0">
+                        <strong>{{'GENERIC_NotConfigured'|translate}}</strong>
+                    </p>
+                </div>
+            </div>
+            <br />
+            <br />
+            <!-- Authentication Enable Profile -->
+            <h4 style="font-weight: bold;">{{'SECURITY_AuthenticationEnableProfile'|translate}}</h4>
+            <p>{{'GENERIC_Name'|translate}}: <strong>{{viewmodel.aaa.authentication.enableName}}</strong></p>
+            <div class="row">
+                <div class="col-xs-3">
+                    <p>{{'SECURITY_SelectedMethods'|translate}}</p>
+                </div>
+                <div class="col-xs-3">
+                    <p ng-if="viewmodel.aaa.authentication.enableMethods && viewmodel.aaa.authentication.enableMethods.length > 0">
+                        <strong>{{viewmodel.aaa.authentication.enableMethods | joinBy:', '}}</strong>
+                    </p>
+                    <p ng-if="!viewmodel.aaa.authentication.enableMethods || viewmodel.aaa.authentication.enableMethods.length == 0">
+                        <strong>{{'GENERIC_NotConfigured'|translate}}</strong>
+                    </p>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>

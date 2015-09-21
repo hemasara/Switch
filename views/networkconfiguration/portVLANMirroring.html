@@ -1,0 +1,38 @@
+<section ng-controller="PortVLANMirroringSectionController">
+
+    <!--    content if in any other mode but pmux-->
+    <div id="portVLANMirroringNotPMUX" ng-show="$root.ioaMode != 'programmable-mux' && $root.ioaMode != 'stack' && $root.ioaMode != 'full switch'">
+
+        <h3>{{'NETWORKCONFIGURATION_PortMirroring'|translate}}</h3>
+        <p>Select internal ports to monitor and mirror to a destination port.</p>
+        <dl class="dl-horizontal dataList">
+            <dt>Number of Configured Sessions</dt>
+            <dd>
+                <span>{{viewmodel.vlanMirrorSettings.session.length}}</span>
+                <a check-access id="lnkEditVLANMirroring" ng-click="actions.view_VLANMirroring_Modal()">{{'GENERIC_ViewDetails'|translate}}</a>
+            </dd>
+        </dl>
+    </div>
+
+    <!--content if in pmux-->
+    <div id="portVLANMirroringPMUX" ng-show="$root.ioaMode == 'programmable-mux'">
+        <h3>{{'NETWORKCONFIGURATION_PortMirroring'|translate}}</h3>
+        <p style="font-style: italic;">{{'NETWORKCONFIGURATION_PMUX_Mode_Msg'|translate}}</p>
+    </div>
+
+    <!--content if in full siwtch-->
+    <div id="portVLANMirroringFullswitch" ng-show="$root.ioaMode == 'full switch'">
+        <h3>{{'NETWORKCONFIGURATION_PortMirroring'|translate}}</h3>
+        <p style="font-style: italic;">{{'NETWORKCONFIGURATION_FULLSWITCH_Mode_Msg'|translate}}</p>
+    </div>
+
+    <!--content if in stack-->
+    <div id="portVLANMirroringStack" ng-show="$root.ioaMode == 'stack'">
+        <h3>{{'NETWORKCONFIGURATION_PortMirroring'|translate}}</h3>
+        <p style="font-style: italic;">{{'NETWORKCONFIGURATION_Stack_Mode_Msg'|translate}}</p>
+    </div>
+
+</section>
+
+
+

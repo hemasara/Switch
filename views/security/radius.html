@@ -1,0 +1,25 @@
+<section ng-controller="RadiusController">
+    <h3>{{'SECURITY_Radius_Title'|translate}}
+        <a style="font-weight: normal; font-size: 14px; float: right;" id="linkViewRadiusDetails" ng-click="actions.edit_radiussettings_modal(true)">{{'GENERIC_ViewDetails'|translate}}
+                </a>
+    </h3>
+    <p check-access>{{'SECURITY_Radius_Description'|translate}} <a id="lnkEditRadiusSettings" ng-click="actions.edit_radiussettings_modal()"><i class="glyphicon glyphicon-edit text-primary"></i>{{'GENERIC_Edit'|translate}}</a></p>
+    <div class="row">
+        <div class="col-xs-4">
+            <p style="font-weight: bold">{{'SECURITY_ServerConfigured'|translate}}</p>
+        </div>
+        <div class="col-xs-4">
+            <span>{{data.radiusData.noServersConfigured}} of {{data.radiusData.totalNoServers}}</span>&nbsp;&nbsp;&nbsp
+        </div>
+    </div>
+
+    <div class="row">
+        <div class="col-xs-4">
+            <p style="font-weight: bold">{{'SECURITY_Radius_DeadTime'|translate}}</p>
+        </div>
+        <div class="col-xs-4">
+            <span>{{data.radiusData.deadTime}}</span>
+        </div>
+    </div>
+    <br />
+</section>

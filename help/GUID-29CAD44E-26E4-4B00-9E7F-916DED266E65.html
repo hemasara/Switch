@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="en-us"><head><!-- saved from url=(0014)about:internet -->
+<meta charset="utf-8" /><meta name="viewport" content="width=device-width" /><title>Editing the
+Active IOA Mode</title><link rel="prev" href="GUID-5A9E7A1E-953F-4D67-9E73-E3DBCCBEC574.html" /><link rel="next" href="GUID-E31F52E6-3B1D-454A-A6A9-FA42C9C7EA5A.html" /><link href="static/screen.css?AKIYKnLS" rel="stylesheet" /><link href="static/print.css?w+agwgAC" media="print" rel="stylesheet" /><script src="static/head.js?qUF72lF0"></script><link rel="shortcut icon" href="static/favicon.ico" /></head><body id="GUID-29CAD44E-26E4-4B00-9E7F-916DED266E65" data-approot=""><header><div class="inner"><a id="logo-link" href="index.html" /><img id="logo" src="static/logo.png" alt="Logo" /></a><div class="title-text">Dell Blade I/O Manager</div></div></header><div id="breadcrumbs"></div><section id="center"><div id="scroller"><nav id="topnav"><div id="topbuttons"><a id="button-highlighting" href="#" title="Toggle Highlighting"><span>Toggle Highlighting</span></a><a id="button-hide-navigation" href="#" title="Toggle navigation"><span>Toggle navigation</span></a><a id="button-print" href="#" title="Print Topic"><span>Print Topic</span></a><a id="button-print-all" title="Print All"><span>Print All</span></a></div></nav><article><div id="thumbnailDialog"></div><h1>Editing the
+Active IOA Mode</h1><p>From the <b>Dashboard</b> page you can edit
+the operational mode of the I/O Aggregator device.</p>
+<ol class="steps" id="GUID-4DD5ACD7-5284-4202-8E30-0A102D5A4C13">
+<li><p>From the navigation menu, select <b>Dashboard</b>.</p>
+The <b>Dashboard</b> page appears.
+</li>
+<li><p>In the IOA Information Properties section,
+select <b>Edit</b> in the <b>Active IOA Mode</b> field.</p>
+The <b>Mode Settings</b> dialog box appears.
+</li>
+<li><p>In the IOA Operational Mode section, select
+the new mode:</p>
+<ul id="GUID-ADC43D4C-46F5-4F76-B872-A98E0443401E_unique_1">
+<li><b>Standalone Mode (default)</b>  Default mode
+of the I/O Aggregator device. In this mode, all ports are configured
+as members of all VLANs. All VLANs are up and can send or receive
+Layer 2 traffic.</li>
+<li><b>Stack Mode</b>  Multiple switches operate
+as single unit. A single switch in the stack (Master switch) manages
+all units in the stack and uses a single IP address that you can use
+to manage every port in the stack.</li>
+<li><b>VLT Mode</b>  Virtual Link Trunking. VLT enables
+physical links between two chassis to appear as a single virtual link
+to the network core or other switches such as Edge, Access or ToR.
+VLT reduces the role of Spanning Tree protocols by allowing LAG terminations
+on two separate distribution or core switches, and by supporting a
+loop free topology. VLT institutes Layer 2 multipathing, creating
+redundancy through increased bandwidth, enabling multiple parallel
+paths between nodes and load-balancing traffic where alternative paths
+exist.</li>
+<li><b>Programmable MUX Mode</b>  Programmable Multiplex
+mode. This mode provides flexibility of operation with added configurability.
+This mode creates multiple LAGs, configuring VLANs on uplinks and
+the server side, and configuring data center bridging (DCB) parameters.
+Programmable MUX mode supports both stacking and VLT operations. You
+can make any configuration or provisioning of the device through the
+CLI.</li>
+<li><b>Full Switch </b> All commands and configurations
+supported on MXL available in this mode. This mode offers Layer 2/Layer 3
+switching functionalities on the Dell FX2 chassis.<div class="note" id="GUID-CF0D19E8-CA58-4BEC-A5B6-490047CDE6E8_unique_1"><span class="notelabel">NOTE: </span>This mode is only available
+for FN IOA for FX2 chassis devices.</div></li>
+</ul>
+</li>
+<li><p>(Standalone, Stack, and VLT Modes for MIOA
+for M1000e chassis devices only) In the Quadport Mode section, select <b>Enable Quadport</b> to configure solitary QSFP+ 40 G ports into four
+10 G ports.</p></li>
+<li><p>(Stack mode only) In the Stacking Unit area,
+from the <b>Unit</b> drop-down menu, select a unit from 05.</p>
+</li>
+<li><p>Click <b>Apply</b>.</p></li>
+<li><p>Reboot the I/O Aggregator device.</p>
+<div class="note" id="GUID-B3D41CD0-C946-4579-8C20-89CBFCEEE927"><span class="notelabel">NOTE: </span>After you reboot the I/O Aggregator device, the selected active IOA
+mode might not remain the one previously selected.</div>
+</li>
+</ol>
+</article></div></section><div id="leftbar"><ul class="tabs"><li class="currentli"><a class="current toc" href="#"><span>Contents</span></a></li><li><a class="search" href="#"><span>Search</span></a></li></ul><form id="searchform"><div class="holdsearch"><input class="search" type="text" placeholder="Search" /></div><input class="submit" type="submit" value="Go" /></form><nav class="toc current"><div class="loader"><img src="static/loader.gif" alt="Loading" /></div></nav><nav class="search"><div class="results"><span>No search has been performed.</span></div><a id="search-toc-link" href="#" /><span>Contents</span></a></nav></div><script src="static/body.js?A110oA/m"></script></body></html>

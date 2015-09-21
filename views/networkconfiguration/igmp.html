@@ -1,0 +1,36 @@
+<section ng-controller="IGMPSectionController">
+
+    <!--    content if in any other mode but pmux-->
+    <div id="igmpNotPMUX" ng-if="$root.ioaMode != 'programmable-mux' && $root.ioaMode != 'full switch'">
+        <h3>{{'NETWORKCONFIGURATION_IGMP'|translate}}</h3>
+        <p check-access ng-if="$root.ioaMode != 'stack' && $root.ioaMode != 'full switch'">
+            {{'NETWORKCONFIGURATION_IGMP_Description'|translate}} 
+            <a id="lnkEditIGMP" ng-click="actions.edit_IGMP_modal()">
+                <i class="glyphicon glyphicon-edit text-primary"></i>{{'GENERIC_Edit'|translate}}
+            </a>
+        </p>
+        <dl class="dl-horizontal dataList">
+            <dt>{{'NETWORKCONFIGURATION_IGMP_Snooping'|translate}}</dt>
+            <dd ng-if="viewmodel.igmpSettings.igmpSnooping == 'enabled'">{{'GENERIC_Enabled'|translate}}</dd>
+            <dd ng-if="viewmodel.igmpSettings.igmpSnooping == 'disabled'">{{'GENERIC_Disabled'|translate}}</dd>
+            <dt>{{'NETWORKCONFIGURATION_IGMP_FloodRestrict'|translate}}</dt>
+            <dd ng-if="viewmodel.igmpSettings.igmpFloodRestrict == 'enabled'">{{'GENERIC_Enabled'|translate}}</dd>
+            <dd ng-if="viewmodel.igmpSettings.igmpFloodRestrict == 'disabled'">{{'GENERIC_Disabled'|translate}}</dd>
+        </dl>
+        <br />
+        <br />
+    </div>
+
+    <!--    content if in  pmux-->
+    <div id="vlanAssignmentPMUX" ng-show="$root.ioaMode == 'programmable-mux'">
+        <h3>{{'NETWORKCONFIGURATION_IGMP'|translate}}</h3>
+        <p style="font-style: italic;">{{'NETWORKCONFIGURATION_PMUX_Mode_Msg'|translate}}</p>
+    </div>
+
+    <!--    content if in  full switch-->
+    <div id="vlanAssignmentFullswitch" ng-show="$root.ioaMode == 'full switch'">
+        <h3>{{'NETWORKCONFIGURATION_IGMP'|translate}}</h3>
+        <p style="font-style: italic;">{{'NETWORKCONFIGURATION_FULLSWITCH_Mode_Msg'|translate}}</p>
+    </div>
+
+</section>

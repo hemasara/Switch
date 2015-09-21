@@ -1,0 +1,138 @@
+<ng-form name="viewmodel.wizardModeSettings.form" class="form-horizontal">
+
+    <h2>{{'DASHBOARD_ModeSettings_Title'|translate}}</h2>
+    <p>{{'DASHBOARD_ModeSettings_Description'|translate}}</p>
+    
+    <!--this is the section for M100e-->
+    <div class="row" ng-if="$root.model != 'FNIOA'">
+        <div class="col-sm-6">
+            <div class="radio form-group">
+                <label>
+                    <input type="radio" name="radioModeSettings" id="radioStandaloneMode" value="standalone" ng-model="viewmodel.wizardModeSettings.ioaMode"/>
+                    {{'SETTINGS_GlobalSettings_Modal_Mode'|translate}}
+                </label>
+            </div>
+            <div class="radio form-group" ng-if="$root.modelName != 'Dell PowerEdge FN 2210S IOM'">
+                <label>
+                    <input type="radio" name="radioModeSettings" id="radioStackMode" value="stack" ng-model="viewmodel.wizardModeSettings.ioaMode" />
+                    {{'SETTINGS_GlobalSettings_Modal_StackMode'|translate}}
+                </label>
+                <span ng-if="$root.model == 'FNIOA'" data-toggle="tooltip" data-placement="top" title="{{'DASHBOARD_ModeSettings_StackModeInfo'|translate}}">
+                    <i class="ci ci-state-info2-core text-primary" aria-hidden="true"></i>
+                </span>
+                 <span ng-if="$root.model != 'FNIOA'" data-toggle="tooltip" data-placement="top" title="{{'DASHBOARD_ModeSettings_StackModeInfoM100e'|translate}}">
+                    <i class="ci ci-state-info2-core text-primary" aria-hidden="true"></i>
+                </span>
+            </div>
+
+            <div class="radio form-group">
+                <label>
+                    <input type="radio" name="radioModeSettings" id="radioVLTMode" value="vlt" ng-model="viewmodel.wizardModeSettings.ioaMode" />
+                    {{'SETTINGS_GlobalSettings_Modal_VLT'|translate}}
+                </label>
+                <span data-toggle="tooltip" data-placement="top" title="{{'DASHBOARD_ModeSettings_VLTModeInfo'|translate}}">
+                    <i class="ci ci-state-info2-core text-primary" aria-hidden="true"></i>
+                </span>
+            </div>
+            <div class="radio form-group">
+                <label>
+                    <input type="radio" name="radioModeSettings" id="radioProgMUXMode" ng-model="viewmodel.wizardModeSettings.ioaMode" value="programmable-mux" />
+                    {{'SETTINGS_GlobalSettings_Modal_MuxMode'|translate}}
+                </label>
+                <span data-toggle="tooltip" data-placement="auto top" title="{{'DASHBOARD_ModeSettings_ProgMUXModeInfo'|translate}}">
+                    <i class="ci ci-state-info2-core text-primary" aria-hidden="true"></i>
+                </span>
+            </div>
+        </div>
+    </div>
+
+    <!--<div class="form-group" ng-if="$root.model != 'MXL'" ng-class="{ disabledText: !viewmodel.wizardModeSettings.ioaMode || viewmodel.wizardModeSettings.ioaMode =='programmable-mux' || viewmodel.wizardModeSettings.ioaMode =='full switch'}">
+    -->
+    <!--<div class="form-group" ng-if="$root.model == 'MIOA'" ng-class="{ disabledText: !viewmodel.wizardModeSettings.ioaMode || viewmodel.wizardModeSettings.ioaMode =='programmable-mux' || viewmodel.wizardModeSettings.ioaMode =='full switch'}">
+    -->
+    <div class="form-group" ng-if="$root.modelName == 'DELL I/O Aggregator'" ng-class="{ disabledText: !viewmodel.wizardModeSettings.ioaMode || viewmodel.wizardModeSettings.ioaMode =='programmable-mux' || viewmodel.wizardModeSettings.ioaMode =='full switch'}">
+        <h3 class="control-label">{{'PORTCONFIGURATION_QuadportMode'|translate}}
+            <span data-toggle="tooltip" data-placement="top" title="{{'DASHBOARD_ModeSettings_QuadportInfo'|translate}}">
+                        <i class="ci ci-state-info2-core text-primary" style="font-size:14px;" aria-hidden="true"></i>
+                    </span>
+        </h3>
+        <br />
+        <div class="form-group">
+            <ul class="list-inline col-xs-12">
+                <li>
+                    <span>{{'GETTINGSTARTEDWIZARD_Enable_Quadport'|translate}}&nbsp;</span>
+                </li>
+                <li>
+                    <input id="QuadPortCheckbox3" type="checkbox" ng-true-value="'true'" ng-false-value="'false'" name="enableQuadport"
+                        ng-model="viewmodel.wizardModeSettings.portQuad"
+                        ng-disabled="!viewmodel.wizardModeSettings.ioaMode || viewmodel.wizardModeSettings.ioaMode =='programmable-mux' || viewmodel.wizardModeSettings.ioaMode =='full switch'" />
+                </li>
+            </ul>
+        </div>
+    </div>
+
+    <!--this is the section for FX2-->
+    <div class="row" ng-if="$root.model == 'FNIOA'">
+        <div class="col-sm-6">
+            <div class="radio form-group">
+                <label>
+                    <input type="radio" name="radioModeSettings" id="radioIOAStandalone" value="standalone" ng-model="viewmodel.wizardModeSettings.ioaMode" checked />
+                    {{'SETTINGS_GlobalSettings_Modal_Mode'|translate}}
+                </label>
+            </div>
+            <div class="radio form-group" ng-if="$root.modelName != 'Dell PowerEdge FN 2210S IOM'">
+                <label>
+                    <input type="radio" name="radioModeSettings" id="radioIOAStack" value="stack" ng-model="viewmodel.wizardModeSettings.ioaMode" />
+                    {{'SETTINGS_GlobalSettings_Modal_StackMode'|translate}}
+                </label>
+                <span data-toggle="tooltip" data-placement="top" title="{{'DASHBOARD_ModeSettings_StackModeInfo'|translate}}">
+                    <i class="ci ci-state-info2-core text-primary" aria-hidden="true"></i>
+                </span>
+            </div>
+            <div class="radio form-group">
+                <label>
+                    <input type="radio" name="radioModeSettings" id="radioIOAVLT" value="vlt" ng-model="viewmodel.wizardModeSettings.ioaMode" />
+                    {{'SETTINGS_GlobalSettings_Modal_VLT'|translate}}
+                </label>
+                <span data-toggle="tooltip" data-placement="top" title="{{'DASHBOARD_ModeSettings_VLTModeInfo'|translate}}">
+                    <i class="ci ci-state-info2-core text-primary" aria-hidden="true"></i>
+                </span>
+            </div>
+            <div class="radio form-group">
+                <label>
+                    <input type="radio" name="radioModeSettings" id="radioIOAFull" value="full switch" ng-model="viewmodel.wizardModeSettings.ioaMode" />
+                    {{'SETTINGS_GlobalSettings_Modal_FullSwitch'|translate}}
+                </label>
+                <span data-toggle="tooltip" data-placement="auto right" title="{{'DASHBOARD_ModeSettings_FullSwitchModeInfo'|translate}}">
+                    <i class="ci ci-state-info2-core text-primary" aria-hidden="true"></i>
+                </span>
+            </div>
+            <div class="radio form-group">
+                <label>
+                    <input type="radio" name="radioModeSettings" id="radioIOAPMUX" value="programmable-mux" ng-model="viewmodel.wizardModeSettings.ioaMode" />
+                    {{'SETTINGS_GlobalSettings_Modal_MuxMode'|translate}}
+                </label>
+                <span data-toggle="tooltip" data-placement="auto right" title="{{'DASHBOARD_ModeSettings_ProgMUXModeInfo'|translate}}">
+                    <i class="ci ci-state-info2-core text-primary" aria-hidden="true"></i>
+                </span>
+            </div>
+        </div>
+    </div>
+
+    <br />
+
+    <!--stacking unit edit box-->
+    <div class="form-group" ng-class="{ disabledText: !viewmodel.wizardModeCurrentSettings.ioaMode || viewmodel.wizardModeCurrentSettings.ioaMode != 'stack'}" ng-if="$root.modelName != 'Dell PowerEdge FN 2210S IOM'">
+        <h3 class="control-label">{{'DASHBOARD_ModeSettings_StackingUnit'|translate}}</h3>
+        <div class="col-xs-2">{{'DASHBOARD_ModeSettings_Unit'|translate}}</div>
+        <div class="col-xs-4" ng-init="viewmodel.wizardModeSettings.stackingUnit = 0">
+            <select id="selectGSWStackingUnit" class="form-control" ng-model="viewmodel.wizardModeSettings.stackingUnit" ng-options="n for n in data.stackingUnitOptions"
+                ng-disabled="viewmodel.wizardModeCurrentSettings.ioaMode != 'stack'">
+            </select>
+        </div>
+        <span class="help-inline">
+            <span class="help-block">{{'DASHBOARD_ModeSettings_UnitRange'|translate}}</span>
+        </span>
+    </div>
+    
+</ng-form>

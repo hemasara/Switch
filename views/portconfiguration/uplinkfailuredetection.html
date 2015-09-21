@@ -1,0 +1,13 @@
+<section ng-controller="UplinkFailureDetectionController">
+    <div>
+        <h3>{{'PORTCONFIGURATION_UplinkFailure'|translate}}</h3>
+        <p check-access ng-if="$root.ioaMode == 'standalone' || $root.ioaMode == 'vlt'">{{'PORTCONFIGURATION_UplinkeFailure_Description'|translate}} <a id="lnkEditUFD" ng-click="actions.edit_uplinkfailuredetection_modal()"><i class="glyphicon glyphicon-edit text-primary"></i>{{'GENERIC_Edit'|translate}}</a></p>
+        <dl class="dl-horizontal dataList">
+            <dt>{{'GETTINGSTARTEDWIZARD_UFD'|translate}}</dt>
+            <dd ng-if="viewmodel.uplinksettings.upFailureDetection == 'enabled'">{{'GENERIC_Enabled'|translate}}</dd>
+            <dd ng-if="viewmodel.uplinksettings.upFailureDetection == 'disabled'">{{'GENERIC_Disabled'|translate}}</dd>
+            <dt></dt>
+            <dd ng-if="viewmodel.uplinksettings.upFailureDetection == 'enabled'">{{'PORTCONFIGURATION_UFD_DeferTimer'|translate}} {{viewmodel.uplinksettings.deferTime}} {{'PORTCONFIGURATION_sec'|translate}}</dd>
+        </dl>
+    </div>
+</section>

@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="en-us"><head><!-- saved from url=(0014)about:internet -->
+<meta charset="utf-8" /><meta name="viewport" content="width=device-width" /><title>Configuring
+Port Settings</title><link rel="prev" href="GUID-20FDA9CB-F3C7-42E9-8B16-1DE58DB5AEC7.html" /><link rel="next" href="GUID-B6C267D9-3E62-419D-B071-5D04E817D13A.html" /><link href="static/screen.css?AKIYKnLS" rel="stylesheet" /><link href="static/print.css?w+agwgAC" media="print" rel="stylesheet" /><script src="static/head.js?qUF72lF0"></script><link rel="shortcut icon" href="static/favicon.ico" /></head><body id="GUID-B97E5FBD-9348-494F-9578-94ECD67B2D33" data-approot=""><header><div class="inner"><a id="logo-link" href="index.html" /><img id="logo" src="static/logo.png" alt="Logo" /></a><div class="title-text">Dell Blade I/O Manager</div></div></header><div id="breadcrumbs"></div><section id="center"><div id="scroller"><nav id="topnav"><div id="topbuttons"><a id="button-highlighting" href="#" title="Toggle Highlighting"><span>Toggle Highlighting</span></a><a id="button-hide-navigation" href="#" title="Toggle navigation"><span>Toggle navigation</span></a><a id="button-print" href="#" title="Print Topic"><span>Print Topic</span></a><a id="button-print-all" title="Print All"><span>Print All</span></a></div></nav><article><div id="thumbnailDialog"></div><h1>Configuring
+Port Settings</h1><p>From the Port Settings section of the <b>Port
+Configuration</b> page, you can configure port settings on the I/O
+Aggregator device.</p>
+<div class="context" id="GUID-10B2136F-0952-4708-8C18-6109446382B9"><div class="note" id="GUID-9F71F394-B560-48DB-84E1-7A7161A8D304_unique_3"><span class="notelabel">NOTE: </span>You can only configure
+these settings for M1000e and FN IOA devices in standalone or VLT
+mode.</div><div class="note tip" id="GUID-3566FE49-3C97-441C-BB7D-FBECA3CFCAD9"><span class="notelabel">TIP: </span>You can click <b>View Port Configurations</b> to view all
+currently configured port settings.</div></div>
+<ol class="steps" id="GUID-AF3CC0DA-4F19-4C60-A29B-082DE59045B9_unique_1">
+<li><p>From the navigation menu, click <b>Port Configuration</b>.</p>
+The <b>Port Configuration</b> page appears.
+</li>
+<li><p>From the <b>Interface</b> drop-down menu, you
+can select one of the following filters:</p>
+<ul id="GUID-6A43D92D-C2EF-40A4-B7F2-58218FD1F3E8">
+<li><b>All Ports</b></li>
+<li><b>Internal Ports</b></li>
+<li><b>External Ports</b></li>
+<li><b>Custom Range</b></li>
+<li><b>Individual port number</b></li>
+</ul>
+</li>
+<li><p>If you select <b>Custom Range</b> in step
+2, in the <b>Port Range</b> field, enter the ports in the range. Separate
+individual ports with a comma. You can use a dash to denote a range. For
+example: 1,2,68.</p>
+The <b>Interface(s) Selected</b> field displays
+the selected interface types with chassis slot and port number
+</li>
+<li><p> In the <b>Interface Description</b> field,
+enter a description of the interface. The maximum description length
+is 240 alphanumeric characters.</p></li>
+<li><p>In the <b>Administrative State</b> field, select <b>Enabled</b> or <b>Disabled</b>. If enabled, the port can link to
+another port.</p></li>
+<li><p>In the <b>Auto Negotiation</b> field, select <b>Enabled</b> or <b>Disabled</b>. Autonegotiation allows two devices
+at either end of a 10 Mbps, 100 Mbps, or 1000 Mbps link to advertise
+and negotiate the link operational mode  such as the speed of the
+link and the duplex configuration of half or full duplex  to the
+highest common denominator. If you select <b>Enabled</b>, skip to
+step 8. </p>
+<div class="note" id="GUID-B9873487-D5CB-45FE-B49D-FA060846A6E8"><span class="notelabel">NOTE: </span>Autonegotiation is not available for QSFP+ ports.</div>
+</li>
+<li><p>From the <b>Speed</b> drop-down menu, select
+the port speed.</p>
+<div class="note" id="GUID-F6F92AB0-AFC9-4FFC-8A1F-8FD396988DE1"><span class="notelabel">NOTE: </span>This setting is not available if you enabled autonegotiation.</div>
+The <b>MTU (bytes)</b> field displays the Maximum
+Transmission Unit setting for the Ethernet interface in bytes from
+594 to 12000. This setting is the limit for the largest packet that
+can be passed through the interface.<div class="note" id="GUID-F371C27E-08BD-4FAD-B40F-6D08B0775668"><span class="notelabel">NOTE: </span>This setting is not
+available for fibre channel ports.</div>
+</li>
+<li><p>In the <b>Remote Fault Signaling</b> field,
+select <b>Enabled</b> or <b>Disabled</b>.</p></li>
+<li><p>In the <b>Keep Alive</b> field, select <b>Enabled</b> or <b>Disabled</b>.</p></li>
+<li><p>Click <b>Apply</b>.</p></li>
+</ol>
+</article></div></section><div id="leftbar"><ul class="tabs"><li class="currentli"><a class="current toc" href="#"><span>Contents</span></a></li><li><a class="search" href="#"><span>Search</span></a></li></ul><form id="searchform"><div class="holdsearch"><input class="search" type="text" placeholder="Search" /></div><input class="submit" type="submit" value="Go" /></form><nav class="toc current"><div class="loader"><img src="static/loader.gif" alt="Loading" /></div></nav><nav class="search"><div class="results"><span>No search has been performed.</span></div><a id="search-toc-link" href="#" /><span>Contents</span></a></nav></div><script src="static/body.js?A110oA/m"></script></body></html>

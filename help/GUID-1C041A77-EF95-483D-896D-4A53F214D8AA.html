@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="en-us"><head><!-- saved from url=(0014)about:internet -->
+<meta charset="utf-8" /><meta name="viewport" content="width=device-width" /><title>Configuring
+Uplink Failure Detection (Port Configuration Page) </title><link rel="prev" href="GUID-9D3BB50A-A6D0-4689-BD88-9B8859A172D4.html" /><link rel="next" href="GUID-25599849-65F7-4332-8119-AB37AC4EC79A.html" /><link href="static/screen.css?AKIYKnLS" rel="stylesheet" /><link href="static/print.css?w+agwgAC" media="print" rel="stylesheet" /><script src="static/head.js?qUF72lF0"></script><link rel="shortcut icon" href="static/favicon.ico" /></head><body id="GUID-1C041A77-EF95-483D-896D-4A53F214D8AA" data-approot=""><header><div class="inner"><a id="logo-link" href="index.html" /><img id="logo" src="static/logo.png" alt="Logo" /></a><div class="title-text">Dell Blade I/O Manager</div></div></header><div id="breadcrumbs"></div><section id="center"><div id="scroller"><nav id="topnav"><div id="topbuttons"><a id="button-highlighting" href="#" title="Toggle Highlighting"><span>Toggle Highlighting</span></a><a id="button-hide-navigation" href="#" title="Toggle navigation"><span>Toggle navigation</span></a><a id="button-print" href="#" title="Print Topic"><span>Print Topic</span></a><a id="button-print-all" title="Print All"><span>Print All</span></a></div></nav><article><div id="thumbnailDialog"></div><h1>Configuring
+Uplink Failure Detection (Port Configuration Page) </h1><p>Uplink Failure Detection (UFD) provides detection
+of the loss of upstream connectivity. If there is a link failure,
+the I/O Aggregator device disables downlink interfaces. </p>
+<div class="context" id="GUID-DD29B471-633F-41D8-A3EC-EDF198AD285E_unique_1"><div class="note" id="GUID-9F71F394-B560-48DB-84E1-7A7161A8D304_unique_4"><span class="notelabel">NOTE: </span>You can only configure
+these settings for M1000e and FN IOA devices in standalone or VLT
+mode.</div>You can configure this feature the Initial
+Setup Wizard. But if you need to change its configuration afterwards,
+you can enable or disable UFD from the <b>Port Configuration</b> page.</div>
+<ol class="steps" id="GUID-E6F9109A-F6F2-4FE6-AD8A-60CD733B036C_unique_7">
+<li><p>From the navigation menu, click <b>Port Configuration</b>.</p></li>
+<li><p>In the Uplink Failure Detection (UFD) section,
+click <b>Edit</b>.</p>
+The <b>Uplink Failure Detection</b> dialog
+box appears.
+</li>
+<li><p>To configure uplink failure detection, select <b>Enabled</b> or select <b>Disabled</b> to disable it.</p></li>
+<li><p>If you select <b>Enabled</b>, configure a timer
+setting that prevents unwanted flapping of downstream ports when the
+uplink port channel goes down and comes up. The configured value in
+seconds is how long the device waits for the upstream port channel
+(LAG 128) to come back up before it disables the server ports. Select
+one of the following:</p>
+<ul id="GUID-811E179C-2523-4379-B6B4-BDF6F6E747F1_unique_1">
+<li><b>Default Defer Timer (10 sec)</b> <div class="note" id="GUID-F1C7D969-CC7D-48EF-B004-ED4397AC41E6"><span class="notelabel">NOTE: </span>If you select this
+setting, if the uplink goes down, the device disables the downlink
+within 10 seconds.</div></li>
+<li><b>Custom Defer Timer</b> (enter a setting in
+seconds from 0 to 100)</li>
+</ul>
+</li>
+<li><p>Click <b>Apply</b>.</p></li>
+</ol>
+</article></div></section><div id="leftbar"><ul class="tabs"><li class="currentli"><a class="current toc" href="#"><span>Contents</span></a></li><li><a class="search" href="#"><span>Search</span></a></li></ul><form id="searchform"><div class="holdsearch"><input class="search" type="text" placeholder="Search" /></div><input class="submit" type="submit" value="Go" /></form><nav class="toc current"><div class="loader"><img src="static/loader.gif" alt="Loading" /></div></nav><nav class="search"><div class="results"><span>No search has been performed.</span></div><a id="search-toc-link" href="#" /><span>Contents</span></a></nav></div><script src="static/body.js?A110oA/m"></script></body></html>

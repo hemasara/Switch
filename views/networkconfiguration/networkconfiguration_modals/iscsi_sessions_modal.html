@@ -1,0 +1,99 @@
+<div id="iscsiSessionsModal">
+    <div id="iscsi-errors"></div>
+    <p>{{'NETWORKCONFIGURATION_iSCSISessions_Modal_Description'|translate}}</p>
+
+    <div class="form-horizontal">
+        <br />
+
+        <ul class="list-unstyled list-inline">
+            <li>
+                <p class="form-control-static">Filter By:</p>
+            </li>
+            <li>
+                <select id="select1" class="form-control pull-left" ng-model="data.filterOption">
+                    <option value="">{{'GENERIC_All'|translate}}</option>
+                    <option value="target">{{'GENERIC_Target'|translate}}</option>
+                    <option value="initiator">{{'GENERIC_Initiator'|translate}}</option>
+                </select>
+            </li>
+        </ul>
+
+        <br />
+
+        <table class="table table-condensed">
+            <thead>
+                <tr>
+                    <th>&nbsp;</th>
+                    <th>{{'GENERIC_Session'|translate}}</th>
+                    <th>{{'GENERIC_Target'|translate}}</th>
+                    <th>{{'GENERIC_Initiator'|translate}}</th>
+                    <th>{{'NETWORKCONFIGURATION_ISID'|translate}}</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr ng-repeat-start="row in viewmodel.iscsiSessionSettings.sessions | orderBy: data.filterOption" ng-class-odd="" ng-class-even="'alt'">
+                    <td>
+                        <button id="btnISCSISession{{$index}}" class="btn btn-link text-primary collapsed" type="button" data-toggle="collapse" data-target="#session{{$index}}" aria-expanded="false" aria-controls="session{{$index}}">
+                            <i class="glyphicon glyphicon-plus-sign"></i>
+                            <i class="glyphicon glyphicon-minus-sign"></i>
+                        </button>
+                    </td>
+                    <td>{{row.id}}
+                    </td>
+                    <td>{{row.target}}
+                    </td>
+                    <td>{{row.initiator}}
+                    </td>
+                    <td>{{row.isid}}
+                    </td>
+                </tr>
+                <tr ng-repeat-end class="collapse" id="session{{$index}}" ng-class-odd="" ng-class-even="'alt'">
+                    <td colspan="5">
+                        <div class="">
+                            <dl class="dl-horizontal dataList">
+                                <dt>{{'GENERIC_Target'|translate}}</dt>
+                                <dd>{{row.target}}</dd>
+                                <dt>{{'NETWORKCONFIGURATION_iSCSI_Initiator'|translate}}</dt>
+                                <dd>{{row.initiator}}</dd>
+                                <dt>{{'NETWORKCONFIGURATION_iSCSI_UpTime'|translate}}</dt>
+                                <dd>{{row['up-time']}}</dd>
+                                <dt>{{'NETWORKCONFIGURATION_iSCSI_TimeAging'|translate}}</dt>
+                                <dd>{{row['time-for-aging']}}</dd>
+                                <dt>{{'NETWORKCONFIGURATION_iSCSI_ISID'|translate}}</dt>
+                                <dd>{{row.isid}}</dd>
+                            </dl>
+                            <div ng-repeat="conn in row.connections">
+                                <hr />
+                                <dl class="dl-horizontal dataList">
+                                    <dt>{{'NETWORKCONFIGURATION_iSCSI_ConnectionID'|translate}}</dt>
+                                    <dd>{{conn['connection-id']}}</dd>
+                                    <dt>{{'NETWORKCONFIGURATION_iSCSI_InitiatorIP'|translate}}</dt>
+                                    <dd>{{conn['initiator-ip']}}</dd>
+                                    <dt>{{'NETWORKCONFIGURATION_iSCSI_InitiatorTCP'|translate}}</dt>
+                                    <dd>{{conn['initiator-port']}}</dd>
+                                    <dt>{{'NETWORKCONFIGURATION_iSCSI_TargetIP'|translate}}</dt>
+                                    <dd>{{conn['target-ip']}}</dd>
+                                    <dt>{{'NETWORKCONFIGURATION_iSCSI_TCPPort'|translate}}</dt>
+                                    <dd>{{conn['target-port']}}</dd>
+                                </dl>
+                            </div>
+                        </div>
+                    </td>
+                </tr>
+            </tbody>
+        </table>
+
+        <br />
+
+        <br />
+
+        <footer>
+            <ul class="list-unstyled list-inline text-right">
+                <li>
+                    <button id="btnCancelISCSISessionModal" type="button" class="btn btn-primary" ng-click="actions.cancel()">{{'GENERIC_Cancel'|translate}}</button>
+                </li>
+            </ul>
+        </footer>
+
+    </div>
+</div>

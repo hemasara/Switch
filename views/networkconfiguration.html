@@ -1,0 +1,46 @@
+<section id="networkconfiguration">
+    <h1>{{'NAVIGATION_NetworkConfiguration'|translate}}</h1>
+    <div class="alert alert-info" role="alert" ng-if="$root.ioaMode == 'programmable-mux'">
+        <p>{{'NETWORKCONFIGURATION_PMUX_Alert'|translate}}</p>
+    </div>
+
+    <div class="alert alert-info" role="alert" ng-if="$root.ioaMode == 'stack'">
+        <p>{{'NETWORKCONFIGURATION_Stack_Alert'|translate}}</p>
+    </div>
+
+    <div class="alert alert-info" role="alert" ng-if="$root.ioaMode == 'full switch'">
+        <p>{{'NETWORKCONFIGURATION_FULLSWITCH_Alert'|translate}}</p>
+    </div>
+
+    <div class="row">
+        <div class="col-sm-6">
+            <div>
+                <div ng-include="'views/networkconfiguration/vlanAssignment.html'"></div>
+            </div>
+            <div>
+                <div ng-include="'views/networkconfiguration/linkAggregation.html'"></div>
+            </div>
+        </div>
+        <div class="col-sm-6">
+            <div>
+                <div ng-include="'views/networkconfiguration/igmp.html'"></div>
+            </div>
+            <div>
+                <div ng-include="'views/networkconfiguration/portVLANMirroring.html'"></div>
+            </div>
+            <div>
+                <div ng-include="'views/networkconfiguration/fibreChannel.html'"></div>
+            </div>
+<!--            <div ng-if="viewmodel.ioaProperties.Module1 != 'FC' && viewmodel.ioaProperties.Module2 != 'FC'">
+                <h3>{{'PORTCONFIGURATION_FibreChannel'|translate}}</h3>
+                <p><em>Fibre Channel module(s) are not detected.  To use this feature, make sure a FC Module is installed.</em></p>
+            </div>-->
+            <div>
+                <div ng-include="'views/networkconfiguration/iSCSI.html'"></div>
+            </div>
+            <div>
+                <div ng-include="'views/networkconfiguration/dcb.html'"></div>
+            </div>
+        </div>
+    </div>
+</section>

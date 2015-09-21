@@ -1,0 +1,47 @@
+<div id="modal_AaaSettings">
+    <div id="aaa-errors"></div>
+    <div class="form-horizontal">
+        {{'SECURITY_AaaSettings_Description'|translate}}
+            <br />
+        <br />
+
+        <div role="tabpanel">
+            <!-- Nav tabs -->
+            <ul class="nav nav-tabs" role="tablist" id="tab-list">
+                <li role="presentation" ng-class="{active: data.activeTab == 'authentication'}">
+                    <a id="lnkTabAuthentication" data-target="#authentication" aria-controls="authentication" role="tab" data-toggle="tab">{{'SECURITY_Authentication'|translate}}
+                    </a>
+                </li>
+                <li role="presentation" ng-class="{active: data.activeTab == 'authorization'}">
+                    <a id="lnkTabAuthorization" data-target="#authorization" aria-controls="authorization" role="tab" data-toggle="tab">{{'SECURITY_Authorization'|translate}}
+                    </a>
+                </li>
+                <li role="presentation" ng-class="{active: data.activeTab == 'accounting'}">
+                    <a id="lnkTabAccounting" data-target="#accounting" aria-controls="accounting" role="tab" data-toggle="tab">{{'SECURITY_Accounting'|translate}}
+                    </a>
+                </li>
+            </ul>
+            <!-- Tab panes -->
+            <div class="tab-content">
+                <div role="tabpanel" class="tab-pane active" id="authentication" ng-class="{active: data.activeTab == 'authentication'}">
+                    <div ng-include="'views/security/security_modals/aaa_authentication.html'"></div>
+                </div>
+                <div role="tabpanel" class="tab-pane" id="authorization" ng-class="{active: data.activeTab == 'authorization'}">
+                    <div ng-include="'views/security/security_modals/aaa_authorization.html'"></div>
+                </div>
+                <div role="tabpanel" class="tab-pane" id="accounting" ng-class="{active: data.activeTab == 'accounting'}">
+                    <div ng-include="'views/security/security_modals/aaa_accounting.html'"></div>
+                </div>
+            </div>
+        </div>
+
+        <br />
+        <footer>
+            <ul class="list-unstyled list-inline text-right">
+                <li>
+                    <button id="btnCloseAAAModal" type="button" class="btn btn-default" ng-click="actions.cancel()">{{'GENERIC_Close'|translate}}</button>
+                </li>
+            </ul>
+        </footer>
+    </div>
+</div>

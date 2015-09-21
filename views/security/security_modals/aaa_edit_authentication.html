@@ -1,0 +1,62 @@
+<section id="modal_EditAuthenticationProfile">
+    <div class="form-horizontal">
+        {{'SECURITY_AAA_Authentication_Description'|translate}}
+        <br />
+        <br />
+        <div class="row">
+            <div class="col-sm-12" style="overflow: hidden; -ms-text-overflow: ellipsis; -o-text-overflow: ellipsis; text-overflow: ellipsis; white-space: nowrap; text-wrap: none">
+                <!-- Authentication Login Profile -->
+                <h4 style="font-weight: bold;">{{'SECURITY_AuthenticationLoginProfile'|translate}}
+                    <span>&nbsp;
+                        <a id="btnClearMethods" class="btn btn-link" ng-click="clearSelectionsTop()">
+                            <i class="ci ci-action-delete3-core" />{{'SECURITY_ClearMethods'|translate}}
+                        </a>
+                    </span>
+                </h4>
+                <p>{{'GENERIC_Name'|translate}}: <strong>{{'GENERIC_Default'|translate}}</strong></p>
+                <combo-box options-title="{{'SECURITY_OptionalMethods'|translate}}" 
+                    selection-title="{{'SECURITY_SelectedMethods'|translate}}" 
+                    avail-options="viewmodel.authentication.loginAvailMethods" 
+                    selection="viewmodel.authentication.loginMethods"
+                    clear-selections="clearSelectionsTop"
+                    options-tooltip="true"
+                    options-tooltip-text="Privilege level is 15"></combo-box>
+            </div>
+        </div>
+        <br />
+        <br />
+        <div class="row">
+            <div class="col-sm-12" style="overflow: hidden; -ms-text-overflow: ellipsis; -o-text-overflow: ellipsis; text-overflow: ellipsis; white-space: nowrap; text-wrap: none">
+                <!-- Authentication Enable Profile -->
+                <h4 style="font-weight: bold;">{{'SECURITY_AuthenticationEnableProfile'|translate}}
+                    <span>&nbsp;
+                    <a id="btnClearMethodsEnable" class="btn btn-link" ng-click="clearSelectionsBottom()">
+                        <i class="ci ci-action-delete3-core" />{{'SECURITY_ClearMethods'|translate}}
+                    </a>
+                    </span>
+                </h4>
+                <p>{{'GENERIC_Name'|translate}}: <strong>{{'GENERIC_Default'|translate}}</strong></p>
+                <combo-box options-title="{{'SECURITY_OptionalMethods'|translate}}" 
+                    selection-title="{{'SECURITY_SelectedMethods'|translate}}" 
+                    avail-options="viewmodel.authentication.enableAvailMethods" 
+                    selection="viewmodel.authentication.enableMethods"
+                    clear-selections="clearSelectionsBottom"
+                    options-tooltip="true"
+                    options-tooltip-text="Privilege level is 15"></combo-box>
+            </div>
+        </div>
+
+        <br />
+        <br />
+        <footer>
+            <ul class="list-unstyled list-inline text-right">
+                <li>
+                    <button id="btnSaveAuthentication" type="button" class="btn btn-primary" ng-click="actions.save()">{{'GENERIC_Apply'|translate}}</button>
+                </li>
+                <li>
+                    <button id="btnCancelAuthentication" type="button" class="btn btn-default" ng-click="actions.cancel()">{{'GENERIC_Cancel'|translate}}</button>
+                </li>
+            </ul>
+        </footer>
+    </div>
+</section>

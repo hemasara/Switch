@@ -1,0 +1,21 @@
+<ng-form name="viewmodel.wizardComboPort.form" class="form-horizontal" novalidate>
+
+    <h1>{{'PORTCONFIGURATION_ComboPortSettings'|translate}}</h1>
+    <p>{{'PORTCONFIGURATION_Combo_Modal_Description'|translate}}</p>
+    <br />
+    <div class="form group">
+        <div class="radio">
+            <label class="radio">
+                <input id="radioEthernet" type="radio" value="ethernet" ng-model="viewmodel.wizardComboPort.portMode">
+                {{'PORTCONFIGURATION_Ethernet'|translate}}
+            </label>
+            </div>
+        <div class="radio">
+            <label class="radio">
+                <input id="radioFibre" type="radio" value="fibre" ng-model="viewmodel.wizardComboPort.portMode">
+                {{'PORTCONFIGURATION_FibreChannel'|translate}}
+            </label>
+        </div>
+    </div>
+
+</ng-form>

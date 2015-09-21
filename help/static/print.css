@@ -1,0 +1,19 @@
+html,body {
+    background-color: #fff;
+}
+header,#breadcrumbs,#leftbar,#topnav {
+    display: none;
+}
+#center,#scroller,.jspContainer,.jspPane {
+    position: static !important;
+    left: auto !important;
+    right: auto !important;
+    top: auto !important;
+    bottom: auto !important;
+    overflow: auto !important;
+    height: auto !important;
+    width: auto !important;
+}
+#printall {
+    display: block;
+}

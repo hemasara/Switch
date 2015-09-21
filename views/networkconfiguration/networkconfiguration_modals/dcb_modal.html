@@ -1,0 +1,107 @@
+<div id="dcpDetailsModal">
+    <div id="dcb_errors"></div>
+    <p>{{'NETWORKCONFIGURATION_DCB_Modal_Description'|translate}}</p>
+    <div class="form-horizontal">
+        <br />
+
+        <ul class="list-unstyled list-inline">
+            <li>
+                <p class="form-control-static">Filter By:</p>
+            </li>
+            <li>
+                <select id="selectDCBFilter" class="form-control pull-left" ng-model="data.selectedDcbFilter">
+                    <option value="pfc" class="form-control">{{'NETWORKCONFIGURATION_PFC'|translate}}</option>
+                    <option value="dcb">{{'NETWORKCONFIGURATION_DCBx'|translate}}</option>
+                    <option value="ets">{{'NETWORKCONFIGURATION_ETS'|translate}}</option>
+                </select>
+            </li>
+        </ul>
+        <br />
+        <table class="table table-striped table-condensed table-hover">
+            <thead>
+                <tr>
+                    <th colspan="1">&nbsp;</th>
+                    <th ng-if="data.selectedDcbFilter == 'pfc'" class="text-center" colspan="4"><span class="side-lines">{{'NETWORKCONFIGURATION_DCB_Modal_PFC'|translate}}</span></th>
+                    <th ng-if="data.selectedDcbFilter == 'dcb'" class="text-center" colspan="3"><span class="side-lines">{{'NETWORKCONFIGURATION_DCBx'|translate}}</span></th>
+                    <th ng-if="data.selectedDcbFilter == 'ets'" class="text-center" colspan="5"><span class="side-lines">{{'NETWORKCONFIGURATION_DCB_Modal_ETS'|translate}}</span></th>
+                </tr>
+                <tr>
+                    <th>{{'GENERIC_Interface'|translate}}</th>
+
+                    <th>{{'GENERIC_Operational_Status'|translate}}</th>
+
+                    <th ng-if="data.selectedDcbFilter == 'pfc'">{{'NETWORKCONFIGURATION_DCB_Modal_FCoE'|translate}}</th>
+                    <th ng-if="data.selectedDcbFilter == 'pfc'">{{'NETWORKCONFIGURATION_DCB_Modal_iSCSI'|translate}}</th>
+
+                    <th ng-if="data.selectedDcbFilter == 'dcb'">{{'NETWORKCONFIGURATION_OperatingVersion'|translate}}</th>
+                    <th ng-if="data.selectedDcbFilter == 'dcb'">{{'NETWORKCONFIGURATION_PortRole'|translate}}</th>
+
+                    <th ng-if="data.selectedDcbFilter == 'ets'">{{'NETWORKCONFIGURATION_PriorityGroup'|translate}}</th>
+                    <th ng-if="data.selectedDcbFilter == 'ets'">{{'GENERIC_Priority'|translate}}</th>
+                    <th ng-if="data.selectedDcbFilter == 'ets'">{{'NETWORKCONFIGURATION_Bandwidth'|translate}}</th>
+                    <th ng-if="data.selectedDcbFilter == 'ets'">{{'NETWORKCONFIGURATION_SchedulingAlgorithms'|translate}}</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr ng-repeat="dcb in viewmodel.dcb.port">
+                    <td>{{dcb.name}}</td>
+
+                    <td ng-if="data.selectedDcbFilter == 'pfc' && dcb['pfc-op-state'].indexOf('Up') >= 0">
+                        <i class="ci ci-state-ok-core text-success"></i>{{dcb['pfc-op-state']}}</td>
+                    <td ng-if="data.selectedDcbFilter == 'pfc' && dcb['pfc-op-state'].indexOf('Down') >= 0">
+                        <i class="ci ci-state-critical-core text-danger"></i>{{dcb['pfc-op-state']}}</td>
+
+                    <td ng-if="data.selectedDcbFilter == 'dcb'">{{dcb['op-state']}}</td>
+
+                    <td ng-if="data.selectedDcbFilter == 'ets' && dcb['ets-op-state'].indexOf('Up') >= 0">
+                        <i class="ci ci-state-ok-core text-success"></i>{{dcb['ets-op-state']}}</td>
+                    <td ng-if="data.selectedDcbFilter == 'ets' && dcb['ets-op-state'].indexOf('Down') >= 0">
+                        <i class="ci ci-state-critical-core text-danger"></i>{{dcb['ets-op-state']}}</td>
+
+                    <td ng-if="data.selectedDcbFilter == 'pfc'">{{dcb['fcoe-app-tlv']}}, {{'GENERIC_Priority'|translate}} {{dcb['fcoe-priority']}}</td>
+                    <td ng-if="data.selectedDcbFilter == 'dcb'">{{dcb['op-version']}}</td>
+                    <td ng-if="data.selectedDcbFilter == 'ets'">
+                        <ul style="list-style-type: none">
+                            <li ng-repeat="ets in dcb['ets-pg']">{{ets['pg-id']}}</li>
+                        </ul>
+                    </td>
+
+                    <td ng-if="data.selectedDcbFilter == 'pfc'">{{dcb['iscsi-app-tlv']}}, {{'GENERIC_Priority'|translate}} {{dcb['iscsi-priority']}}</td>
+                    <td ng-if="data.selectedDcbFilter == 'dcb'">{{dcb['port-role']}}</td>
+                    <td ng-if="data.selectedDcbFilter == 'ets'">
+                        <ul style="list-style-type: none">
+                            <li ng-repeat="ets in dcb['ets-pg']">{{ets['pg-prio']}}</li>
+                        </ul>
+                    </td>
+
+                    <td ng-if="data.selectedDcbFilter == 'ets'">
+                        <ul style="list-style-type: none">
+                            <li ng-repeat="ets in dcb['ets-pg']">{{ets.bandwidth}}%</li>
+                        </ul>
+                    </td>
+
+                    <td ng-if="data.selectedDcbFilter == 'ets'">
+                        <ul style="list-style-type: none">
+                            <li ng-repeat="ets in dcb['ets-pg']">{{ets['sched-algo']}}</li>
+                        </ul>
+                    </td>
+
+
+                </tr>
+            </tbody>
+        </table>
+
+        <br />
+
+        <br />
+
+        <footer>
+            <ul class="list-unstyled list-inline text-right">
+                <li>
+                    <button id="btnCancelDCBModal" type="button" class="btn btn-primary" ng-click="actions.cancel()">{{'GENERIC_Close'|translate}}</button>
+                </li>
+            </ul>
+        </footer>
+
+    </div>
+</div>

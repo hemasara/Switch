@@ -1,0 +1,110 @@
+<div id="modal_ModeSettings">
+    <div id="firmware_modal_errors"></div>
+        <div class="form-horizontal" >
+            {{'DASHBOARD_Firmware_Description'|translate}}
+            <br />
+            <br />
+            <br />
+<!--            <h3>{{'DASHBOARD_Firmware_IOMCoprocessorFirmware'|translate}}</h3>
+            <div class="form-group">
+                <label class="col-md-4">Current Firmware Version</label>
+                <div class="col-md-8">
+                    <label>1.2</label>
+                </div>
+            </div>-->
+            <h3>{{'DASHBOARD_Firmware_IMOFirmware'|translate}}</h3>
+            <div class="form-group">
+                <label class="col-md-4">{{'SETTINGS_Firmware_Modal_CurrentVersion'|translate}}</label>
+                <div class="col-md-2">
+                    <label>1.0</label>
+                </div>
+                <label class="col-md-4">{{'SETTINGS_Firmware_Inactive'|translsate}}</label>
+                <div class="col-md-2">
+                    <label>0.5</label>
+                </div>
+                <label class="col-md-4">&nbsp;&nbsp;&nbsp;&nbsp;{{'SETTINGS_Firmware_BootFlash'|translate}}</label>
+                <div class="col-md-2">
+                    <label>1.0</label>
+                </div>
+                <label class="col-md-4">&nbsp;&nbsp;&nbsp;&nbsp;{{'SETTINGS_Firmware_BootFlash'|translate}}</label>
+                <div class="col-md-2">
+                    <label>1.0</label>
+                </div>
+                <label class="col-md-4">&nbsp;&nbsp;&nbsp;&nbsp;{{'SETTINGS_Firmware_BootSelector'|translate}}</label>
+                <div class="col-md-2">
+                    <label>1.0</label>
+                </div>
+                <label class="col-md-4">&nbsp;&nbsp;&nbsp;&nbsp;</label>
+                <div class="col-md-2">
+                    <label>&nbsp;</label>
+                </div>
+                <label class="col-md-4">&nbsp;&nbsp;&nbsp;&nbsp;{{'SETTINGS_Firmware_CPLD'|translate}}</label>
+                <div class="col-md-2">
+                    <label>1.0</label>
+                </div>
+                <label class="col-md-4">&nbsp;&nbsp;&nbsp;&nbsp;</label>
+                <div class="col-md-2">
+                    <label>&nbsp;</label>
+                </div>
+            </div>
+            <div class="form-group">
+                <div class="col-md-12">
+                    <div class="radio">
+                        <label>
+                            <input type="radio" ng-model="viewmodel.firmwaresettings.action" name="radioFirmware" id="radioUpdate" value="update" />
+                            {{'GENERIC_Update'|translate}}
+                        </label>
+                    </div>
+                </div>
+                <div class="" ng-if="viewmodel.firmwaresettings.action=='update'">
+                    <label class="col-md-4">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;{{'DASHBOARD_Firmware_IMOFirmwareLocation'|translate}}</label>
+                    <div class="col-md-8">
+                        <ul class="list-unstyled list-inline">
+                            <li>
+                                <!--<input id="smtp" type="text" class="" ng-model="viewmodel.settings.smtpserver" />-->
+                                <input id="fileUpload" class="form-control" type="file" nv-file-select filters="queueLimit" uploader="services.uploader" multiple ng-disabled="data.inProgress" />
+                            </li>
+<!--                            <li>
+                                <button id="btnEditFirmware" type="button" class="btn btn-default btn-xs" ng-click="actions.edit_Firmware_Browse()">
+                                    Browse
+                                </button>
+                            </li>-->
+                        </ul>
+                    </div>
+                </div>
+                <div class="col-md-12">
+                    <div class="radio">
+                        <label>
+                            <input type="radio" ng-model="viewmodel.firmwaresettings.action" name="radioFirmware" id="radioBoot" value="boot" />
+                            {{'SETTINGS_Firmware_BootVersion'|translate}}
+                        </label>
+                    </div>
+                </div>
+                <div class="" ng-if="viewmodel.firmwaresettings.action=='boot'">
+                    <label class="col-md-4">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;{{'SETTINGS_Firmware_ApplyReboot'|translate}}</label>
+                    <div class="col-md-8">
+                        <select id="selectFirmwareSettings" class="form-control">
+                            <option value="active" selected="selected">{{'SETTINGS_FirmwareModal_10_Active'|translate}}</option>
+                            <option value="inactive">{{'SETTINGS_FirmwareModal_10_Inactive'|translate}}</option>
+                        </select>
+<!--                        <ul class="list-unstyled list-inline">
+                            <li>
+                                <label>0.5</label>
+                            </li>
+                        </ul>-->
+                    </div>
+                </div>
+            </div>
+        </div>
+    <br />
+    <footer>
+        <ul class="list-unstyled list-inline text-right">
+            <li>
+                <button id="btnSaveFirmware" type="button" class="btn btn-primary" ng-click="actions.save()">{{'GENERIC_Apply'|translate}}</button>
+            </li>
+            <li>
+                <button id="btnCancelFirmware" type="button" class="btn btn-default" ng-click="actions.cancel()">{{'GENERIC_Cancel'|translate}}</button>
+            </li>
+        </ul>
+    </footer>
+</div>

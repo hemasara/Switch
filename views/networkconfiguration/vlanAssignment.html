@@ -1,0 +1,145 @@
+<section ng-controller="VLANAssignmentSectionController">
+
+    <!--    content if in any other mode but pmux-->
+    <div id="Div1" ng-show="$root.ioaMode == 'programmable-mux' || $root.ioaMode == 'full switch'">
+        <h3>{{'NETWORKCONFIGURATION_VLANAssignment'|translate}}</h3>
+        <!--Message if section not enabled and mode is PMUX-->
+        <p ng-if="$root.ioaMode == 'programmable-mux'" style="font-style: italic;">{{'NETWORKCONFIGURATION_VLAN_Assignment_Msg'|translate}}</p>
+        <p ng-if="$root.ioaMode == 'full switch'" style="font-style: italic;">{{'NETWORKCONFIGURATION_VLAN_Assignment_FS_Msg'|translate}}</p>
+    </div>
+
+    <!--    content if in any other mode but pmux-->
+    <div id="vlanAssignmentNotPMUX" ng-show="$root.ioaMode != 'programmable-mux' && $root.ioaMode != 'full switch'">
+        <h3>{{'NETWORKCONFIGURATION_VLANAssignment'|translate}}</h3>
+        <p check-access ng-if="$root.ioaMode == 'standalone' || $root.ioaMode == 'vlt'">{{'NETWORKCONFIGURATION_VLANAssignment_Description'|translate}} <a id="lnkEditVLANAssignment" ng-click="actions.edit_VLANAssignment_modal()"><i class="glyphicon glyphicon-edit text-primary"></i>{{'GENERIC_Edit'|translate}}</a></p>
+
+        <div class="row">
+            <div class="col-md-7 col-sm-12" style="background-color:#F4F4F4; padding-bottom: 15px;">
+                <h3>{{'NETWORKCONFIGURATION_VLAN_InternalPorts'|translate}}</h3>
+                <h5>(model:  {{$root.modelName}})</h5>
+
+                <div ng-if="$root.modelName == 'DELL I/O Aggregator' || $root.modelName == 'DELL MXL 10/40GbE'">
+                    <table id="LAGtable" style="width: 100%;">
+                        <tr class="rowless text-center" style="border: 0px;">
+                            <td>1</td>
+                            <td>2</td>
+                            <td>3</td>
+                            <td>4</td>
+                            <td>5</td>
+                            <td>6</td>
+                            <td>7</td>
+                            <td>8</td>
+                        </tr>
+                        <tr class="rowless text-center" style="border: 0px;">
+                            <td>9</td>
+                            <td>10</td>
+                            <td>11</td>
+                            <td>12</td>
+                            <td>13</td>
+                            <td>14</td>
+                            <td>15</td>
+                            <td>16</td>
+                        </tr>
+                        <tr style="border-left: 2px solid #000; border-top: 2px solid #000; background-color:#444; font-weight:bold;">
+                            <td ng-repeat="port in viewmodel.availableInternalPorts | limitTo: 8" style="text-align: center; padding: 6px;">
+                                <svg style="cursor: pointer;" version="1.1" ng-click="actions.setSelectedPort(port)" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px"
+                                    width="27.4px" height="27.1px" viewBox="0 0 27.4 27.1" enable-background="new 0 0 27.4 27.1" xml:space="preserve">
+                                    <rect x="0.1" y="0.1" ng-class="{'highlightport' : data.selectedPort == port }" fill="#FFFFFF" width="27.1" height="26.9" />
+                                    <rect x="0.1" y="0.1" fill="none" stroke="#000" stroke-width="1" stroke-linecap="round" stroke-linejoin="round" stroke-miterlimit="10" width="27.1" height="26.9" />
+                                </svg>
+                                <div class="text-white">
+                                    {{port.number}}
+                                </div>
+                            </td>
+                        </tr>
+                        <tr style="border-bottom: 6px solid #000; border-left: 2px solid #000; background-color:#444; font-weight:bold;">
+                            <td ng-repeat="port in viewmodel.availableInternalPorts | limitTo: 24 | limitTo: -8" style="text-align: center; padding: 6px;">
+                                <svg style="cursor: pointer;" version="1.1" ng-click="actions.setSelectedPort(port)" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px"
+                                    width="27.4px" height="27.1px" viewBox="0 0 27.4 27.1" enable-background="new 0 0 27.4 27.1" xml:space="preserve">
+                                    <rect x="0.1" y="0.1" ng-class="{'highlightport' : data.selectedPort == port }" fill="#FFFFFF" width="27.1" height="26.9" />
+                                    <rect x="0.1" y="0.1" fill="none" stroke="#000" stroke-width="1" stroke-linecap="round" stroke-linejoin="round" stroke-miterlimit="10" width="27.1" height="26.9" />
+                                </svg>
+                                <div class="text-white">
+                                    {{port.number}}
+                                </div>
+                            </td>
+                        </tr>
+                        <tr style="border-left: 2px solid #000; background-color:#444; font-weight:bold;">
+                            <td ng-repeat="port in viewmodel.availableInternalPorts | limitTo: 16 | limitTo: -8" style="text-align: center; padding: 6px;">
+                                <svg style="cursor: pointer;" version="1.1" ng-click="actions.setSelectedPort(port)" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px"
+                                    width="27.4px" height="27.1px" viewBox="0 0 27.4 27.1" enable-background="new 0 0 27.4 27.1" xml:space="preserve">
+                                    <rect x="0.1" y="0.1" ng-class="{'highlightport' : data.selectedPort == port }" fill="#FFFFFF" width="27.1" height="26.9" />
+                                    <rect x="0.1" y="0.1" fill="none" stroke="#000" stroke-width="1" stroke-linecap="round" stroke-linejoin="round" stroke-miterlimit="10" width="27.1" height="26.9" />
+                                </svg>
+                                <div class="text-white">
+                                    {{port.number}}
+                                </div>
+                            </td>
+                        </tr>
+                        <tr style="border-left: 2px solid #000; border-bottom: 2px solid #000; background-color:#444; font-weight:bold;">
+                            <td ng-repeat="port in viewmodel.availableInternalPorts | limitTo: 32 | limitTo: -8" style="text-align: center; padding: 6px;">
+                                <svg style="cursor: pointer;" version="1.1" ng-click="actions.setSelectedPort(port)" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px"
+                                    width="27.4px" height="27.1px" viewBox="0 0 27.4 27.1" enable-background="new 0 0 27.4 27.1" xml:space="preserve">
+                                    <rect x="0.1" y="0.1" ng-class="{'highlightport' : data.selectedPort == port }" fill="#FFFFFF" width="27.1" height="26.9" />
+                                    <rect x="0.1" y="0.1" fill="none" stroke="#000" stroke-width="1" stroke-linecap="round" stroke-linejoin="round" stroke-miterlimit="10" width="27.1" height="26.9" />
+                                </svg>
+                                <div class="text-white">
+                                    {{port.number}}
+                                </div>
+                            </td>
+                        </tr>
+                    </table>
+                </div>
+
+                <div ng-if="$root.modelName == 'Dell PowerEdge FN 2210S IOM' || $root.modelName == 'Dell PowerEdge FN 410T IOM' || $root.modelName == 'Dell PowerEdge FN 410S IOM'">
+                    <table id="VLANFNtable" style="width: 100%; background-color:#444;">
+                        <tr style="border-bottom: 6px solid #000; border-left: 2px solid #000; border-top: 2px solid #000; font-weight:bold;">
+                            <td ng-repeat="port in viewmodel.availableInternalPorts | limitTo: 4" style="text-align: center; padding: 6px;">
+                                <svg style="cursor: pointer;" version="1.1" ng-click="actions.setSelectedPort(port)" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px"
+                                    width="27.4px" height="27.1px" viewBox="0 0 27.4 27.1" enable-background="new 0 0 27.4 27.1" xml:space="preserve">
+                                    <rect x="0.1" y="0.1" ng-class="{'highlightport' : data.selectedPort == port }" fill="#FFFFFF" width="27.1" height="26.9" />
+                                    <rect x="0.1" y="0.1" fill="none" stroke="#000" stroke-width="1" stroke-linecap="round" stroke-linejoin="round" stroke-miterlimit="10" width="27.1" height="26.9" />
+                                </svg>
+                                <div class="text-white">
+                                    {{port.number}}
+                                </div>
+                            </td>
+                        </tr>
+                        <tr style="border-left: 2px solid #000; border-bottom: 2px solid #000; font-weight:bold;">
+                            <td ng-repeat="port in viewmodel.availableInternalPorts | limitTo: 8 | limitTo: -4" style="text-align: center; padding: 6px;">
+                                <svg style="cursor: pointer;" version="1.1" ng-click="actions.setSelectedPort(port)" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px"
+                                    width="27.4px" height="27.1px" viewBox="0 0 27.4 27.1" enable-background="new 0 0 27.4 27.1" xml:space="preserve">
+                                    <rect x="0.1" y="0.1" ng-class="{'highlightport' : data.selectedPort == port }" fill="#FFFFFF" width="27.1" height="26.9" />
+                                    <rect x="0.1" y="0.1" fill="none" stroke="#000" stroke-width="1" stroke-linecap="round" stroke-linejoin="round" stroke-miterlimit="10" width="27.1" height="26.9" />
+                                </svg>
+                                <div class="text-white">
+                                    {{port.number}}
+                                </div>
+                            </td>
+                        </tr>
+                    </table>
+
+                </div>
+
+            </div>
+
+            <div class="col-md-5 col-sm-12" ng-if="$root.modelName == 'DELL I/O Aggregator' || $root.modelName == 'DELL MXL 10/40GbE' || $root.modelName == 'Dell PowerEdge FN 2210S IOM' || $root.modelName == 'Dell PowerEdge FN 410T IOM' || $root.modelName == 'Dell PowerEdge FN 410S IOM'">
+                <p>&nbsp;</p>
+                <br />
+                <a id="lnkViewVLANAssignment" ng-click="actions.view_VLANAssignment_modal()">
+                    <p>{{'NETWORKCONFIGURATION_ViewVLANAssignment'|translate}}</p>
+                </a>
+                <dl class="dl-horizontal dataList">
+                    <dt ng-if="data.selectedPort != null && data.selectedPort.length != 0"><u>{{'NETWORKCONFIGURATION_VLAN_Interface'|translate}}{{data.selectedPort | portDisplay}}</u></dt>
+                    <dd ng-if="data.selectedPort != null && data.selectedPort.length != 0"></dd>
+                    <dt>{{'NETWORKCONFIGURATION_VLAN_Tagged'|translate}}:</dt>
+                    <dd class="force-wrap">{{data.selectedPort.taggedVlan | joinBy: ', '}}</dd>
+                    <dt>{{'NETWORKCONFIGURATION_VLAN_Untagged'|translate}}:</dt>
+                    <dd>{{data.selectedPort.untaggedVlan}}</dd>
+                </dl>
+            </div>
+
+        </div>
+    </div>
+
+</section>

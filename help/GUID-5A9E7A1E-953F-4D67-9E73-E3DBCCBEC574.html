@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html lang="en-us"><head><!-- saved from url=(0014)about:internet -->
+<meta charset="utf-8" /><meta name="viewport" content="width=device-width" /><title>IOA Information</title><link rel="prev" href="GUID-293941D9-6A32-4AD9-A8E3-E94A5B6C178F.html" /><link rel="next" href="GUID-29CAD44E-26E4-4B00-9E7F-916DED266E65.html" /><link href="static/screen.css?AKIYKnLS" rel="stylesheet" /><link href="static/print.css?w+agwgAC" media="print" rel="stylesheet" /><script src="static/head.js?qUF72lF0"></script><link rel="shortcut icon" href="static/favicon.ico" /></head><body id="GUID-5A9E7A1E-953F-4D67-9E73-E3DBCCBEC574" data-approot=""><header><div class="inner"><a id="logo-link" href="index.html" /><img id="logo" src="static/logo.png" alt="Logo" /></a><div class="title-text">Dell Blade I/O Manager</div></div></header><div id="breadcrumbs"></div><section id="center"><div id="scroller"><nav id="topnav"><div id="topbuttons"><a id="button-highlighting" href="#" title="Toggle Highlighting"><span>Toggle Highlighting</span></a><a id="button-hide-navigation" href="#" title="Toggle navigation"><span>Toggle navigation</span></a><a id="button-print" href="#" title="Print Topic"><span>Print Topic</span></a><a id="button-print-all" title="Print All"><span>Print All</span></a></div></nav><article><div id="thumbnailDialog"></div><h1>IOA Information</h1><p>The IOA Information section of the <b>Dashboard</b> page displays information about the managed I/O Aggregator device
+in three subsections:</p>
+<p><ul id="GUID-8CC473CC-20C5-4571-B6D1-5E9340AC4EF6">
+<li><b>Properties</b></li>
+<li><b>Status</b></li>
+<li><b>Settings</b></li>
+</ul></p>
+<p>The <b>Properties</b> subsection lists the following
+information about the managed I/O Aggregator device:</p>
+<ul id="GUID-D6B20ADD-CFB9-4E00-82F3-2949C50AA579">
+<li><b>Model</b>  The I/O Aggregator device type: MIOA
+(for Dell I/O Aggregator M1000e chassis) or FN IOA (for Dell PowerEdge
+IOM FX2 chassis). </li>
+<li><b>Active IOA Mode </b> Current mode of the IOA
+device:<ul id="GUID-54C9AA1D-21E6-466C-940D-C07F217E51F8">
+<li><b>Standalone Mode (default)</b>  Single device.
+This mode is the default setting.</li>
+<li><b>Stack Mode</b>  Multiple switches operate as
+single unit. A single switch in the stack (Master switch) manages
+all units in the stack and uses a single IP address that you can use
+to manage every port in the stack.</li>
+<li><b>VLT Mode</b>  Virtual Link Trunking. VLT enables
+physical links between two chassis to appear as a single virtual link
+to the network core or other switches such as Edge, Access, or ToR.
+VLT reduces the role of Spanning Tree protocols by allowing LAG terminations
+on two separate distribution or core switches, and by supporting a
+loop free topology. VLT institutes Layer 2 multipathing, creating
+redundancy through increased bandwidth, enabling multiple parallel
+paths between nodes and load-balancing traffic where alternative paths
+exist.</li>
+<li><b>Programmable MUX Mode</b>  Programmable Multiplex
+mode. This mode provides flexibility of operation with added configurability.
+This mode creates multiple LAGs, configuring VLANs on uplinks and
+the server side, and configuring data center bridging (DCB) parameters.
+Programmable MUX mode supports both stacking and VLT operations. You
+can make any configuration or provisioning of the device through the
+CLI.</li>
+<li><b>Full Switch</b>  Applicable only for FN IOA for
+FX2 chassis. Supports layer 2 and layer 3 routing. You can make any
+configuration or provisioning of the device through the CLI.</li>
+</ul></li>
+<li><b>IOA Mode After Reboot </b> The IOA mode for the
+device after a reboot.</li>
+<li><b>Host Name</b></li>
+<li><b>Fabric</b>  The slot in the chassis: A1, A2,
+B1, B2, C1, or C2.<div class="note" id="GUID-128FCACC-0DF8-4BFD-942D-D0B6C9529A13"><span class="notelabel">NOTE: </span>Slots B1, B2, C1, and C2 apply only to MIOA.</div></li>
+<li><b>Unit</b>  The device value assigned at factory:
+0 to 5.<div class="note" id="GUID-691F9A9B-E506-41C2-AB36-007BE5C59FE6"><span class="notelabel">NOTE: </span>If you
+stack I/O Aggregator devices, two units cannot both have the unit
+value of 0. The system reassigns one device with a unit value of 0
+to 1.</div></li>
+<li><b>Optional Module 1</b>  m1000e chassis only. Module
+1 contains ports 4956.</li>
+<li><b>Optional Module 2</b>  m1000e chassis only. Module
+2 contains ports 4148.</li>
+<li><b>Service Tag</b>  The identifier used when contacting
+Dell Customer Support.</li>
+<li><b>System MAC Address</b>  The MAC address of the
+entire I/O Aggregator device.</li>
+<li><b>Port MAC Address</b>  The MAC address for the
+I/O Aggregator interfaces.</li>
+<li><b>Hardware Version</b>  The I/O Aggregator device
+version.</li>
+<li> <b>Firmware Version</b>  The I/O Aggregator firmware
+version.</li>
+</ul>
+<p>The <b>Status</b> subsection displays the device health.</p>
+<p>The <b>Network Settings</b> subsection displays out-of-band
+management settings about the managed I/O Aggregator device:</p>
+<ul id="GUID-3C6A6E1F-69C3-49DC-A1E7-D58B0FE77F20">
+<li><b>DHCP Enabled</b>  <b>Enabled</b> or <b>Disabled</b></li>
+<li><b>IP Address</b></li>
+<li><b>Subnet Mask</b></li>
+<li><b>Gateway</b></li>
+<li><b>MAC Address</b></li>
+</ul>
+</article></div></section><div id="leftbar"><ul class="tabs"><li class="currentli"><a class="current toc" href="#"><span>Contents</span></a></li><li><a class="search" href="#"><span>Search</span></a></li></ul><form id="searchform"><div class="holdsearch"><input class="search" type="text" placeholder="Search" /></div><input class="submit" type="submit" value="Go" /></form><nav class="toc current"><div class="loader"><img src="static/loader.gif" alt="Loading" /></div></nav><nav class="search"><div class="results"><span>No search has been performed.</span></div><a id="search-toc-link" href="#" /><span>Contents</span></a></nav></div><script src="static/body.js?A110oA/m"></script></body></html>

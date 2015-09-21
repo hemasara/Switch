@@ -1,0 +1,88 @@
+<section ng-controller="LinkAggregationSectionController">
+    <br />
+    <br />
+    <h3>{{'NETWORKCONFIGURATION_LinkAggregation'|translate}}
+        <a style="font-weight: normal; font-size: 14px; float: right;" ng-if="$root.ioaMode != 'stack' && $root.ioaMode != 'full switch' && $root.ioaMode != 'programmable-mux'" id="lnkViewLagMembership" ng-click="actions.view_LagMembership_modal()">{{'NETWORKCONFIGURATION_LAG_View'|translate}}
+        </a>
+    </h3>
+
+    <p check-access ng-if="$root.ioaMode != 'programmable-mux' && $root.ioaMode != 'stack' && $root.ioaMode != 'full switch'">
+        {{'NETWORKCONFIGURATION_LinkAggregation_Description'|translate}} 
+        <a id="lnkEditLag" class="hidden" ng-click="actions.edit_lag_modal()"><i class="glyphicon glyphicon-edit text-primary"></i>{{'GENERIC_Edit'|translate}}</a>
+    </p>
+
+    <!--Message if section not enabled and mode is PMUX-->
+    <p ng-if="$root.ioaMode == 'programmable-mux'" style="font-style: italic;">{{'NETWORKCONFIGURATION_PMUX_Mode_Msg'|translate}}</p>
+
+    <!--Message if section not enabled and mode is Full switch-->
+    <p ng-if="$root.ioaMode == 'full switch'" style="font-style: italic;">{{'NETWORKCONFIGURATION_FULLSWITCH_Mode_Msg'|translate}}</p>
+
+    <!--Content-->
+    <div class="row" ng-if="$root.ioaMode != 'programmable-mux' && $root.ioaMode != 'full switch'">
+        <div class="col-md-12">
+            <div class="col-md-4" style="background-color: #F4F4F4; padding-bottom: 15px; margin-bottom: 15px;">
+                <h3>{{'NETWORKCONFIGURATION_LAG_InternalPorts'|translate}}
+                        <a id="linkLagEditLag" style="font-weight: normal; font-size: 14px; float: right;" check-access ng-if="$root.ioaMode != 'stack' && $root.ioaMode != 'full switch'" ng-click="actions.edit_lag_modal()"><i class="glyphicon glyphicon-edit text-primary"></i>{{'GENERIC_Edit'|translate}}</a>
+                </h3>
+
+                <div class="col-xs-12">
+                    <dl class="dl-horizontal dataList">
+                        <dt>{{'NETWORKCONFIGURATION_Auto_LAG'|translate}}
+                        </dt>
+                        <dd>
+                            <span style="font-weight: bold;" ng-if="viewmodel.internalLag.globalAutoLag == 'enabled'">{{'GENERIC_Enabled'|translate}}</span>
+                            <span style="font-weight: bold;" ng-if="viewmodel.internalLag.globalAutoLag == 'disabled'">{{'GENERIC_Disabled'|translate}}</span>
+                        </dd>
+                    </dl>
+                </div>
+                <div style="text-align: center;">
+                    <ul class="list-unstyled list-inline">
+                        <li>
+                            <div class="chart">
+                                <div class="chart-label" style="top: 28%;">
+                                    <div class="number">{{viewmodel.internalLag.portsUpCount}}</div>
+                                    <div class="text">{{'NETWORKCONFIGURATION_Auto_LAG'|translate}}</div>
+                                    <div class="text" ng-if="viewmodel.internalLag.globalAutoLag == 'enabled'">{{'GENERIC_Enabled'|translate}}</div>
+                                    <div class="text" ng-if="viewmodel.internalLag.globalAutoLag == 'disabled'">{{'GENERIC_Disabled'|translate}}</div>
+                                </div>
+                                <highchart config="internalLagPie"></highchart>
+                            </div>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </div>
+
+
+    <div ng-if="$root.ioaMode != 'programmable-mux' && $root.ioaMode != 'full switch'">
+        <div class="row">
+            <div class="col-md-12">
+                <div class="col-md-4" style="background-color: #F4F4F4; padding-bottom: 15px;">
+                    <h3>{{'NETWORKCONFIGURATION_LAG_ExternalPorts'|translate}}</h3>
+                    <div class="col-xs-12">
+                        <strong>{{'NETWORKCONFIGURATION_LAG_Po128'|translate}}&nbsp;&nbsp;&nbsp;
+                        <span ng-if="viewmodel.externalLag.poStatus == 'up'" style="font-weight: bold;"><i class="ci ci-state-ok-core text-success"></i>{{'GENERIC_Up'|translate}}</span>
+                            <span ng-if="viewmodel.externalLag.poStatus == 'down'" style="font-weight: bold;"><i class="ci ci-state-critical-core text-danger"></i>{{'GENERIC_Down'|translate}}</span>
+                        </strong>
+                        <div style="text-align: center;">
+                            <div class="chart">
+                                <highchart config="externalLagBars"></highchart>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-md-4" style="background-color: #F4F4F4; padding-bottom: 15px; margin-left: 20px;" ng-if="$root.ioaMode == 'vlt'">
+                    <h3>{{'NETWORKCONFIGURATION_LAG_ExternalPorts'|translate}}</h3>
+                    <div class="col-xs-12">
+                        <strong>{{'NETWORKCONFIGURATION_LAG_Po127'|translate}}&nbsp;&nbsp;&nbsp;
+                        <span ng-if="viewmodel.external127Lag.poStatus == 'up'" style="font-weight: bold;"><i class="ci ci-state-ok-core text-success"></i>{{'GENERIC_Up'|translate}}</span>
+                            <span ng-if="viewmodel.external127Lag.poStatus == 'down'" style="font-weight: bold;"><i class="ci ci-state-critical-core text-danger"></i>{{'GENERIC_Down'|translate}}</span>
+                        </strong>
+                        <highchart config="external127LagBars"></highchart>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>

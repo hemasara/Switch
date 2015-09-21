@@ -1,0 +1,16 @@
+<section ng-controller="TacacsController">
+    <h3>{{'SECURITY_Tacacs_Title'|translate}}
+                <a style="font-weight: normal; font-size: 14px; float: right;" id="linkViewTacacsDetails" ng-click="actions.edit_tacacssettings_modal(true)">{{'GENERIC_ViewDetails'|translate}}
+                </a>
+    </h3>
+    <p check-access>{{'SECURITY_Tacacs_Description'|translate}} <a ng-click="actions.edit_tacacssettings_modal()"><i class="glyphicon glyphicon-edit text-primary"></i>{{'GENERIC_Edit'|translate}}</a></p>
+    <div class="row">
+        <div class="col-xs-4">
+            <p style="font-weight: bold">{{'SECURITY_ServerConfigured'|translate}}</p>
+        </div>
+        <div class="col-xs-4">
+            <span>{{data.tacacsData.noServersConfigured}} of {{data.tacacsData.totalNoServers}}</span>&nbsp;&nbsp;&nbsp
+        </div>
+    </div>
+    <br />
+</section>

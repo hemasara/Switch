@@ -1,0 +1,19 @@
+<section>
+    <h3>{{'SETTINGS_GlobalSettings_Section'|translate}}</h3>
+    <p check-access>{{'SETTINGS_GlobalSettings_Description'|translate}} <a id="lnkEditSettingsGlobal" ng-if="$root.ioaMode == 'standalone' || $root.ioaMode == 'vlt'" ng-click="actions.edit_settings_globalsettings_modal()"><i class="glyphicon glyphicon-edit text-primary"></i>{{'GENERIC_Edit'|translate}}</a> </p>
+    <dl class="dl-horizontal dataList">
+        <dt>{{'SETTINGS_GlobalSettings_IOAmode'|translate}}</dt>
+        <dd>{{data.globalmenu.ioaMode}}</dd>
+        <dt>{{'SETTINGS_BroadcastStormControl_Title'|translate}}</dt>
+        <dd ng-if="data.globalmenu.bcastStormControl == 'enabled'">{{'GENERIC_Enabled'|translate}}</dd>
+        <dd ng-if="data.globalmenu.bcastStormControl == 'disabled'">{{'GENERIC_Disabled'|translate}}</dd>
+        <dt>{{'SETTINGS_GlobalSettings_IGMPFlood'|translate}}</dt>
+        <dd ng-if="data.globalmenu.IGMPFloodRestriction == 'enabled'">{{'GENERIC_Enabled'|translate}}</dd>
+        <dd ng-if="data.globalmenu.IGMPFloodRestriction == 'disabled'">{{'GENERIC_Disabled'|translate}}</dd>
+        <dt>{{'SETTINGS_GlobalSettings_Modal_LAG'|translate}}</dt>
+        <dd ng-if="data.globalmenu.autoLAG == 'enabled'">{{'GENERIC_Enabled'|translate}}</dd>
+        <dd ng-if="data.globalmenu.autoLAG == 'disabled'">{{'GENERIC_Disabled'|translate}}</dd>
+        <dt>{{'SETTINGS_GlobalSettings_Modal_VLAN'|translate}}</dt>
+        <dd>{{data.globalmenu.defaultVLAN}}</dd>
+    </dl>
+</section>

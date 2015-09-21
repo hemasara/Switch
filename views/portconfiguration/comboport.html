@@ -1,0 +1,12 @@
+<section ng-controller="ComboPortController">
+
+    <h3>{{'PORTCONFIGURATION_ComboPort'|translate}}</h3>
+
+    <p check-access ng-if="$root.ioaMode == 'standalone' || $root.ioaMode == 'vlt'">{{'PORTCONFIGURATION_ComboPort_Description'|translate}} 
+        <a id="lnkEditComboPortSettings" ng-click="actions.edit_comboportsettings_modal()"><i class="glyphicon glyphicon-edit text-primary"></i>{{'GENERIC_Edit'|translate}}</a>
+    </p>
+    <dl class="dl-horizontal dataList">
+        <dt>{{'PORTCONFIGURATION_ComboPortSettings'|translate}}</dt>
+        <dd>{{viewmodel.comboPortSettings.portMode}}</dd>
+    </dl>
+</section>

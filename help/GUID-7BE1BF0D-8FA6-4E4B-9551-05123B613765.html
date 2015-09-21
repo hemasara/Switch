@@ -1,0 +1,88 @@
+<!DOCTYPE html>
+<html lang="en-us"><head><!-- saved from url=(0014)about:internet -->
+<meta charset="utf-8" /><meta name="viewport" content="width=device-width" /><title>Configuring
+Accounting</title><link rel="prev" href="GUID-ED5BF96D-6532-4944-90C2-BDF0E8694D82.html" /><link rel="next" href="GUID-37A4791F-28A2-414B-8F01-90B7BA937543.html" /><link href="static/screen.css?AKIYKnLS" rel="stylesheet" /><link href="static/print.css?w+agwgAC" media="print" rel="stylesheet" /><script src="static/head.js?qUF72lF0"></script><link rel="shortcut icon" href="static/favicon.ico" /></head><body id="GUID-7BE1BF0D-8FA6-4E4B-9551-05123B613765" data-approot=""><header><div class="inner"><a id="logo-link" href="index.html" /><img id="logo" src="static/logo.png" alt="Logo" /></a><div class="title-text">Dell Blade I/O Manager</div></div></header><div id="breadcrumbs"></div><section id="center"><div id="scroller"><nav id="topnav"><div id="topbuttons"><a id="button-highlighting" href="#" title="Toggle Highlighting"><span>Toggle Highlighting</span></a><a id="button-hide-navigation" href="#" title="Toggle navigation"><span>Toggle navigation</span></a><a id="button-print" href="#" title="Print Topic"><span>Print Topic</span></a><a id="button-print-all" title="Print All"><span>Print All</span></a></div></nav><article><div id="thumbnailDialog"></div><h1>Configuring
+Accounting</h1><p>You can configure AAA accounting settings in
+the <b>Security</b> page.</p>
+<div class="context" id="GUID-B4A418DA-0D93-4EB5-B4E3-49E15BB905F5_unique_2">AAA accounting
+enables tracking of services that users access and the amount of network
+resources that those services consume. When you configure AAA accounting,
+the I/O Aggregator device reports user activity to the TACACS+ security
+server in the form of accounting records. Each accounting record consists
+of accounting AV pairs and resides on the access control server.<div class="note" id="GUID-633E3E26-9399-43D0-908E-2824A888130F_unique_4"><span class="notelabel">NOTE: </span>You can only view and
+configure these settings for M1000e and FN IOA devices in standalone
+or VLT mode.</div></div>
+<ol class="steps" id="GUID-469A6B70-7031-4507-9F37-04EFEDAC86B5_unique_2">
+<li><p>From the navigation menu, click <b>Security</b>.</p></li>
+<li><p>In the AAA section, click <b>Edit</b>.</p>
+The <b>AAA settings</b> dialog box appears.
+</li>
+<li><p>Make sure that the <b>Accounting</b> tab is
+selected and click <b>Edit</b>.</p>
+The <b>Edit Accounting</b> dialog box appears.
+</li>
+<li><p>In the Exec section, you can configure whether
+accounting information is sent when a user logs on to the I/O Aggregator
+device in EXEC mode. Make one of the following selections:</p>
+<ul id="GUID-B9410B86-6466-476E-BC00-1E5E2FD98C2C">
+<li><b>Start-Stop</b>  Sends a start accounting
+notice at the beginning of the requested event and a stop accounting
+notice at the end of the event.</li>
+<li><b>Stop-Only</b>  Instructs the TACACS+ server
+to send a stop record accounting notice at the end of the requested
+user process.</li>
+<li><b>Wait-Start</b>  Ensures that the TACACS +
+server acknowledges the start notice before granting the users process
+request.</li>
+<li><b>None (default)</b></li>
+</ul>
+The selected method appears in this section.
+</li>
+<li><p>In the Command Accounting section, you can
+configure whether accounting information is sent when a user logs
+in at the specified method and method level. Makes one of the following
+selections:</p>
+<ul id="GUID-9FB1C3A4-9E49-4698-9566-A72BF411DA93">
+<li><b>Start-Stop</b>  Sends a start accounting
+notice at the beginning of the requested event and a stop accounting
+notice at the end of the event.</li>
+<li><b>Stop-Only</b>  Instructs the TACACS+ server
+to send a stop record accounting notice at the end of the requested
+user process.</li>
+<li><b>Wait-Start</b>  Ensures that the TACACS +
+server acknowledges the start notice before granting the users process
+request.</li>
+<li><b>None (default)</b></li>
+</ul>
+The selected method and level appear in this section.
+The default method level is 15.
+</li>
+<li><p>In the System Accounting section, you can
+configure whether to send accounting information of any other AAA
+configuration. Make one of the following selections:</p>
+<ul id="GUID-D1128698-1794-4F20-AF00-D83406A0D53F">
+<li><b>Start-Stop</b>  Sends a start accounting
+notice at the beginning of the requested event and a stop accounting
+notice at the end of the event.</li>
+<li><b>Stop-Only</b>  Instructs the TACACS+ server
+to send a stop record accounting notice at the end of the requested
+user process.</li>
+<li><b>Wait-Start</b>  Ensures that the TACACS +
+server acknowledges the start notice before granting the users process
+request.</li>
+<li><b>None (default)</b></li>
+</ul>
+The selected method appears in this section.
+</li>
+<li><p>Dell Networking OS issues accounting records
+for all users on the system, including users whose user name string,
+due to protocol translation, is NULL. To prevent the accounting records
+from being generated for sessions that do not have user names associated
+to them, in the Suppressing Null User Name section, select <b>Enabled</b>. To continue to have the device generate these records, select <b>Disabled</b>.</p></li>
+<li><p>Click <b>Apply</b>.</p>
+Your selections appear on the <b>Accounting</b> tab.
+</li>
+<li><p>To close the <b>AAA settings</b> dialog box,
+click <b>Close</b>.</p></li>
+</ol>
+</article></div></section><div id="leftbar"><ul class="tabs"><li class="currentli"><a class="current toc" href="#"><span>Contents</span></a></li><li><a class="search" href="#"><span>Search</span></a></li></ul><form id="searchform"><div class="holdsearch"><input class="search" type="text" placeholder="Search" /></div><input class="submit" type="submit" value="Go" /></form><nav class="toc current"><div class="loader"><img src="static/loader.gif" alt="Loading" /></div></nav><nav class="search"><div class="results"><span>No search has been performed.</span></div><a id="search-toc-link" href="#" /><span>Contents</span></a></nav></div><script src="static/body.js?A110oA/m"></script></body></html>

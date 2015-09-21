@@ -1,0 +1,32 @@
+<section id="settings" ng-controller="SettingsController">
+    <h1>{{'NAVIGATION_Settings'|translate}}</h1>
+    <div class="alert alert-info" role="alert" ng-if="$root.ioaMode == 'programmable-mux'">
+        <p>{{'SETTINGS_PMUX_Alert'|translate}}</p>
+    </div>
+    <div class="alert alert-info" role="alert" ng-if="$root.ioaMode == 'full switch'">
+        <p>{{'SETTINGS_FULLSWITCH_Alert'|translate}}</p>
+    </div>
+    <div class="row">
+        <div class="col-sm-6">
+            <div>
+                <div ng-include="'views/settings/globalconfiguration.html'"></div>
+            </div>
+            <div>
+                <div ng-include="'views/settings/updateioafirmware.html'"></div>
+            </div>
+            <div>
+                <div ng-include="'views/settings/reboot.html'"></div>
+            </div>
+        </div>
+
+        <div class="col-sm-6">
+            <div>
+                <div ng-include="'views/settings/networktimeprotocol.html'"></div>
+            </div>
+            <div>
+                <div ng-include="'views/settings/restorefactorydefaults.html'"></div>
+            </div>
+        </div>
+    </div>
+
+</section>

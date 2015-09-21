@@ -1,0 +1,48 @@
+<div class="navMenu">
+
+    <div class="nav-menu" style="height: calc(100% - 50px) !important;">
+
+        <script type="text/ng-template" id="navMenuTemplate.html">
+        <a id="lnkSubmenuItem" href="{{subMenuItem.href}}">{{subMenuItem.label}}</a>
+        <span tabindex="0" class="collapsed" data-toggle="collapse" data-target="#{{subMenuItem.guid | toclassname}}" ng-show="subMenuItem.children.length > 0">
+            <i class="ci ci-expndr-chev-side1-thick-core"></i>
+            <i class="ci ci-expndr-chev-dwn-thick-core"></i>
+        </span>
+
+        <ul id="{{subMenuItem.guid | toclassname}}" class="list-unstyled collapse" ng-show="subMenuItem.children.length > 0">
+            <li ng-repeat="subMenuItem in subMenuItem.children" class="sub-menu-item" ng-include="'navMenuTemplate.html'"></li>
+        </ul>
+        </script>
+
+        <nav role="navigation">
+            <ul class="list-unstyled" ng-repeat="menuItem in menuItems" bs-active-link>
+                <li class="menu-item">
+                    <i class="{{menuItem.icon}}"></i>
+                    <a id="lnkMenuItem" href="{{menuItem.href}}">{{menuItem.label}}</a>
+
+                    <span tabindex="0" class="collapsed" data-toggle="collapse" data-target="#{{menuItem.guid | toclassname}}" ng-show="menuItem.children.length > 0">
+                        <i class="ci ci-expndr-chev-side1-thick-core"></i>
+                        <i class="ci ci-expndr-chev-dwn-thick-core"></i>
+                    </span>
+
+                    <ul id="{{menuItem.guid | toclassname}}" class="list-unstyled collapse" ng-show="menuItem.children.length > 0">
+                        <li ng-repeat="subMenuItem in menuItem.children" class="sub-menu-item" ng-include="'navMenuTemplate.html'"></li>
+                    </ul>
+
+                </li>
+
+            </ul>
+            <ul class="list-unstyled" ng-if="data.debugInfoState">
+                <li class="menu-item">
+                    <select id="models" class="small" ng-options="item as item for item in data.models" ng-model="viewmodel.currentModel">
+                    </select>
+                </li>
+            </ul>
+        </nav>
+
+    </div>
+</div>
+
+
+
+

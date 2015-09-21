@@ -1,0 +1,95 @@
+<div id="LAGMembershipModal">
+
+    <!--
+    <pre>
+        {{$root.userType}}
+    </pre>
+    -->
+
+    <div id="currentlag_errors"></div>
+    <div class="form-horizontal">
+        <br />
+
+        <ul class="list-unstyled list-inline">
+            <li>
+                <p class="form-control-static">Filter By:</p>
+            </li>
+            <li>
+                <select id="selectSelectedLAGFilter" class="form-control pull-left" ng-model="data.selectedLagFilter">
+                    <option value="">{{'GENERIC_All'|translate}}</option>
+                    <option value="uplink">{{'GENERIC_Uplink'|translate}}</option>
+                    <option value="downlink">{{'GENERIC_Downlink'|translate}}</option>
+                    <option value="interconnect" ng-if="$root.ioaMode == 'vlt'">{{'NETWORKCONFIGURATION_Interconnect_ICL'|translate}}</option>
+                </select>
+            </li>
+        </ul>
+
+        <br />
+        <table class="table table-striped table-condensed table-hover">
+
+            <thead>
+                <tr>
+                    <th>{{'GENERIC_Connection'|translate}}</th>
+                    <th>{{'NETWORKCONFIGURATION_LAG'|translate}}</th>
+                    <th>{{'NETWORKCONFIGURATION_MinimumLinks'|translate}}</th>
+                    <th>{{'GENERIC_Members'|translate}}</th>
+                    <th>{{'NETWORKCONFIGURATION_LAGPort_Status'|translate}}</th>
+                </tr>
+            </thead>
+            <tbody>
+
+                <tr ng-repeat="lag in viewmodel.lag |filter:{connection: data.selectedLagFilter}" ng-if="$root.userType != 'read-write'">
+                    <td ng-if="lag.connection == 'downlink'">{{'GENERIC_Downlink'|translate}}</td>
+                    <td ng-if="lag.connection == 'uplink'">{{'GENERIC_Uplink'|translate}}</td>
+                    <td ng-if="lag.connection == 'interconnected'">{{'GENERIC_Interconnected'|translate}}</td>
+                    <td>Po{{lag.portChannel}}</td>
+                    <td>{{lag.minLinks}}</td>
+                    <td>{{actions.formatMembers(lag.members)}}
+                    </td>
+                    <td>
+                        <p ng-if="lag.linkStatus == 'up'"><span class="ci ci-state-ok-core text-success"></span>{{'GENERIC_Up'|translate}}</p>
+                        <p ng-if="lag.linkStatus == 'down'"><span class="ci ci-state-critical-core text-danger"></span>{{'GENERIC_Down'|translate}}</p>
+                    </td>
+                </tr>
+                <tr ng-repeat="lag in viewmodel.lag |filter:{connection: data.selectedLagFilter}" ng-if="$root.userType == 'read-write'">
+                    <td ng-if="lag.connection == 'downlink'">{{'GENERIC_Downlink'|translate}}</td>
+                    <td ng-if="lag.connection == 'uplink'">{{'GENERIC_Uplink'|translate}}</td>
+                    <td ng-if="lag.connection == 'interconnected'">{{'GENERIC_Interconnected'|translate}}</td>
+                    <td>Po{{lag.portChannel}}</td>
+                    <td ng-if="lag.portChannel == 128">
+                            <select id="select1" class="input-small" ng-model="lag.minLinks" ng-options="n for n in data.minLinksOptions" >
+                            </select>
+                    </td>
+                    <td ng-if="lag.portChannel != 128">{{lag.minLinks}}</td>
+                    <td>{{actions.formatMembers(lag.members)}}
+                    </td>
+                    <td>
+                        <p ng-if="lag.linkStatus == 'up'"><span class="ci ci-state-ok-core text-success"></span>{{'GENERIC_Up'|translate}}</p>
+                        <p ng-if="lag.linkStatus == 'down'"><span class="ci ci-state-critical-core text-danger"></span>{{'GENERIC_Down'|translate}}</p>
+                    </td>
+                </tr>
+
+            </tbody>
+
+        </table>
+
+        <br />
+
+        <div>
+            <strong>{{'GENERIC_Members'|translate}}</strong>
+            <p>{{'NETWORKCONFIGURATION_MembersOptions'|translate}}</p>
+        </div>
+
+        <br />
+        <footer>
+            <ul class="list-unstyled list-inline text-right">
+                <li check-access>
+                    <button id="btnSaveLAGMembership" type="button" class="btn btn-default" ng-click="actions.save()">{{'GENERIC_Apply'|translate}}</button>
+                </li>
+                <li>
+                    <button id="btnCancelSaveLAGMembership" type="button" class="btn btn-primary" ng-click="actions.cancel()">{{'GENERIC_Close'|translate}}</button>
+                </li>
+            </ul>
+        </footer>
+    </div>
+</div>

@@ -1,0 +1,43 @@
+<div class="">
+    <div id="gsw-errors"></div>
+    <div class="alert alert-info" role="alert">{{'GETTINGSTARTEDWIZARD_Summary_Alert_Text'|translate}}</div>
+    <h2>{{'GETTINGSTARTEDWIZARD_Summary'|translate}}</h2>
+    <p>{{'GETTINGSTARTEDWIZARD_Summary_Description'|translate}}</p>
+    <div class="col-xs-12">
+
+        <dl class="dl-horizontal dataList">
+            <dt>{{'SETTINGS_GlobalSettings_IOAmode'|translate}}</dt>
+            <dd>{{viewmodel.wizardModeSettings.ioaMode}}</dd>
+            <dt ng-if="$root.modelName == 'Dell PowerEdge FN 2210S IOM'">{{'PORTCONFIGURATION_ComboPortSettings'|translate}}</dt>
+            <dd ng-if="$root.modelName == 'Dell PowerEdge FN 2210S IOM'">{{viewmodel.wizardComboPort.portMode}}</dd>
+            <dt ng-if="viewmodel.wizardNetworkSettings.dhcp=='disabled'">{{'GETTINGSTARTEDWIZARD_IP_Address_Source'|translate}}</dt>
+            <dd ng-if="viewmodel.wizardNetworkSettings.dhcp=='disabled'">Static IP</dd>
+            <dt ng-if="viewmodel.wizardNetworkSettings.dhcp=='enabled'">{{'GETTINGSTARTEDWIZARD_IP_Address_Source'|translate}}</dt>
+            <dd ng-if="viewmodel.wizardNetworkSettings.dhcp=='enabled'">Dynamic IP (DHCP)</dd>
+            <dt>{{'GETTINGSTARTEDWIZARD_IPAddress'|translate}}</dt>
+            <dd ng-if="viewmodel.wizardNetworkSettings.dhcp != 'enabled'">{{viewmodel.wizardNetworkSettings.managementIP_ip}}</dd>
+            <dd ng-if="viewmodel.wizardNetworkSettings.dhcp == 'enabled'"></dd>
+            <dt>{{'GETTINGSTARTEDWIZARD_SubnetMask'|translate}}</dt>
+            <dd ng-if="viewmodel.wizardNetworkSettings.dhcp != 'enabled'">{{viewmodel.wizardNetworkSettings.netMask_ip}}</dd>
+            <dd ng-if="viewmodel.wizardNetworkSettings.dhcp == 'enabled'"></dd>
+            <dt>{{'GETTINGSTARTEDWIZARD_Gateway'|translate}}</dt>
+            <dd ng-if="viewmodel.wizardNetworkSettings.dhcp != 'enabled'">{{viewmodel.wizardNetworkSettings.gateway_ip}}</dd>
+            <dd ng-if="viewmodel.wizardNetworkSettings.dhcp == 'enabled'"></dd>
+            <dt>{{'GETTINGSTARTEDWIZARD_UserName'|translate}}</dt>
+            <dd>{{viewmodel.wizardCredentials.username}}</dd>
+            <dt>{{'GETTINGSTARTEDWIZARD_Password'|translate}}</dt>
+            <dd>{{'GENERIC_stars'|translate}}</dd>
+            <dt>{{'GETTINGSTARTEDWIZARD_SNMP_Mode'|translate}}</dt>
+            <dd>{{viewmodel.wizardSNMP.mode}}</dd>
+            <dt ng-if="viewmodel.wizardSNMP.mode=='enabled'">{{'GETTINGSTARTEDWIZARD_SNMP_String'|translate}}</dt>
+            <dd ng-if="viewmodel.wizardSNMP.mode=='enabled'">{{viewmodel.wizardSNMP['comm-string']}}</dd>
+            <dt>{{'GETTINGSTARTEDWIZARD_UFD'|translate}}</dt>
+            <dd>{{viewmodel.wizardUFD.upFailureDetection}}</dd>
+            <dt ng-if="viewmodel.wizardNTP.ntpvalues.ntp=='enabled'">{{'GETTINGSTARTEDWIZARD_NTP'|translate}}</dt>
+            <dd ng-if="viewmodel.wizardNTP.ntpvalues.ntp=='enabled'">Configured</dd>
+            <dt ng-if="viewmodel.wizardNTP.ntpvalues.ntp!='enabled'">{{'GETTINGSTARTEDWIZARD_NTP'|translate}}</dt>
+            <dd ng-if="viewmodel.wizardNTP.ntpvalues.ntp!='enabled'">Not Configured</dd>
+        </dl>
+    </div>
+
+</div>

@@ -1,0 +1,104 @@
+<section id="aaa-accounting">
+    <br />
+    <a id="lnkEditAccounting" ng-click="actions.openEditAccountingModal()" ng-if="!data.readOnly">
+        <i class="glyphicon glyphicon-edit" />{{'GENERIC_Edit'|translate}}
+    </a>
+    <div class="row">
+        <div class="col-sm-12" style="overflow: hidden; -ms-text-overflow: ellipsis; -o-text-overflow: ellipsis; text-overflow: ellipsis; white-space: nowrap; text-wrap: none">
+            <br />
+            <div class="row">
+                <!-- Exec -->
+                <div class="col-xs-6">
+                    <h4 style="font-weight: bold;">{{'SECURITY_Exec'|translate}}</h4>
+                    <p>{{'GENERIC_Name'|translate}}: <strong>{{viewmodel.aaa.accounting.execName}}</strong></p>
+                    <div class="row">
+                        <div class="col-xs-6">
+                            <p>{{'Accounting Option'|translate}}</p>
+                        </div>
+                        <div class="col-xs-3">
+                            <p><strong>{{viewmodel.aaa.accounting.execOption}}</strong></p>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col-xs-6">
+                            <p>{{'GENERIC_Method'|translate}}</p>
+                        </div>
+                        <div class="col-xs-3">
+                            <p><strong>{{viewmodel.aaa.accounting.execMethod}}</strong></p>
+                        </div>
+                    </div>
+                    <br />
+                    <br />
+                </div>
+                <!-- System Accounting -->
+                <div class="col-xs-6">
+                    <h4 style="font-weight: bold;">{{'SECURITY_SystemAccounting'|translate}}</h4>
+                    <p>{{'GENERIC_Name'|translate}}: <strong>{{viewmodel.aaa.accounting.systemName}}</strong></p>
+
+                    <div class="row">
+                        <div class="col-xs-6">
+                            <p>{{'Accounting Option'|translate}}</p>
+                        </div>
+                        <div class="col-xs-3">
+                            <p><strong>{{viewmodel.aaa.accounting.systemOption}}</strong></p>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col-xs-6">
+                            <p>{{'GENERIC_Method'|translate}}</p>
+                        </div>
+                        <div class="col-xs-3">
+                            <p><strong>{{viewmodel.aaa.accounting.systemMethod}}</strong></p>
+                        </div>
+                    </div>
+                    <br />
+                    <br />
+                </div>
+            </div>
+            <div class="row">
+                <!-- Command Accounting -->
+                <div class="col-xs-6">
+                    <h4 style="font-weight: bold;">{{'SECURITY_CommandAccounting'|translate}}</h4>
+                    <p>{{'GENERIC_Name'|translate}}: <strong>{{viewmodel.aaa.accounting.commandName}}</strong></p>
+                    <div class="row">
+                        <div class="col-xs-6">
+                            <p>{{'Accounting Option'|translate}}</p>
+                        </div>
+                        <div class="col-xs-3">
+                            <p><strong>{{viewmodel.aaa.accounting.commandOption}}</strong></p>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col-xs-6">
+                            <p>{{'GENERIC_Method'|translate}}</p>
+                        </div>
+                        <div class="col-xs-3">
+                            <p><strong>{{viewmodel.aaa.accounting.commandMethod}}</strong></p>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col-xs-6">
+                            <p>{{'SECURITY_MethodLevel'|translate}}</p>
+                        </div>
+                        <div class="col-xs-3">
+                            <p><strong>{{viewmodel.aaa.accounting.commandMethodLevel}}</strong></p>
+                        </div>
+                    </div>
+                </div>
+                <!-- Suppressing Null User Name -->
+                <div class="col-xs-6">
+		    <h4 style="font-weight: bold;">{{'SECURITY_SuppressingNullUserName'|translate}}</h4>
+                    <div class="row">
+                        <div class="col-xs-6">
+                            <p>{{'Accounting Option'|translate}}</p>
+                        </div>
+                        <div class="col-xs-3">
+                            <p ng-if="viewmodel.aaa.accounting.supNullNameOption == 'disabled'"><strong>{{'GENERIC_Disabled'|translate}}</strong></p>
+                            <p ng-if="viewmodel.aaa.accounting.supNullNameOption == 'enabled'"><strong>{{'GENERIC_Enabled'|translate}}</strong></p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>

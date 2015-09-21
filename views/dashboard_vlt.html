@@ -1,0 +1,136 @@
+<section id="dashboard-vlt">
+
+    <div class="row">
+        <div class="col-md-6" style="background: #f2f2f2; padding: 20px;">
+            <h2>{{viewmodel.vltBrief.role}} VLT IOA</h2>
+            <h3>{{'DASHBOARD_VLTSummary_DomainBrief'|translate}}</h3>
+            <dl class="dl-horizontal dataList">
+
+                <!-- localunitid
+                    on api get_vlt_brief but not on wireframe
+                    -->
+
+                <dt>{{'DASHBOARD_VLT_DomainID'|translate}}</dt>
+                <dd>{{viewmodel.vltBrief.domainid}}</dd>
+                <dt>{{'GENERIC_Role'|translate}}</dt>
+                <dd>{{viewmodel.vltBrief.role}}</dd>
+                <dt>{{'DASHBOARD_VLT_RolePriority'|translate}}</dt>
+                <dd>{{viewmodel.vltBrief.priority}}</dd>                
+                <dt>{{'GENERIC_Interface'|translate}}</dt>
+                <dd>{{viewmodel.vltBrief.vltinterface}}</dd>                
+
+                <dt>{{'DASHBOARD_VLT_ICLLinkStatus'|translate}}</dt>
+                <!--<dd>{{viewmodel.vltBrief.iclstatus}}</dd>-->
+                <dd ng-if="viewmodel.vltBrief.iclstatus == 'Up'"><i class="ci ci-state-ok-core text-success"></i>{{'GENERIC_Up'|translate}}</dd>
+                <dd ng-if="viewmodel.vltBrief.iclstatus != 'Up'"><i class="ci ci-state-critical-core text-danger"></i>{{viewmodel.vltBrief.iclstatus | translate}}</dd>
+
+
+                <dt>{{'DASHBOARD_VLT_HeartbeatStatus'|translate}}</dt>
+                <!--<dd>{{viewmodel.vltBrief.heartbeatsts}}</dd>-->
+                <dd ng-if="viewmodel.vltBrief.heartbeatsts == 'Up'"><i class="ci ci-state-ok-core text-success"></i>{{'GENERIC_Up'|translate}}</dd>
+                <dd ng-if="viewmodel.vltBrief.heartbeatsts != 'Up'"><i class="ci ci-state-critical-core text-danger"></i>{{viewmodel.vltBrief.heartbeatsts | translate}}</dd>
+
+                <dt>{{'DASHBOARD_VLT_PeerStatus'|translate}}</dt>
+                <!--<dd>{{viewmodel.vltBrief.peerstatus}}</dd>-->
+                <dd ng-if="viewmodel.vltBrief.peerstatus == 'Up'"><i class="ci ci-state-ok-core text-success"></i>{{'GENERIC_Up'|translate}}</dd>
+                <dd ng-if="viewmodel.vltBrief.peerstatus != 'Up'"><i class="ci ci-state-critical-core text-danger"></i>{{viewmodel.vltBrief.peerstatus | translate}}</dd>
+
+                <dt>{{'GENERIC_Version'|translate}}</dt>
+                <dd>{{viewmodel.vltBrief.localversion}}</dd>
+                <dt>Local System MAC Address</dt>
+                <dd>{{viewmodel.vltBrief.localmac}}</dd>
+                <dt>Remote System MAC Address</dt>
+                <dd>{{viewmodel.vltBrief.remotemac}}</dd>
+                <dt>Remote System Version</dt>
+                <dd>{{viewmodel.vltBrief.remoteversion}}</dd>
+                <dt>{{'DASHBOARD_VLT_DelayRestoreTimer'|translate}}</dt>
+                <dd>{{viewmodel.vltBrief.delayrestore}}</dd>
+                <dt>{{'DASHBOARD_VLT_AbortThreshold'|translate}}</dt>
+                <dd>{{viewmodel.vltBrief.restoreabort}}</dd>
+                <dt>{{'DASHBOARD_VLT_PeerRouting'|translate}}</dt>
+                <dd>{{viewmodel.vltBrief.peerroutingsts}}</dd>
+                <dt>{{'DASHBOARD_VLT_PRTimeout'|translate}}</dt>
+                <dd>{{viewmodel.vltBrief.peerroutingtime}}</dd>
+                <dt>{{'DASHBOARD_VLT_MRTimeout'|translate}}</dt>
+                <dd>{{viewmodel.vltBrief.mcpeerrouting}}</dd>
+            
+            </dl>
+
+            <h3>{{'DASHBOARD_VLTSummary_VLTBackupLink'|translate}}</h3>
+            <dl class="dl-horizontal dataList">
+                <dt>{{'GENERIC_Destination'|translate}}</dt>
+                <dd>{{viewmodel.vltBackup.destip}}</dd>
+                <dt>{{'DASHBOARD_HeartBeat_Peer_Status'|translate}}</dt>
+                <dd>{{viewmodel.vltBackup.peerhbstatus}}</dd>
+                <dt>{{'DASHBOARD_Destination_VRF'|translate}}</dt>
+                <dd>{{viewmodel.vltBackup.destvrf}}</dd>
+                <dt>{{'DASHBOARD_HeartBeat_Timer'|translate}}</dt>
+                <dd>{{viewmodel.vltBackup.hbinterval}}</dd>
+                <dt>{{'DASHBOARD_HeartBeat_Timeout'|translate}}</dt>
+                <dd>{{viewmodel.vltBackup.hbtimeout}}</dd>
+                <dt>{{'LOGS_RemoteLogServer_Modal_UDP'|translate}}</dt>
+                <dd>{{viewmodel.vltBackup.udpport}}</dd>
+                <dt>{{'DASHBOARD_HeartBeat_Msgs_Sent'|translate}}</dt>
+                <dd>{{viewmodel.vltBackup.hbsendcnt}}</dd>
+                <dt>{{'DASHBOARD_HeartBeat_Msgs_Received'|translate}}</dt>
+                <dd>{{viewmodel.vltBackup.hbrecvcnt}}</dd>
+            </dl>
+
+            <h3>VLT Domain Statistics</h3>
+            <dl class="dl-horizontal dataList">
+                <dt>Heartbeat Messages Sent</dt>
+                <dd>{{viewmodel.vltStats.hbsendcnt}}</dd>
+                <dt>Heartbeat Messages Received</dt>
+                <dd>{{viewmodel.vltStats.hbrecvcnt}}</dd>
+                <dt>ICL Hello's Sent</dt>
+                <dd>{{viewmodel.vltStats.hellosendcnt}}</dd>
+                <dt>ICL Hello's Received</dt>
+                <dd>{{viewmodel.vltStats.hellorecvcnt}}</dd>
+                <dt>Domain Mismatch Errors</dt>
+                <dd>{{viewmodel.vltStats.domainerrcnt}}</dd>
+                <dt>Version Mismatch Errors</dt>
+                <dd>{{viewmodel.vltStats.versionerrcnt}}</dd>
+                <dt>Config Mismatch Errors</dt>
+                <dd>{{viewmodel.vltStats.configerrcnt}}</dd>
+            </dl>
+        </div>
+    </div>
+
+    <br />
+    <br />
+
+    <div class="row">
+        <div class="col-md-6">
+            <table class="table table-striped table-condensed table-hover">
+                <thead>
+                    <tr>
+                        <th>{{'DASHBOARD_VLTSummary_LocalLAGId'|translate}}</th>
+                        <th>{{'DASHBOARD_VLTSummary_PeerLAGId'|translate}}</th>
+                        <th>{{'DASHBOARD_VLTSummary_LocalStatus'|translate}}</th>
+                        <th>{{'DASHBOARD_VLTSummary_PeerStatus'|translate}}</th>
+                        <th style="width:50%;">{{'DASHBOARD_VLTSummary_ActiveVLANs'|translate}}</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr ng-repeat="row in viewmodel.vltDetails.vltdetail">
+                        <td>{{row.locallagid}}
+                        </td>
+                        <td>{{row.peerlagid}}
+                        </td>
+                        <td>
+                            <p ng-if="row.localstatus == 'UP'"><i class="ci ci-state-ok-core text-success"></i>{{'GENERIC_Up'|translate}}</p>
+                            <p ng-if="row.localstatus == 'DOWN'"><i class="ci ci-state-critical-core text-danger"></i>{{'GENERIC_Down'|translate}}</p>
+                        </td>
+                        <td>
+                            <p ng-if="row.peerstatus == 'UP'"><i class="ci ci-state-ok-core text-success"></i>{{'GENERIC_Up'|translate}}</p>
+                            <p ng-if="row.peerstatus == 'DOWN'"><i class="ci ci-state-critical-core text-danger"></i>{{'GENERIC_Down'|translate}}</p>
+                        </td>
+                        <td class="force-wrap">{{row.activevlans}}</td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+    </div>
+
+
+</section>
